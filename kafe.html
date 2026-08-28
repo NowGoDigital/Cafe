@@ -13,7 +13,6 @@
         h1,h2,h3,.serif{font-family:'Playfair Display',serif}
         ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
 
-        /* NAVBAR */
         .navbar{position:fixed;top:0;width:100%;z-index:1000;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(10,10,10,.85);border-bottom:1px solid rgba(201,169,110,.08);transition:all .4s}
         .navbar.scrolled{padding:.7rem 3rem}
         .nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);text-decoration:none;letter-spacing:3px;font-weight:600}
@@ -25,7 +24,6 @@
         .nav-admin-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 16px;border-radius:30px;cursor:pointer;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-family:'Inter',sans-serif;font-weight:600}
         .nav-admin-btn:hover{background:var(--gold);color:var(--dark)}
 
-        /* HERO */
         .hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,.85) 100%),url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=80') center/cover no-repeat}
         .hero-content{animation:fadeUp 1.2s ease}
         .hero-subtitle{font-size:.7rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:500}
@@ -40,14 +38,12 @@
         .scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:bounce 2s infinite}
         .scroll-indicator span{display:block;width:1.5px;height:35px;background:var(--gold);margin:0 auto;opacity:.5}
 
-        /* SECTIONS */
         .section{padding:3.5rem 3rem;max-width:1400px;margin:0 auto}
         .section-header{text-align:center;margin-bottom:2.2rem}
         .section-tag{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;font-weight:500}
         .section-title{font-size:clamp(1.6rem,3vw,2.3rem);color:var(--white)}
         .section-line{width:45px;height:1.5px;background:var(--gold);margin:.8rem auto 0}
 
-        /* MENU 4 KOLOM */
         .menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
         .menu-card{background:var(--dark-2);border-radius:14px;overflow:hidden;border:1px solid var(--glass-border);transition:all .4s cubic-bezier(.175,.885,.32,1.275);position:relative}
         .menu-card:hover{transform:translateY(-6px);border-color:rgba(201,169,110,.3);box-shadow:0 15px 40px rgba(0,0,0,.4)}
@@ -68,7 +64,6 @@
         .menu-card-unavailable{position:absolute;inset:0;background:rgba(10,10,10,.7);display:flex;align-items:center;justify-content:center;z-index:5;border-radius:14px}
         .menu-card-unavailable span{background:rgba(255,68,68,.2);color:#ff6b6b;padding:6px 16px;border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,68,68,.3)}
 
-        /* GALERI */
         .gallery-section{background:var(--dark-2);border-radius:20px;padding:2.5rem;margin:0 3rem}
         .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,190px);gap:.8rem}
         .gallery-item{border-radius:10px;overflow:hidden;position:relative;cursor:pointer}
@@ -81,7 +76,6 @@
         .gallery-label{position:absolute;bottom:10px;left:10px;font-size:.65rem;color:#fff;letter-spacing:1px;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:all .3s;z-index:2}
         .gallery-item:hover .gallery-label{opacity:1;transform:translateY(0)}
 
-        /* ABOUT */
         .about-section{background:var(--dark-2);border-radius:20px;padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;border:1px solid var(--glass-border)}
         .about-img{border-radius:14px;overflow:hidden;height:320px}
         .about-img img{width:100%;height:100%;object-fit:cover}
@@ -92,7 +86,6 @@
         .about-stat h3{font-size:1.6rem;color:var(--gold);font-family:'Inter',sans-serif;font-weight:700}
         .about-stat p{font-size:.7rem;color:var(--gray)}
 
-        /* LOKASI */
         .lokasi-section{padding:0 3rem;max-width:1400px;margin:0 auto}
         .lokasi-wrapper{display:grid;grid-template-columns:1fr 1.3fr;align-items:start;border-radius:20px;overflow:hidden;border:1px solid rgba(201,169,110,.12);background:var(--dark-2)}
         .lokasi-info{padding:2.5rem;display:flex;flex-direction:column;justify-content:center}
@@ -111,7 +104,6 @@
         .lokasi-map-btn{display:block;text-align:center;padding:14px;font-size:.75rem;text-decoration:none;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:all .3s;border-radius:0}
         .lokasi-map-btn:hover{background:var(--gold-light);box-shadow:0 5px 20px rgba(201,169,110,.3)}
 
-        /* RESERVASI */
         .reservasi-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
         .reservasi-info h2{font-size:2rem;margin-bottom:.6rem}
         .reservasi-info h2 span{color:var(--gold)}
@@ -122,12 +114,11 @@
         .reservasi-form-box{background:var(--dark-2);padding:2rem;border-radius:16px;border:1px solid var(--glass-border)}
         .form-group{margin-bottom:1rem}
         .form-group label{display:block;font-size:.65rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;font-weight:500}
-        .form-group input,.form-group select{width:100%;padding:11px 14px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:8px;color:var(--white);font-size:.8rem;font-family:'Inter',sans-serif;transition:border-color .3s}
-        .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--gold)}
+        .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:8px;color:var(--white);font-size:.8rem;font-family:'Inter',sans-serif;transition:border-color .3s}
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold)}
         .btn-full{width:100%;padding:13px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);border:none;border-radius:8px;font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif}
         .btn-full:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,169,110,.3)}
 
-        /* FOOTER */
         .footer{background:var(--dark-2);border-top:1px solid var(--glass-border);padding:2.5rem 3rem;margin-top:3rem}
         .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;max-width:1400px;margin:0 auto}
         .footer-brand h3{font-size:1.3rem;color:var(--gold);margin-bottom:.6rem}
@@ -137,7 +128,7 @@
         .footer-col a:hover{color:var(--gold)}
         .footer-bottom{text-align:center;padding-top:1.5rem;margin-top:1.5rem;border-top:1px solid var(--glass-border);color:var(--gray-dark);font-size:.7rem}
 
-        /* ===== ADMIN PANEL ===== */
+        /* ===== ADMIN ===== */
         .admin-overlay{display:none;position:fixed;inset:0;z-index:2000;background:#0A0A0A;overflow-y:auto}
         .admin-sidebar{position:fixed;left:0;top:0;width:230px;height:100vh;background:var(--dark-2);border-right:1px solid var(--glass-border);padding:1.8rem 0;z-index:10}
         .admin-sidebar-logo{padding:0 1.3rem;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:2rem}
@@ -155,17 +146,32 @@
         .admin-stat-card .value{font-size:1.6rem;font-weight:700;color:var(--gold);margin-top:.2rem}
         .admin-card{background:var(--dark-2);border-radius:10px;border:1px solid var(--glass-border);padding:1.3rem;margin-bottom:1.3rem}
         .admin-card h3{font-size:.85rem;color:var(--white);margin-bottom:1rem;font-family:'Inter',sans-serif;font-weight:600}
-        .admin-form-row{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:.7rem;align-items:end}
-        .admin-form-row input,.admin-form-row select{padding:9px 12px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:6px;color:var(--white);font-family:'Inter',sans-serif;font-size:.75rem}
-        .admin-form-row input:focus,.admin-form-row select:focus{outline:none;border-color:var(--gold)}
-        .admin-add-btn{padding:9px 18px;background:var(--gold);color:var(--dark);border:none;border-radius:6px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;font-size:.75rem;transition:all .3s;white-space:nowrap}
+
+        /* Admin Add Form - 2 baris */
+        .admin-form-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.7rem;margin-bottom:.7rem}
+        .admin-form-grid input,.admin-form-grid select{padding:9px 12px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:6px;color:var(--white);font-family:'Inter',sans-serif;font-size:.75rem;width:100%}
+        .admin-form-grid input:focus,.admin-form-grid select:focus{outline:none;border-color:var(--gold)}
+
+        /* Image Upload Area */
+        .img-upload-area{display:grid;grid-template-columns:1fr 1fr auto;gap:.7rem;align-items:end}
+        .img-upload-area input[type="text"]{padding:9px 12px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:6px;color:var(--white);font-family:'Inter',sans-serif;font-size:.75rem;width:100%}
+        .img-upload-area input[type="text"]:focus{outline:none;border-color:var(--gold)}
+        .img-file-btn{position:relative;overflow:hidden;padding:9px 16px;background:var(--dark-3);border:1px dashed rgba(201,169,110,.4);border-radius:6px;color:var(--gold);font-size:.7rem;cursor:pointer;text-align:center;transition:all .3s;font-family:'Inter',sans-serif;white-space:nowrap}
+        .img-file-btn:hover{border-color:var(--gold);background:rgba(201,169,110,.05)}
+        .img-file-btn input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+        .img-preview-box{width:50px;height:50px;border-radius:8px;overflow:hidden;border:1px solid var(--glass-border);background:var(--dark-3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .img-preview-box img{width:100%;height:100%;object-fit:cover}
+        .img-preview-box .placeholder{font-size:1.2rem;opacity:.3}
+
+        .admin-add-btn{padding:9px 18px;background:var(--gold);color:var(--dark);border:none;border-radius:6px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;font-size:.75rem;transition:all .3s;white-space:nowrap;margin-top:.7rem}
         .admin-add-btn:hover{background:var(--gold-light)}
+
         .admin-table{width:100%;border-collapse:collapse}
         .admin-table th{text-align:left;padding:9px 12px;font-size:.6rem;text-transform:uppercase;letter-spacing:1px;color:var(--gray);border-bottom:1px solid var(--glass-border)}
-        .admin-table td{padding:10px 12px;font-size:.75rem;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.02)}
+        .admin-table td{padding:10px 12px;font-size:.75rem;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.02);vertical-align:middle}
         .admin-table tr:hover td{background:rgba(201,169,110,.02)}
+        .table-thumb{width:45px;height:45px;border-radius:8px;object-fit:cover;border:1px solid var(--glass-border)}
 
-        /* Admin Buttons */
         .btn-sm{padding:4px 10px;border-radius:4px;cursor:pointer;font-size:.6rem;transition:all .3s;border:1px solid;font-family:'Inter',sans-serif;background:transparent}
         .btn-sm-edit{color:var(--blue);border-color:rgba(91,155,213,.3)}.btn-sm-edit:hover{background:var(--blue);color:#fff}
         .btn-sm-danger{color:var(--red);border-color:rgba(255,68,68,.3)}.btn-sm-danger:hover{background:var(--red);color:#fff}
@@ -173,15 +179,13 @@
         .btn-sm-gold{color:var(--gold);border-color:rgba(201,169,110,.3)}.btn-sm-gold:hover{background:var(--gold);color:var(--dark)}
         .btn-group{display:flex;gap:5px;flex-wrap:wrap}
 
-        /* Toggle Switch */
         .toggle-wrap{display:flex;align-items:center;gap:6px}
-        .toggle{width:36px;height:20px;border-radius:10px;background:var(--dark-3);border:1px solid var(--glass-border);cursor:pointer;position:relative;transition:all .3s}
+        .toggle{width:36px;height:20px;border-radius:10px;background:var(--dark-3);border:1px solid var(--glass-border);cursor:pointer;position:relative;transition:all .3s;flex-shrink:0}
         .toggle.on{background:rgba(201,169,110,.3);border-color:var(--gold)}
         .toggle::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--gray);transition:all .3s}
         .toggle.on::after{left:18px;background:var(--gold)}
         .toggle-label{font-size:.6rem;color:var(--gray)}
 
-        /* Status Badges */
         .status-badge{padding:3px 8px;border-radius:10px;font-size:.55rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
         .status-pending{background:rgba(255,193,7,.1);color:#FFC107;border:1px solid rgba(255,193,7,.2)}
         .status-confirmed{background:rgba(76,175,80,.1);color:var(--green);border:1px solid rgba(76,175,80,.2)}
@@ -190,7 +194,7 @@
         /* Edit Modal */
         .modal-overlay{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.7);backdrop-filter:blur(5px);align-items:center;justify-content:center}
         .modal-overlay.show{display:flex}
-        .modal-box{background:var(--dark-2);border:1px solid rgba(201,169,110,.2);border-radius:16px;padding:2rem;width:90%;max-width:450px;animation:fadeUp .3s ease}
+        .modal-box{background:var(--dark-2);border:1px solid rgba(201,169,110,.2);border-radius:16px;padding:2rem;width:90%;max-width:480px;animation:fadeUp .3s ease;max-height:90vh;overflow-y:auto}
         .modal-box h3{color:var(--gold);margin-bottom:1.5rem;font-size:1.1rem}
         .modal-box .form-group{margin-bottom:1rem}
         .modal-actions{display:flex;gap:.8rem;margin-top:1.5rem}
@@ -200,7 +204,18 @@
         .modal-cancel{background:transparent;color:var(--gray);border:1px solid var(--glass-border)}
         .modal-cancel:hover{border-color:var(--red);color:var(--red)}
 
-        /* Toast Notification */
+        /* Modal image section */
+        .modal-img-section{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem}
+        .modal-img-preview{width:100px;height:100px;border-radius:12px;overflow:hidden;border:1px solid var(--glass-border);background:var(--dark-3);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+        .modal-img-preview img{width:100%;height:100%;object-fit:cover}
+        .modal-img-preview .placeholder{font-size:2rem;opacity:.3}
+        .modal-img-inputs{flex:1;display:flex;flex-direction:column;gap:.6rem}
+        .modal-img-inputs input[type="text"]{padding:9px 12px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:6px;color:var(--white);font-family:'Inter',sans-serif;font-size:.75rem;width:100%}
+        .modal-img-inputs input[type="text"]:focus{outline:none;border-color:var(--gold)}
+        .modal-file-btn{position:relative;overflow:hidden;padding:9px 14px;background:var(--dark-3);border:1px dashed rgba(201,169,110,.4);border-radius:6px;color:var(--gold);font-size:.7rem;cursor:pointer;text-align:center;transition:all .3s;font-family:'Inter',sans-serif}
+        .modal-file-btn:hover{border-color:var(--gold);background:rgba(201,169,110,.05)}
+        .modal-file-btn input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+
         .toast{position:fixed;bottom:2rem;right:2rem;z-index:4000;background:var(--dark-2);border:1px solid var(--gold);border-radius:10px;padding:1rem 1.5rem;color:var(--white);font-size:.8rem;transform:translateY(100px);opacity:0;transition:all .4s ease;display:flex;align-items:center;gap:.8rem}
         .toast.show{transform:translateY(0);opacity:1}
         .toast-icon{font-size:1.2rem}
@@ -222,7 +237,9 @@
             .lokasi-map iframe{height:150px}.lokasi-map-overlay{bottom:calc(48px + .6rem)}
             .footer-grid{grid-template-columns:1fr 1fr}
             .admin-sidebar{display:none}.admin-main{margin-left:0;padding:1.5rem}
-            .admin-stats{grid-template-columns:repeat(2,1fr)}.admin-form-row{grid-template-columns:1fr}
+            .admin-stats{grid-template-columns:repeat(2,1fr)}
+            .admin-form-grid{grid-template-columns:1fr 1fr}
+            .img-upload-area{grid-template-columns:1fr}
         }
         @media(max-width:580px){
             .menu-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}
@@ -234,6 +251,7 @@
             .gallery-item{height:170px}
             .hero-cta{flex-direction:column;align-items:center}
             .lokasi-info{padding:1.5rem}
+            .admin-form-grid{grid-template-columns:1fr}
         }
     </style>
 </head>
@@ -403,14 +421,32 @@
             <div class="admin-stat-card"><div class="label">Reservasi Total</div><div class="value" id="stat-res-total">0</div></div>
         </div>
 
-        <!-- Add Menu -->
+        <!-- ===== ADD MENU FORM (dengan gambar) ===== -->
         <div class="admin-card">
             <h3>➕ Tambah Menu Baru</h3>
-            <form id="admin-add-form" class="admin-form-row">
-                <input type="text" id="adm-name" placeholder="Nama menu..." required>
-                <input type="number" id="adm-price" placeholder="Harga" required>
-                <select id="adm-cat"><option value="Kopi">Kopi</option><option value="Non-Kopi">Non-Kopi</option><option value="Makanan">Makanan</option><option value="Dessert">Dessert</option></select>
-                <button type="submit" class="admin-add-btn">+ Tambah</button>
+            <form id="admin-add-form">
+                <div class="admin-form-grid">
+                    <input type="text" id="adm-name" placeholder="Nama menu..." required>
+                    <input type="number" id="adm-price" placeholder="Harga (Rp)" required>
+                    <input type="text" id="adm-desc" placeholder="Deskripsi singkat...">
+                    <select id="adm-cat">
+                        <option value="Kopi">Kopi</option>
+                        <option value="Non-Kopi">Non-Kopi</option>
+                        <option value="Makanan">Makanan</option>
+                        <option value="Dessert">Dessert</option>
+                    </select>
+                </div>
+                <div class="img-upload-area">
+                    <input type="text" id="adm-img-url" placeholder="🔗 Paste URL gambar (opsional)...">
+                    <label class="img-file-btn">
+                        📁 Upload Foto
+                        <input type="file" id="adm-img-file" accept="image/*" onchange="previewAddImg(this)">
+                    </label>
+                    <div class="img-preview-box" id="adm-img-preview">
+                        <span class="placeholder">🖼</span>
+                    </div>
+                </div>
+                <button type="submit" class="admin-add-btn">+ Tambah Menu</button>
             </form>
         </div>
 
@@ -418,7 +454,7 @@
         <div class="admin-card">
             <h3>☕ Daftar Menu — <span id="menu-count-label" style="color:var(--gold)">0 item</span></h3>
             <table class="admin-table">
-                <thead><tr><th>Nama</th><th>Kategori</th><th>Harga</th><th>Status</th><th>Best Seller</th><th>Aksi</th></tr></thead>
+                <thead><tr><th>Foto</th><th>Nama</th><th>Kategori</th><th>Harga</th><th>Status</th><th>Best</th><th>Aksi</th></tr></thead>
                 <tbody id="admin-menu-tbody"></tbody>
             </table>
         </div>
@@ -434,19 +470,35 @@
     </div>
 </div>
 
-<!-- EDIT MODAL -->
+<!-- ===== EDIT MODAL (dengan gambar) ===== -->
 <div class="modal-overlay" id="edit-modal">
     <div class="modal-box">
         <h3>✏️ Edit Menu</h3>
+
+        <!-- Image Section -->
+        <div class="modal-img-section">
+            <div class="modal-img-preview" id="edit-img-preview">
+                <span class="placeholder">🖼</span>
+            </div>
+            <div class="modal-img-inputs">
+                <input type="text" id="edit-img-url" placeholder="🔗 Paste URL gambar..." oninput="previewEditUrl()">
+                <label class="modal-file-btn">
+                    📁 Upload Foto Baru
+                    <input type="file" id="edit-img-file" accept="image/*" onchange="previewEditFile(this)">
+                </label>
+            </div>
+        </div>
+
         <div class="form-group"><label>Nama Menu</label><input type="text" id="edit-name"></div>
-        <div class="form-group"><label>Harga</label><input type="number" id="edit-price"></div>
+        <div class="form-group"><label>Harga (Rp)</label><input type="number" id="edit-price"></div>
         <div class="form-group"><label>Kategori</label>
             <select id="edit-cat"><option value="Kopi">Kopi</option><option value="Non-Kopi">Non-Kopi</option><option value="Makanan">Makanan</option><option value="Dessert">Dessert</option></select>
         </div>
         <div class="form-group"><label>Deskripsi</label><input type="text" id="edit-desc"></div>
+
         <div class="modal-actions">
             <button class="modal-cancel" onclick="closeEditModal()">Batal</button>
-            <button class="modal-save" onclick="saveEdit()">💾 Simpan</button>
+            <button class="modal-save" onclick="saveEdit()">💾 Simpan Perubahan</button>
         </div>
     </div>
 </div>
@@ -458,7 +510,6 @@
 </div>
 
 <script>
-// ===== DATA DEFAULT =====
 const defaultMenus=[
     {id:1,name:"Kopi Susu Gula Aren",price:28000,category:"Kopi",desc:"Espresso premium dengan gula aren asli dan susu segar",img:"https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&q=80",available:true,bestSeller:true,isNew:false},
     {id:2,name:"Croissant Butter",price:32000,category:"Makanan",desc:"Croissant renyah dengan butter premium Perancis",img:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&q=80",available:true,bestSeller:false,isNew:false},
@@ -470,16 +521,17 @@ const defaultMenus=[
     {id:8,name:"Iced Americano",price:25000,category:"Kopi",desc:"Double shot espresso dengan air dingin dan es",img:"https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=400&q=80",available:true,bestSeller:false,isNew:false}
 ];
 
-let editIndex = null;
+let editIndex=null;
+let addImgData='';
+let editImgData='';
+const defaultImg='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80';
 
-// ===== DATA HELPERS =====
-function getMenus(){ return JSON.parse(localStorage.getItem('kafe_menus')) || defaultMenus; }
-function setMenus(data){ localStorage.setItem('kafe_menus', JSON.stringify(data)); }
-function getReservations(){ return JSON.parse(localStorage.getItem('kafe_reservations')) || []; }
-function setReservations(data){ localStorage.setItem('kafe_reservations', JSON.stringify(data)); }
+function getMenus(){return JSON.parse(localStorage.getItem('kafe_menus'))||defaultMenus;}
+function setMenus(d){localStorage.setItem('kafe_menus',JSON.stringify(d));}
+function getReservations(){return JSON.parse(localStorage.getItem('kafe_reservations'))||[];}
+function setReservations(d){localStorage.setItem('kafe_reservations',JSON.stringify(d));}
 
-// ===== TOAST NOTIFICATION =====
-function showToast(msg, icon='✅'){
+function showToast(msg,icon='✅'){
     const t=document.getElementById('toast');
     document.getElementById('toast-msg').textContent=msg;
     document.getElementById('toast-icon').textContent=icon;
@@ -487,26 +539,18 @@ function showToast(msg, icon='✅'){
     setTimeout(()=>t.classList.remove('show'),3000);
 }
 
-// ===== RENDER PUBLIC VIEW =====
+// ===== RENDER PUBLIC =====
 function renderPublic(){
     const menus=getMenus();
-    const container=document.getElementById('menu-container');
-    container.innerHTML=menus.map(item=>{
+    document.getElementById('menu-container').innerHTML=menus.map(item=>{
         let badge='';
         if(item.bestSeller) badge='<span class="menu-card-badge best">Best Seller</span>';
         else if(item.isNew) badge='<span class="menu-card-badge new">New</span>';
         else badge=`<span class="menu-card-badge">${item.category}</span>`;
-
-        const unavailableOverlay = !item.available
-            ? '<div class="menu-card-unavailable"><span>Habis</span></div>' : '';
-
-        return `
-        <div class="menu-card fade-in visible">
-            ${unavailableOverlay}
-            <div class="menu-card-img">
-                <img src="${item.img||'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80'}" alt="${item.name}">
-                ${badge}
-            </div>
+        const overlay=!item.available?'<div class="menu-card-unavailable"><span>Habis</span></div>':'';
+        return `<div class="menu-card fade-in visible">
+            ${overlay}
+            <div class="menu-card-img"><img src="${item.img||defaultImg}" alt="${item.name}">${badge}</div>
             <div class="menu-card-body">
                 <p class="menu-card-category">${item.category}</p>
                 <h3 class="menu-card-name">${item.name}</h3>
@@ -520,139 +564,121 @@ function renderPublic(){
     }).join('');
 }
 
-// ===== RENDER ADMIN VIEW =====
+// ===== RENDER ADMIN =====
 function renderAdmin(){
-    const menus=getMenus();
-    const reservations=getReservations();
-    const pendingCount=reservations.filter(r=>r.status==='Pending').length;
-
-    // Stats
+    const menus=getMenus(),res=getReservations();
+    const pending=res.filter(r=>r.status==='Pending').length;
     document.getElementById('stat-menu').textContent=menus.length;
     document.getElementById('stat-active').textContent=menus.filter(m=>m.available).length;
-    document.getElementById('stat-res-pending').textContent=pendingCount;
-    document.getElementById('stat-res-total').textContent=reservations.length;
+    document.getElementById('stat-res-pending').textContent=pending;
+    document.getElementById('stat-res-total').textContent=res.length;
     document.getElementById('menu-count-label').textContent=menus.length+' item';
-    document.getElementById('res-count-label').textContent=pendingCount+' pending';
+    document.getElementById('res-count-label').textContent=pending+' pending';
 
-    // Menu Table
     document.getElementById('admin-menu-tbody').innerHTML=menus.map((m,i)=>`
         <tr>
+            <td><img class="table-thumb" src="${m.img||defaultImg}" alt="${m.name}"></td>
             <td>${m.name}</td>
             <td>${m.category}</td>
             <td>Rp ${parseInt(m.price).toLocaleString()}</td>
-            <td>
-                <div class="toggle-wrap">
-                    <div class="toggle ${m.available?'on':''}" onclick="toggleAvailable(${i})"></div>
-                    <span class="toggle-label">${m.available?'Aktif':'Habis'}</span>
-                </div>
-            </td>
-            <td>
-                <div class="toggle-wrap">
-                    <div class="toggle ${m.bestSeller?'on':''}" onclick="toggleBest(${i})"></div>
-                </div>
-            </td>
-            <td>
-                <div class="btn-group">
-                    <button class="btn-sm btn-sm-edit" onclick="openEditModal(${i})">✏️ Edit</button>
-                    <button class="btn-sm btn-sm-danger" onclick="deleteMenu(${i})">🗑</button>
-                </div>
-            </td>
-        </tr>
-    `).join('');
+            <td><div class="toggle-wrap"><div class="toggle ${m.available?'on':''}" onclick="toggleAvailable(${i})"></div><span class="toggle-label">${m.available?'Aktif':'Habis'}</span></div></td>
+            <td><div class="toggle-wrap"><div class="toggle ${m.bestSeller?'on':''}" onclick="toggleBest(${i})"></div></div></td>
+            <td><div class="btn-group">
+                <button class="btn-sm btn-sm-edit" onclick="openEditModal(${i})">✏️ Edit</button>
+                <button class="btn-sm btn-sm-danger" onclick="deleteMenu(${i})">🗑</button>
+            </div></td>
+        </tr>`).join('');
 
-    // Reservation Table
-    document.getElementById('admin-res-tbody').innerHTML=reservations.map((r,i)=>{
-        let statusBadge='';
-        if(r.status==='Pending') statusBadge='<span class="status-badge status-pending">Pending</span>';
-        else if(r.status==='Dikonfirmasi') statusBadge='<span class="status-badge status-confirmed">Dikonfirmasi</span>';
-        else statusBadge='<span class="status-badge status-done">Selesai</span>';
-
-        let actions='';
-        if(r.status==='Pending') actions=`<button class="btn-sm btn-sm-success" onclick="confirmRes(${i})">✔ Konfirmasi</button>`;
-        else if(r.status==='Dikonfirmasi') actions=`<button class="btn-sm btn-sm-gold" onclick="doneRes(${i})">✔ Selesai</button>`;
-        actions+=`<button class="btn-sm btn-sm-danger" onclick="deleteRes(${i})">🗑</button>`;
-
-        return `<tr>
-            <td>${r.name}</td>
-            <td>${r.pax} org</td>
-            <td>${new Date(r.date).toLocaleString('id-ID')}</td>
-            <td>${r.area||'-'}</td>
-            <td>${statusBadge}</td>
-            <td><div class="btn-group">${actions}</div></td>
-        </tr>`;
+    document.getElementById('admin-res-tbody').innerHTML=res.map((r,i)=>{
+        let sb=r.status==='Pending'?'<span class="status-badge status-pending">Pending</span>':r.status==='Dikonfirmasi'?'<span class="status-badge status-confirmed">Dikonfirmasi</span>':'<span class="status-badge status-done">Selesai</span>';
+        let act=r.status==='Pending'?`<button class="btn-sm btn-sm-success" onclick="confirmRes(${i})">✔ Konfirmasi</button>`:r.status==='Dikonfirmasi'?`<button class="btn-sm btn-sm-gold" onclick="doneRes(${i})">✔ Selesai</button>`:'';
+        act+=`<button class="btn-sm btn-sm-danger" onclick="deleteRes(${i})">🗑</button>`;
+        return `<tr><td>${r.name}</td><td>${r.pax} org</td><td>${new Date(r.date).toLocaleString('id-ID')}</td><td>${r.area||'-'}</td><td>${sb}</td><td><div class="btn-group">${act}</div></td></tr>`;
     }).join('')||'<tr><td colspan="6" style="text-align:center;color:#555;padding:2rem;">Belum ada reservasi masuk</td></tr>';
 }
 
-// ===== SYNC ALL =====
-function renderAll(){
-    renderPublic();
-    renderAdmin();
-}
+function renderAll(){renderPublic();renderAdmin();}
 
-// ===== MENU ACTIONS =====
+// ===== IMAGE HANDLING - ADD FORM =====
+window.previewAddImg=function(input){
+    if(input.files&&input.files[0]){
+        const reader=new FileReader();
+        reader.onload=function(e){
+            addImgData=e.target.result;
+            document.getElementById('adm-img-preview').innerHTML=`<img src="${e.target.result}" alt="preview">`;
+            document.getElementById('adm-img-url').value='';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+};
+
+// ===== IMAGE HANDLING - EDIT MODAL =====
+window.previewEditUrl=function(){
+    const url=document.getElementById('edit-img-url').value.trim();
+    if(url){
+        editImgData=url;
+        document.getElementById('edit-img-preview').innerHTML=`<img src="${url}" alt="preview" onerror="this.parentElement.innerHTML='<span class=placeholder>⚠️</span>'">`;
+    }
+};
+
+window.previewEditFile=function(input){
+    if(input.files&&input.files[0]){
+        const reader=new FileReader();
+        reader.onload=function(e){
+            editImgData=e.target.result;
+            document.getElementById('edit-img-preview').innerHTML=`<img src="${e.target.result}" alt="preview">`;
+            document.getElementById('edit-img-url').value='';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+};
+
+// ===== ADD MENU =====
 document.getElementById('admin-add-form').addEventListener('submit',e=>{
     e.preventDefault();
     const menus=getMenus();
+    const urlVal=document.getElementById('adm-img-url').value.trim();
+    const finalImg=addImgData||urlVal||defaultImg;
     menus.push({
         id:Date.now(),
         name:document.getElementById('adm-name').value,
         price:document.getElementById('adm-price').value,
         category:document.getElementById('adm-cat').value,
-        desc:'Menu spesial Kafe Senja',
-        img:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80',
-        available:true,
-        bestSeller:false,
-        isNew:true
+        desc:document.getElementById('adm-desc').value||'Menu spesial Kafe Senja',
+        img:finalImg,
+        available:true,bestSeller:false,isNew:true
     });
-    setMenus(menus);
-    renderAll();
-    e.target.reset();
+    setMenus(menus);renderAll();
+    e.target.reset();addImgData='';
+    document.getElementById('adm-img-preview').innerHTML='<span class="placeholder">🖼</span>';
     showToast('Menu berhasil ditambahkan!','✅');
 });
 
 window.deleteMenu=i=>{
     if(confirm('Hapus menu ini?')){
-        const menus=getMenus();
-        const name=menus[i].name;
-        menus.splice(i,1);
-        setMenus(menus);
-        renderAll();
+        const menus=getMenus();const name=menus[i].name;
+        menus.splice(i,1);setMenus(menus);renderAll();
         showToast(`"${name}" dihapus`,'🗑');
     }
 };
-
-window.toggleAvailable=i=>{
-    const menus=getMenus();
-    menus[i].available=!menus[i].available;
-    setMenus(menus);
-    renderAll();
-    showToast(menus[i].available?`"${menus[i].name}" diaktifkan`:`"${menus[i].name}" ditandai habis`,menus[i].available?'✅':'⏸');
-};
-
-window.toggleBest=i=>{
-    const menus=getMenus();
-    menus[i].bestSeller=!menus[i].bestSeller;
-    setMenus(menus);
-    renderAll();
-};
+window.toggleAvailable=i=>{const m=getMenus();m[i].available=!m[i].available;setMenus(m);renderAll();showToast(m[i].available?`"${m[i].name}" diaktifkan`:`"${m[i].name}" ditandai habis`,m[i].available?'✅':'⏸');};
+window.toggleBest=i=>{const m=getMenus();m[i].bestSeller=!m[i].bestSeller;setMenus(m);renderAll();};
 
 // ===== EDIT MODAL =====
 window.openEditModal=i=>{
-    editIndex=i;
-    const menus=getMenus();
-    const m=menus[i];
+    editIndex=i;editImgData='';
+    const m=getMenus()[i];
     document.getElementById('edit-name').value=m.name;
     document.getElementById('edit-price').value=m.price;
     document.getElementById('edit-cat').value=m.category;
     document.getElementById('edit-desc').value=m.desc||'';
+    document.getElementById('edit-img-url').value=m.img||'';
+    document.getElementById('edit-img-file').value='';
+    editImgData=m.img||'';
+    document.getElementById('edit-img-preview').innerHTML=m.img?`<img src="${m.img}" alt="preview">`:'<span class="placeholder">🖼</span>';
     document.getElementById('edit-modal').classList.add('show');
 };
-
-window.closeEditModal=()=>{
-    document.getElementById('edit-modal').classList.remove('show');
-    editIndex=null;
-};
-
+window.closeEditModal=()=>{document.getElementById('edit-modal').classList.remove('show');editIndex=null;};
 window.saveEdit=()=>{
     if(editIndex===null)return;
     const menus=getMenus();
@@ -660,98 +686,37 @@ window.saveEdit=()=>{
     menus[editIndex].price=document.getElementById('edit-price').value;
     menus[editIndex].category=document.getElementById('edit-cat').value;
     menus[editIndex].desc=document.getElementById('edit-desc').value;
-    setMenus(menus);
-    renderAll();
-    closeEditModal();
+    if(editImgData) menus[editIndex].img=editImgData;
+    setMenus(menus);renderAll();closeEditModal();
     showToast('Menu berhasil diupdate!','✏️');
 };
 
-// ===== RESERVATION ACTIONS =====
+// ===== RESERVATIONS =====
 document.getElementById('reservation-form').addEventListener('submit',e=>{
     e.preventDefault();
-    const reservations=getReservations();
-    reservations.push({
-        name:document.getElementById('res-name').value,
-        pax:document.getElementById('res-pax').value,
-        date:document.getElementById('res-date').value,
-        area:document.getElementById('res-area').value,
-        status:'Pending',
-        createdAt:new Date().toISOString()
-    });
-    setReservations(reservations);
-    renderAll();
-    e.target.reset();
+    const r=getReservations();
+    r.push({name:document.getElementById('res-name').value,pax:document.getElementById('res-pax').value,date:document.getElementById('res-date').value,area:document.getElementById('res-area').value,status:'Pending',createdAt:new Date().toISOString()});
+    setReservations(r);renderAll();e.target.reset();
     showToast('Reservasi berhasil dikirim!','🎉');
 });
-
-window.confirmRes=i=>{
-    const r=getReservations();
-    r[i].status='Dikonfirmasi';
-    setReservations(r);
-    renderAll();
-    showToast(`Reservasi "${r[i].name}" dikonfirmasi`,'✅');
-};
-
-window.doneRes=i=>{
-    const r=getReservations();
-    r[i].status='Selesai';
-    setReservations(r);
-    renderAll();
-    showToast(`Reservasi "${r[i].name}" selesai`,'🏁');
-};
-
-window.deleteRes=i=>{
-    if(confirm('Hapus reservasi ini?')){
-        const r=getReservations();
-        r.splice(i,1);
-        setReservations(r);
-        renderAll();
-        showToast('Reservasi dihapus','🗑');
-    }
-};
+window.confirmRes=i=>{const r=getReservations();r[i].status='Dikonfirmasi';setReservations(r);renderAll();showToast(`Reservasi "${r[i].name}" dikonfirmasi`,'✅');};
+window.doneRes=i=>{const r=getReservations();r[i].status='Selesai';setReservations(r);renderAll();showToast(`Reservasi "${r[i].name}" selesai`,'🏁');};
+window.deleteRes=i=>{if(confirm('Hapus reservasi ini?')){const r=getReservations();r.splice(i,1);setReservations(r);renderAll();showToast('Reservasi dihapus','🗑');}};
 
 // ===== ADMIN TOGGLE =====
-window.openAdmin=()=>{
-    const p=prompt('🔐 Password admin:');
-    if(p==='admin123'){
-        document.getElementById('admin-overlay').style.display='block';
-        document.body.style.overflow='hidden';
-        renderAll();
-    }else if(p!==null)alert('Password salah!');
-};
-window.closeAdmin=()=>{
-    document.getElementById('admin-overlay').style.display='none';
-    document.body.style.overflow='';
-};
+window.openAdmin=()=>{const p=prompt('🔐 Password admin:');if(p==='admin123'){document.getElementById('admin-overlay').style.display='block';document.body.style.overflow='hidden';renderAll();}else if(p!==null)alert('Password salah!');};
+window.closeAdmin=()=>{document.getElementById('admin-overlay').style.display='none';document.body.style.overflow='';};
+window.goTo=sel=>document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
 
-// ===== NAVBAR SCROLL SYNC =====
-window.goTo=sel=>{
-    document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
-};
-
-// Active nav highlight on scroll
 window.addEventListener('scroll',()=>{
     document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
-
-    // Highlight active nav link
-    const sections=['home','menu','gallery','about','lokasi','reservasi'];
-    let current='';
-    sections.forEach(id=>{
-        const el=document.getElementById(id);
-        if(el && window.scrollY>=el.offsetTop-200) current=id;
-    });
-    document.querySelectorAll('.nav-links a').forEach(a=>{
-        a.classList.toggle('active',a.dataset.section===current);
-    });
+    const sections=['home','menu','gallery','about','lokasi','reservasi'];let current='';
+    sections.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-200)current=id;});
+    document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.dataset.section===current));
 });
 
-// Fade-in observer
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{
-    if(e.isIntersecting)e.target.classList.add('visible');
-}),{threshold:0.1});
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
 document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
-
-// ===== INIT =====
 renderAll();
 </script>
 </body>
