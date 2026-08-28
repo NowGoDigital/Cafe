@@ -1,1 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Senja - Website & CMS</title>
+    <style>
+        /* --- CSS (Tampilan) --- */
+        :root {
+            --primary: #6F4E37; /* Warna Kopi */
+            --secondary: #ECB176; /* Warna Krem */
+            --light: #F5F5DC; /* Beige */
+            --dark: #2C2C2C;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        /* Navbar */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 { margin: 0; font-size: 1.5rem; }
+        
+        .nav-btn {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover { background: rgba(255,255,255,0.2); }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Grid Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .card-img {
+            height: 180px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 3rem;
+        }
+
+        .card-body { padding: 15px; }
+        .card-title { font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
+        .card-price { color: var(--primary); font-weight: bold; }
+        .badge {
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            float: right;
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: none; /* Hidden by default */
+        }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Fix padding issue */
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+
+        /* Utility */
+        .hidden { display: none; }
+        .show { display: block; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>☕ Kafe Senja</h1>
+        <button class="nav-btn" onclick="toggleAdmin()">Mode Admin / CMS</button>
+    </header>
+
+    <div class="container">
+        
+        <!-- HALAMAN PUBLIK (MENU) -->
+        <div id="public-view">
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--primary);">Menu Favorit Kami</h2>
+            <div class="menu-grid" id="menu-container">
+                <!-- Item menu akan muncul di sini lewat JS -->
+            </div>
+        </div>
+
+        <!-- HALAMAN ADMIN (CMS) -->
+        <div id="admin-view" class="admin-panel">
+            <h2 style="color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px;">
+                Dashboard Pengelola Kafe
+            </h2>
+
+            <!-- Form Tambah Menu -->
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+                <h3>Tambah Menu Baru</h3>
+                <form id="add-menu-form">
+                    <div class="form-group">
+                        <label>Nama Menu</label>
+                        <input type="text" id="name" required placeholder="Contoh: Kopi Susu Gula Aren">
+                    </div>
+                    <div class="form-group">
+                        <label>Harga (Rp)</label>
+                        <input type="number" id="price" required placeholder="25000">
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select id="category">
+                            <option value="Kopi">Kopi</option>
+                            <option value="Non-Kopi">Non-Kopi</option>
+                            <option value="Makanan">Makanan</option>
+                            <option value="Dessert">Dessert</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Simpan Menu</button>
+                </form>
+            </div>
+
+            <!-- Tabel Daftar Menu -->
+            <h3>Daftar Menu Aktif</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Kategori</th>
+                        <th>Harga</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-table-body">
+                    <!-- Data tabel muncul di sini -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        /* --- JAVASCRIPT (Logika) --- */
+
+        // 1. Data Awal (Dummy Data)
+        const defaultData = [
+            { id: 1, name: "Kopi Susu Gula Aren", price: 25000, category: "Kopi" },
+            { id: 2, name: "Croissant Butter", price: 30000, category: "Makanan" },
+            { id: 3, name: "Ice Tea Lemon", price: 15000, category: "Non-Kopi" }
+        ];
+
+        // 2. Fungsi Load Data dari LocalStorage
+        function getMenus() {
+            const stored = localStorage.getItem('kafe_menus');
+            return stored ? JSON.parse(stored) : defaultData;
+        }
+
+        // 3. Fungsi Simpan Data ke LocalStorage
+        function saveMenus(menus) {
+            localStorage.setItem('kafe_menus', JSON.stringify(menus));
+            renderPublic();
+            renderAdmin();
+        }
+
+        // 4. Render Tampilan Publik
+        function renderPublic() {
+            const menus = getMenus();
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+
+            menus.forEach(item => {
+                const card = `
+                    <div class="card">
+                        <div class="card-img">☕</div>
+                        <div class="card-body">
+                            <span class="badge">${item.category}</span>
+                            <div class="card-title">${item.name}</div>
+                            <div class="card-price">Rp ${parseInt(item.price).toLocaleString()}</div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        // 5. Render Tampilan Admin (Tabel)
+        function renderAdmin() {
+            const menus = getMenus();
+            const tbody = document.getElementById('admin-table-body');
+            tbody.innerHTML = '';
+
+            menus.forEach((item, index) => {
+                const row = `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.category}</td>
+                        <td>Rp ${parseInt(item.price).toLocaleString()}</td>
+                        <td>
+                            <button class="btn-danger" onclick="deleteMenu(${index})">Hapus</button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // 6. Fitur Tambah Menu
+        document.getElementById('add-menu-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const price = document.getElementById('price').value;
+            const category = document.getElementById('category').value;
+
+            const newMenu = {
+                id: Date.now(), // ID unik berdasarkan waktu
+                name: name,
+                price: price,
+                category: category
+            };
+
+            const currentMenus = getMenus();
+            currentMenus.push(newMenu);
+            saveMenus(currentMenus);
+
+            // Reset form
+            this.reset();
+            alert('Menu berhasil ditambahkan!');
+        });
+
+        // 7. Fitur Hapus Menu
+        window.deleteMenu = function(index) {
+            if(confirm('Yakin mau hapus menu ini?')) {
+                const currentMenus = getMenus();
+                currentMenus.splice(index, 1);
+                saveMenus(currentMenus);
+            }
+        };
+
+        // 8. Toggle Mode Admin/Publik
+        let isAdminMode = false;
+        window.toggleAdmin = function() {
+            isAdminMode = !isAdminMode;
+            const publicView = document.getElementById('public-view');
+            const adminView = document.getElementById('admin-view');
+
+            if (isAdminMode) {
+                // Masuk mode admin (simulasi login sederhana)
+                const pass = prompt("Masukkan Password Admin (ketik: admin123):");
+                if (pass === "admin123") {
+                    publicView.classList.add('hidden');
+                    adminView.classList.add('show');
+                    renderAdmin();
+                } else {
+                    alert("Password salah!");
+                    isAdminMode = false;
+                }
+            } else {
+                // Kembali ke publik
+                publicView.classList.remove('hidden');
+                adminView.classList.remove('show');
+            }
+        };
+
+        // Jalankan saat pertama kali dibuka
+        renderPublic();
+    </script>
+</body>
+</html>
