@@ -14,590 +14,225 @@
             --dark-2: #111111;
             --dark-3: #1A1A1A;
             --dark-4: #222222;
-            --cream: #F5F0E8;
             --white: #FFFFFF;
             --gray: #999999;
-            --gray-dark: #666666;
-            --glass: rgba(255,255,255,0.03);
+            --gray-dark: #555555;
             --glass-border: rgba(255,255,255,0.06);
         }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Inter',sans-serif; background:var(--dark); color:var(--white); overflow-x:hidden; line-height:1.6; }
+        h1,h2,h3,.serif { font-family:'Playfair Display',serif; }
+        ::-webkit-scrollbar { width:5px; }
+        ::-webkit-scrollbar-track { background:var(--dark); }
+        ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:3px; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        /* NAVBAR */
+        .navbar { position:fixed; top:0; width:100%; z-index:1000; padding:1rem 3rem; display:flex; justify-content:space-between; align-items:center; backdrop-filter:blur(20px); background:rgba(10,10,10,0.85); border-bottom:1px solid rgba(201,169,110,0.08); transition:all .4s; }
+        .navbar.scrolled { padding:.7rem 3rem; }
+        .nav-logo { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--gold); text-decoration:none; letter-spacing:3px; font-weight:600; }
+        .nav-links { display:flex; list-style:none; gap:2rem; align-items:center; }
+        .nav-links a { color:rgba(255,255,255,.75); text-decoration:none; font-size:.7rem; font-weight:500; letter-spacing:2px; text-transform:uppercase; transition:color .3s; cursor:pointer; position:relative; }
+        .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--gold); transition:width .3s; }
+        .nav-links a:hover { color:var(--gold); }
+        .nav-links a:hover::after { width:100%; }
+        .nav-admin-btn { background:transparent; border:1px solid var(--gold); color:var(--gold); padding:6px 16px; border-radius:30px; cursor:pointer; font-size:.65rem; letter-spacing:1.5px; text-transform:uppercase; transition:all .3s; font-family:'Inter',sans-serif; font-weight:600; }
+        .nav-admin-btn:hover { background:var(--gold); color:var(--dark); }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark);
-            color: var(--white);
-            overflow-x: hidden;
-            line-height: 1.6;
+        /* HERO */
+        .hero { height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; background:linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,.85) 100%),url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=80') center/cover no-repeat; }
+        .hero-content { animation:fadeUp 1.2s ease; }
+        .hero-subtitle { font-size:.7rem; letter-spacing:6px; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; font-weight:500; }
+        .hero-title { font-size:clamp(2.5rem,6.5vw,5rem); font-weight:700; line-height:1.1; margin-bottom:1rem; background:linear-gradient(135deg,var(--white) 0%,var(--gold-light) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .hero-title span { color:var(--gold); font-style:italic; -webkit-text-fill-color:var(--gold); }
+        .hero-desc { font-size:.95rem; color:rgba(255,255,255,.55); max-width:460px; margin:0 auto 2.2rem; font-weight:300; line-height:1.8; }
+        .hero-cta { display:inline-flex; gap:1rem; }
+        .btn-gold { background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:var(--dark); padding:12px 30px; border:none; border-radius:40px; font-size:.75rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all .3s; text-decoration:none; display:inline-block; }
+        .btn-gold:hover { transform:translateY(-2px); box-shadow:0 10px 40px rgba(201,169,110,.3); }
+        .btn-outline { background:transparent; color:var(--white); padding:12px 30px; border:1px solid rgba(255,255,255,.2); border-radius:40px; font-size:.75rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all .3s; text-decoration:none; display:inline-block; }
+        .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+        .scroll-indicator { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); animation:bounce 2s infinite; }
+        .scroll-indicator span { display:block; width:1.5px; height:35px; background:var(--gold); margin:0 auto; opacity:.5; }
+
+        /* SECTIONS */
+        .section { padding:3.5rem 3rem; max-width:1400px; margin:0 auto; }
+        .section-header { text-align:center; margin-bottom:2.2rem; }
+        .section-tag { font-size:.65rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:.4rem; font-weight:500; }
+        .section-title { font-size:clamp(1.6rem,3vw,2.3rem); color:var(--white); }
+        .section-line { width:45px; height:1.5px; background:var(--gold); margin:.8rem auto 0; }
+
+        /* MENU 4 KOLOM */
+        .menu-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; }
+        .menu-card { background:var(--dark-2); border-radius:14px; overflow:hidden; border:1px solid var(--glass-border); transition:all .4s cubic-bezier(.175,.885,.32,1.275); }
+        .menu-card:hover { transform:translateY(-6px); border-color:rgba(201,169,110,.3); box-shadow:0 15px 40px rgba(0,0,0,.4); }
+        .menu-card-img { height:150px; background:var(--dark-3); position:relative; overflow:hidden; }
+        .menu-card-img img { width:100%; height:100%; object-fit:cover; transition:transform .5s; }
+        .menu-card:hover .menu-card-img img { transform:scale(1.08); }
+        .menu-card-badge { position:absolute; top:8px; right:8px; background:var(--gold); color:var(--dark); padding:3px 9px; border-radius:12px; font-size:.55rem; font-weight:700; letter-spacing:.5px; text-transform:uppercase; }
+        .menu-card-body { padding:.9rem 1rem 1.1rem; }
+        .menu-card-category { font-size:.6rem; color:var(--gold); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:.2rem; }
+        .menu-card-name { font-size:.9rem; margin-bottom:.2rem; color:var(--white); font-family:'Inter',sans-serif; font-weight:600; }
+        .menu-card-desc { font-size:.7rem; color:var(--gray); margin-bottom:.6rem; font-weight:300; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+        .menu-card-footer { display:flex; justify-content:space-between; align-items:center; }
+        .menu-card-price { font-size:.95rem; font-weight:700; color:var(--gold); }
+        .menu-card-btn { background:transparent; border:1px solid rgba(201,169,110,.4); color:var(--gold); padding:4px 12px; border-radius:15px; font-size:.6rem; cursor:pointer; transition:all .3s; font-family:'Inter',sans-serif; text-transform:uppercase; letter-spacing:.5px; }
+        .menu-card-btn:hover { background:var(--gold); color:var(--dark); }
+
+        /* GALERI */
+        .gallery-section { background:var(--dark-2); border-radius:20px; padding:2.5rem; margin:0 3rem; }
+        .gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(2,190px); gap:.8rem; }
+        .gallery-item { border-radius:10px; overflow:hidden; position:relative; cursor:pointer; }
+        .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform .5s; }
+        .gallery-item:hover img { transform:scale(1.08); }
+        .gallery-item::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.6) 100%); opacity:0; transition:opacity .3s; }
+        .gallery-item:hover::after { opacity:1; }
+        .gallery-item:nth-child(1) { grid-column:span 2; grid-row:span 2; }
+        .gallery-item:nth-child(4) { grid-column:span 2; }
+        .gallery-label { position:absolute; bottom:10px; left:10px; font-size:.65rem; color:white; letter-spacing:1px; text-transform:uppercase; opacity:0; transform:translateY(8px); transition:all .3s; z-index:2; }
+        .gallery-item:hover .gallery-label { opacity:1; transform:translateY(0); }
+
+        /* ABOUT */
+        .about-section { background:var(--dark-2); border-radius:20px; padding:2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:center; border:1px solid var(--glass-border); }
+        .about-img { border-radius:14px; overflow:hidden; height:320px; }
+        .about-img img { width:100%; height:100%; object-fit:cover; }
+        .about-text h2 { font-size:1.8rem; margin-bottom:1rem; }
+        .about-text h2 span { color:var(--gold); }
+        .about-text p { color:var(--gray); margin-bottom:.6rem; font-weight:300; font-size:.85rem; }
+        .about-stats { display:flex; gap:2rem; margin-top:1.2rem; }
+        .about-stat h3 { font-size:1.6rem; color:var(--gold); font-family:'Inter',sans-serif; font-weight:700; }
+        .about-stat p { font-size:.7rem; color:var(--gray); }
+
+        /* ===== LOKASI SECTION ===== */
+        .lokasi-section { padding:0 3rem; max-width:1400px; margin:0 auto; }
+        .lokasi-wrapper {
+            display:grid;
+            grid-template-columns:1fr 1.3fr;
+            border-radius:20px;
+            overflow:hidden;
+            border:1px solid rgba(201,169,110,0.12);
+            background:var(--dark-2);
+            min-height:440px;
         }
-
-        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
-
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--dark); }
-        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
-
-        /* ===== NAVBAR ===== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(20px);
-            background: rgba(10,10,10,0.85);
-            border-bottom: 1px solid rgba(201,169,110,0.1);
+        .lokasi-info { padding:2.5rem; display:flex; flex-direction:column; justify-content:center; }
+        .lokasi-title { font-size:1.8rem; margin-bottom:1.8rem; color:var(--white); }
+        .lokasi-title span { color:var(--gold); }
+        .lokasi-details { display:flex; flex-direction:column; gap:1.3rem; }
+        .lokasi-item { display:flex; gap:.9rem; align-items:flex-start; }
+        .lokasi-icon {
+            width:40px; height:40px;
+            background:rgba(201,169,110,0.08);
+            border:1px solid rgba(201,169,110,0.15);
+            border-radius:10px;
+            display:flex; align-items:center; justify-content:center;
+            font-size:1rem; flex-shrink:0;
         }
-
-        .navbar.scrolled { padding: 0.7rem 3rem; }
-
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: var(--gold);
-            text-decoration: none;
-            letter-spacing: 3px;
-            font-weight: 600;
+        .lokasi-item h4 {
+            font-size:.7rem; color:var(--gold); letter-spacing:1.5px;
+            text-transform:uppercase; margin-bottom:.2rem;
+            font-family:'Inter',sans-serif; font-weight:600;
         }
-
-        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
-        .nav-links a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-            cursor: pointer;
-            position: relative;
+        .lokasi-item p { font-size:.8rem; color:var(--gray); line-height:1.6; }
+        .lokasi-map { position:relative; min-height:440px; }
+        .lokasi-map iframe {
+            position:absolute; inset:0;
+            width:100%; height:100%; border:0;
+            filter:grayscale(.85) contrast(1.1) brightness(.65) sepia(.15);
+            transition:filter .6s ease;
         }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: width 0.3s;
+        .lokasi-map:hover iframe { filter:grayscale(.2) contrast(1) brightness(.85) sepia(0); }
+        .lokasi-map-overlay {
+            position:absolute; bottom:1rem; left:1rem; z-index:5;
+            background:rgba(10,10,10,.85); backdrop-filter:blur(10px);
+            padding:.6rem 1.2rem; border-radius:8px;
+            border:1px solid rgba(201,169,110,.15);
+            font-size:.7rem; color:var(--gold-light); letter-spacing:.5px;
         }
-        .nav-links a:hover { color: var(--gold); }
-        .nav-links a:hover::after { width: 100%; }
+        .lokasi-map-overlay strong { color:var(--gold); }
 
-        .nav-admin-btn {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 7px 18px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 0.7rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
+        /* RESERVASI */
+        .reservasi-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:center; }
+        .reservasi-info h2 { font-size:2rem; margin-bottom:.6rem; }
+        .reservasi-info h2 span { color:var(--gold); }
+        .reservasi-info p { color:var(--gray); margin-bottom:1.2rem; font-size:.85rem; }
+        .reservasi-features { list-style:none; }
+        .reservasi-features li { padding:.6rem 0; border-bottom:1px solid var(--glass-border); display:flex; align-items:center; gap:.7rem; color:rgba(255,255,255,.65); font-size:.8rem; }
+        .reservasi-features li::before { content:'✦'; color:var(--gold); font-size:.6rem; }
+        .reservasi-form-box { background:var(--dark-2); padding:2rem; border-radius:16px; border:1px solid var(--glass-border); }
+        .form-group { margin-bottom:1rem; }
+        .form-group label { display:block; font-size:.65rem; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:.3rem; font-weight:500; }
+        .form-group input,.form-group select { width:100%; padding:11px 14px; background:var(--dark-3); border:1px solid var(--glass-border); border-radius:8px; color:var(--white); font-size:.8rem; font-family:'Inter',sans-serif; transition:border-color .3s; }
+        .form-group input:focus,.form-group select:focus { outline:none; border-color:var(--gold); }
+        .btn-full { width:100%; padding:13px; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:var(--dark); border:none; border-radius:8px; font-size:.75rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all .3s; font-family:'Inter',sans-serif; }
+        .btn-full:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(201,169,110,.3); }
+
+        /* FOOTER */
+        .footer { background:var(--dark-2); border-top:1px solid var(--glass-border); padding:2.5rem 3rem; margin-top:3rem; }
+        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:2rem; max-width:1400px; margin:0 auto; }
+        .footer-brand h3 { font-size:1.3rem; color:var(--gold); margin-bottom:.6rem; }
+        .footer-brand p { color:var(--gray); font-size:.75rem; font-weight:300; }
+        .footer-col h4 { color:var(--white); font-size:.7rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:.8rem; font-family:'Inter',sans-serif; }
+        .footer-col p,.footer-col a { color:var(--gray); font-size:.75rem; text-decoration:none; display:block; margin-bottom:.4rem; transition:color .3s; }
+        .footer-col a:hover { color:var(--gold); }
+        .footer-bottom { text-align:center; padding-top:1.5rem; margin-top:1.5rem; border-top:1px solid var(--glass-border); color:var(--gray-dark); font-size:.7rem; }
+
+        /* ADMIN */
+        .admin-overlay { display:none; position:fixed; inset:0; z-index:2000; background:#0A0A0A; overflow-y:auto; }
+        .admin-sidebar { position:fixed; left:0; top:0; width:230px; height:100vh; background:var(--dark-2); border-right:1px solid var(--glass-border); padding:1.8rem 0; z-index:10; }
+        .admin-sidebar-logo { padding:0 1.3rem; font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--gold); margin-bottom:2rem; }
+        .admin-nav { list-style:none; }
+        .admin-nav li { padding:11px 1.3rem; color:var(--gray); cursor:pointer; transition:all .3s; font-size:.75rem; display:flex; align-items:center; gap:8px; }
+        .admin-nav li:hover,.admin-nav li.active { background:rgba(201,169,110,.08); color:var(--gold); border-right:2px solid var(--gold); }
+        .admin-main { margin-left:230px; padding:2rem; }
+        .admin-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; }
+        .admin-header h1 { font-size:1.3rem; color:var(--white); }
+        .admin-header-btn { background:transparent; border:1px solid rgba(255,255,255,.15); color:var(--white); padding:7px 18px; border-radius:6px; cursor:pointer; font-family:'Inter',sans-serif; font-size:.75rem; transition:all .3s; }
+        .admin-header-btn:hover { border-color:#ff4444; color:#ff4444; }
+        .admin-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:1.5rem; }
+        .admin-stat-card { background:var(--dark-2); padding:1.3rem; border-radius:10px; border:1px solid var(--glass-border); }
+        .admin-stat-card .label { font-size:.65rem; color:var(--gray); text-transform:uppercase; letter-spacing:1px; }
+        .admin-stat-card .value { font-size:1.6rem; font-weight:700; color:var(--gold); margin-top:.2rem; }
+        .admin-card { background:var(--dark-2); border-radius:10px; border:1px solid var(--glass-border); padding:1.3rem; margin-bottom:1.3rem; }
+        .admin-card h3 { font-size:.85rem; color:var(--white); margin-bottom:1rem; font-family:'Inter',sans-serif; font-weight:600; }
+        .admin-form-row { display:grid; grid-template-columns:2fr 1fr 1fr auto; gap:.7rem; align-items:end; }
+        .admin-form-row input,.admin-form-row select { padding:9px 12px; background:var(--dark-3); border:1px solid var(--glass-border); border-radius:6px; color:var(--white); font-family:'Inter',sans-serif; font-size:.75rem; }
+        .admin-form-row input:focus,.admin-form-row select:focus { outline:none; border-color:var(--gold); }
+        .admin-add-btn { padding:9px 18px; background:var(--gold); color:var(--dark); border:none; border-radius:6px; font-weight:700; cursor:pointer; font-family:'Inter',sans-serif; font-size:.75rem; transition:all .3s; white-space:nowrap; }
+        .admin-add-btn:hover { background:var(--gold-light); }
+        .admin-table { width:100%; border-collapse:collapse; }
+        .admin-table th { text-align:left; padding:9px 12px; font-size:.6rem; text-transform:uppercase; letter-spacing:1px; color:var(--gray); border-bottom:1px solid var(--glass-border); }
+        .admin-table td { padding:10px 12px; font-size:.75rem; color:rgba(255,255,255,.7); border-bottom:1px solid rgba(255,255,255,.02); }
+        .btn-sm-danger { background:rgba(255,68,68,.08); color:#ff4444; border:1px solid rgba(255,68,68,.2); padding:4px 10px; border-radius:4px; cursor:pointer; font-size:.65rem; transition:all .3s; }
+        .btn-sm-danger:hover { background:#ff4444; color:white; }
+
+        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0) translateX(-50%)} 40%{transform:translateY(-8px) translateX(-50%)} 60%{transform:translateY(-4px) translateX(-50%)} }
+        .fade-in { opacity:0; transform:translateY(20px); transition:all .7s cubic-bezier(.4,0,.2,1); }
+        .fade-in.visible { opacity:1; transform:translateY(0); }
+
+        @media(max-width:1200px){ .menu-grid{grid-template-columns:repeat(3,1fr);} }
+        @media(max-width:968px){
+            .navbar{padding:.8rem 1.5rem;} .nav-links{display:none;}
+            .section{padding:2.5rem 1.5rem;} .menu-grid{grid-template-columns:repeat(2,1fr);}
+            .gallery-section{margin:0 1.5rem;padding:1.5rem;}
+            .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,140px);}
+            .gallery-item:nth-child(1){grid-column:span 2;} .gallery-item:nth-child(4){grid-column:span 1;}
+            .about-section{grid-template-columns:1fr;} .reservasi-wrapper{grid-template-columns:1fr;}
+            .lokasi-section{padding:0 1.5rem;}
+            .lokasi-wrapper{grid-template-columns:1fr;} .lokasi-map{min-height:300px;}
+            .footer-grid{grid-template-columns:1fr 1fr;}
+            .admin-sidebar{display:none;} .admin-main{margin-left:0;padding:1.5rem;}
+            .admin-stats{grid-template-columns:repeat(2,1fr);} .admin-form-row{grid-template-columns:1fr;}
         }
-        .nav-admin-btn:hover { background: var(--gold); color: var(--dark); }
-
-        /* ===== HERO ===== */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.8) 100%),
-                        url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=80') center/cover no-repeat;
-        }
-
-        .hero-content { animation: fadeUp 1.2s ease; }
-
-        .hero-subtitle {
-            font-size: 0.75rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1.2rem;
-            font-weight: 500;
-        }
-
-        .hero-title {
-            font-size: clamp(2.8rem, 7vw, 5.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, var(--white) 0%, var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-title span {
-            color: var(--gold);
-            font-style: italic;
-            -webkit-text-fill-color: var(--gold);
-        }
-
-        .hero-desc {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.6);
-            max-width: 480px;
-            margin: 0 auto 2.5rem;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        .hero-cta { display: inline-flex; gap: 1rem; }
-
-        .btn-gold {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: var(--dark);
-            padding: 13px 32px;
-            border: none;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(201,169,110,0.3); }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            padding: 13px 32px;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-        .scroll-indicator span { display: block; width: 1.5px; height: 35px; background: var(--gold); margin: 0 auto; opacity: 0.5; }
-
-        /* ===== SECTIONS ===== */
-        .section { padding: 3.5rem 3rem; max-width: 1400px; margin: 0 auto; }
-
-        .section-header { text-align: center; margin-bottom: 2.5rem; }
-        .section-tag {
-            font-size: 0.7rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white); }
-        .section-line { width: 50px; height: 1.5px; background: var(--gold); margin: 1rem auto 0; }
-
-        /* ===== MENU GRID 4 KOLOM ===== */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.2rem;
-        }
-
-        .menu-card {
-            background: var(--dark-2);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-        }
-        .menu-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(201,169,110,0.3);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-
-        .menu-card-img {
-            height: 160px;
-            background: var(--dark-3);
-            position: relative;
-            overflow: hidden;
-        }
-        .menu-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .menu-card:hover .menu-card-img img { transform: scale(1.08); }
-
-        .menu-card-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--gold);
-            color: var(--dark);
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.6rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .menu-card-body { padding: 1rem 1.2rem 1.2rem; }
-        .menu-card-category {
-            font-size: 0.65rem;
-            color: var(--gold);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 0.3rem;
-        }
-        .menu-card-name { font-size: 1rem; margin-bottom: 0.3rem; color: var(--white); font-family: 'Inter', sans-serif; font-weight: 600; }
-        .menu-card-desc { font-size: 0.75rem; color: var(--gray); margin-bottom: 0.8rem; font-weight: 300; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-        .menu-card-footer { display: flex; justify-content: space-between; align-items: center; }
-        .menu-card-price { font-size: 1rem; font-weight: 700; color: var(--gold); }
-        .menu-card-btn {
-            background: transparent;
-            border: 1px solid rgba(201,169,110,0.4);
-            color: var(--gold);
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .menu-card-btn:hover { background: var(--gold); color: var(--dark); }
-
-        /* ===== GALERI ===== */
-        .gallery-section { background: var(--dark-2); border-radius: 24px; padding: 3rem; margin: 0 3rem; }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(2, 200px);
-            gap: 1rem;
-        }
-
-        .gallery-item {
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-        }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .gallery-item:hover img { transform: scale(1.08); }
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .gallery-item:hover::after { opacity: 1; }
-
-        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-        .gallery-item:nth-child(4) { grid-column: span 2; }
-
-        .gallery-label {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            font-size: 0.7rem;
-            color: white;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s;
-            z-index: 2;
-        }
-        .gallery-item:hover .gallery-label { opacity: 1; transform: translateY(0); }
-
-        /* ===== ABOUT ===== */
-        .about-section {
-            background: var(--dark-2);
-            border-radius: 24px;
-            padding: 3rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            border: 1px solid var(--glass-border);
-        }
-
-        .about-img { border-radius: 16px; overflow: hidden; height: 350px; }
-        .about-img img { width: 100%; height: 100%; object-fit: cover; }
-
-        .about-text h2 { font-size: 2rem; margin-bottom: 1.2rem; }
-        .about-text h2 span { color: var(--gold); }
-        .about-text p { color: var(--gray); margin-bottom: 0.8rem; font-weight: 300; font-size: 0.9rem; }
-
-        .about-stats { display: flex; gap: 2.5rem; margin-top: 1.5rem; }
-        .about-stat h3 { font-size: 1.8rem; color: var(--gold); font-family: 'Inter', sans-serif; font-weight: 700; }
-        .about-stat p { font-size: 0.75rem; color: var(--gray); }
-
-        /* ===== RESERVASI ===== */
-        .reservasi-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .reservasi-info h2 { font-size: 2.2rem; margin-bottom: 0.8rem; }
-        .reservasi-info h2 span { color: var(--gold); }
-        .reservasi-info p { color: var(--gray); margin-bottom: 1.5rem; font-size: 0.9rem; }
-
-        .reservasi-features { list-style: none; }
-        .reservasi-features li {
-            padding: 0.7rem 0;
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.85rem;
-        }
-        .reservasi-features li::before { content: '✦'; color: var(--gold); font-size: 0.7rem; }
-
-        .reservasi-form-box {
-            background: var(--dark-2);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label {
-            display: block;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.4rem;
-            font-weight: 500;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px 16px;
-            background: var(--dark-3);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            color: var(--white);
-            font-size: 0.85rem;
-            font-family: 'Inter', sans-serif;
-            transition: border-color 0.3s;
-        }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--gold); }
-
-        .btn-full {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: var(--dark);
-            border: none;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Inter', sans-serif;
-        }
-        .btn-full:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,169,110,0.3); }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--dark-2);
-            border-top: 1px solid var(--glass-border);
-            padding: 3rem;
-            margin-top: 3rem;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 2.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .footer-brand h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 0.8rem; }
-        .footer-brand p { color: var(--gray); font-size: 0.8rem; font-weight: 300; }
-        .footer-col h4 { color: var(--white); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem; font-family: 'Inter', sans-serif; }
-        .footer-col p, .footer-col a { color: var(--gray); font-size: 0.8rem; text-decoration: none; display: block; margin-bottom: 0.5rem; transition: color 0.3s; }
-        .footer-col a:hover { color: var(--gold); }
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid var(--glass-border);
-            color: var(--gray-dark);
-            font-size: 0.75rem;
-        }
-
-        /* ===== ADMIN PANEL ===== */
-        .admin-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 2000;
-            background: #0A0A0A;
-            overflow-y: auto;
-        }
-
-        .admin-sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 240px;
-            height: 100vh;
-            background: var(--dark-2);
-            border-right: 1px solid var(--glass-border);
-            padding: 2rem 0;
-            z-index: 10;
-        }
-        .admin-sidebar-logo { padding: 0 1.5rem; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 2.5rem; }
-        .admin-nav { list-style: none; }
-        .admin-nav li {
-            padding: 12px 1.5rem;
-            color: var(--gray);
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .admin-nav li:hover, .admin-nav li.active { background: rgba(201,169,110,0.08); color: var(--gold); border-right: 2px solid var(--gold); }
-
-        .admin-main { margin-left: 240px; padding: 2rem; }
-        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
-        .admin-header h1 { font-size: 1.5rem; color: var(--white); }
-        .admin-header-btn {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.15);
-            color: var(--white);
-            padding: 8px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            transition: all 0.3s;
-        }
-        .admin-header-btn:hover { border-color: #ff4444; color: #ff4444; }
-
-        .admin-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 2rem; }
-        .admin-stat-card { background: var(--dark-2); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border); }
-        .admin-stat-card .label { font-size: 0.7rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
-        .admin-stat-card .value { font-size: 1.8rem; font-weight: 700; color: var(--gold); margin-top: 0.3rem; }
-
-        .admin-card { background: var(--dark-2); border-radius: 12px; border: 1px solid var(--glass-border); padding: 1.5rem; margin-bottom: 1.5rem; }
-        .admin-card h3 { font-size: 0.95rem; color: var(--white); margin-bottom: 1.2rem; font-family: 'Inter', sans-serif; font-weight: 600; }
-
-        .admin-form-row { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 0.8rem; align-items: end; }
-        .admin-form-row input, .admin-form-row select {
-            padding: 10px 14px;
-            background: var(--dark-3);
-            border: 1px solid var(--glass-border);
-            border-radius: 6px;
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-        }
-        .admin-form-row input:focus, .admin-form-row select:focus { outline: none; border-color: var(--gold); }
-        .admin-add-btn {
-            padding: 10px 20px;
-            background: var(--gold);
-            color: var(--dark);
-            border: none;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-        .admin-add-btn:hover { background: var(--gold-light); }
-
-        .admin-table { width: 100%; border-collapse: collapse; }
-        .admin-table th { text-align: left; padding: 10px 14px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); border-bottom: 1px solid var(--glass-border); }
-        .admin-table td { padding: 12px 14px; font-size: 0.8rem; color: rgba(255,255,255,0.7); border-bottom: 1px solid rgba(255,255,255,0.02); }
-        .admin-table tr:hover td { background: rgba(201,169,110,0.02); }
-
-        .btn-sm-danger {
-            background: rgba(255,68,68,0.08);
-            color: #ff4444;
-            border: 1px solid rgba(255,68,68,0.2);
-            padding: 4px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.7rem;
-            transition: all 0.3s;
-        }
-        .btn-sm-danger:hover { background: #ff4444; color: white; }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-8px) translateX(-50%); }
-            60% { transform: translateY(-4px) translateX(-50%); }
-        }
-
-        .fade-in { opacity: 0; transform: translateY(25px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1200px) {
-            .menu-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 968px) {
-            .navbar { padding: 0.8rem 1.5rem; }
-            .nav-links { display: none; }
-            .section { padding: 2.5rem 1.5rem; }
-            .menu-grid { grid-template-columns: repeat(2, 1fr); }
-            .gallery-section { margin: 0 1.5rem; padding: 2rem; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 150px); }
-            .gallery-item:nth-child(1) { grid-column: span 2; }
-            .gallery-item:nth-child(4) { grid-column: span 1; }
-            .about-section { grid-template-columns: 1fr; }
-            .reservasi-wrapper { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .admin-sidebar { display: none; }
-            .admin-main { margin-left: 0; padding: 1.5rem; }
-            .admin-stats { grid-template-columns: repeat(2, 1fr); }
-            .admin-form-row { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 580px) {
-            .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-            .menu-card-img { height: 120px; }
-            .menu-card-body { padding: 0.8rem; }
-            .menu-card-name { font-size: 0.85rem; }
-            .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
-            .gallery-item:nth-child(4) { grid-column: span 1; }
-            .gallery-item { height: 180px; }
-            .hero-cta { flex-direction: column; align-items: center; }
+        @media(max-width:580px){
+            .menu-grid{grid-template-columns:repeat(2,1fr);gap:.7rem;}
+            .menu-card-img{height:110px;} .menu-card-body{padding:.7rem;}
+            .menu-card-name{font-size:.8rem;}
+            .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto;}
+            .gallery-item:nth-child(1){grid-column:span 1;grid-row:span 1;}
+            .gallery-item:nth-child(4){grid-column:span 1;}
+            .gallery-item{height:170px;}
+            .hero-cta{flex-direction:column;align-items:center;}
+            .lokasi-info{padding:1.5rem;}
         }
     </style>
 </head>
@@ -611,6 +246,7 @@
         <li><a onclick="scrollTo('#menu')">Menu</a></li>
         <li><a onclick="scrollTo('#gallery')">Galeri</a></li>
         <li><a onclick="scrollTo('#about')">Tentang</a></li>
+        <li><a onclick="scrollTo('#lokasi')">Lokasi</a></li>
         <li><a onclick="scrollTo('#reservasi')">Reservasi</a></li>
     </ul>
     <button class="nav-admin-btn" onclick="openAdmin()">Admin</button>
@@ -630,7 +266,7 @@
     <div class="scroll-indicator"><span></span></div>
 </section>
 
-<!-- MENU 4 KOLOM -->
+<!-- MENU -->
 <section class="section" id="menu">
     <div class="section-header fade-in">
         <p class="section-tag">Our Signature</p>
@@ -640,8 +276,8 @@
     <div class="menu-grid" id="menu-container"></div>
 </section>
 
-<!-- GALERI FOTO -->
-<section class="section" id="gallery" style="padding: 0;">
+<!-- GALERI -->
+<section class="section" id="gallery" style="padding:0;">
     <div class="gallery-section fade-in">
         <div class="section-header">
             <p class="section-tag">Our Space</p>
@@ -649,26 +285,11 @@
             <div class="section-line"></div>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80" alt="Interior">
-                <span class="gallery-label">Interior</span>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80" alt="Latte Art">
-                <span class="gallery-label">Latte Art</span>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" alt="Coffee Beans">
-                <span class="gallery-label">Beans</span>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&q=80" alt="Outdoor">
-                <span class="gallery-label">Outdoor Area</span>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80" alt="Ambiance">
-                <span class="gallery-label">Ambiance</span>
-            </div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80" alt="Interior"><span class="gallery-label">Interior</span></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80" alt="Latte Art"><span class="gallery-label">Latte Art</span></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" alt="Beans"><span class="gallery-label">Beans</span></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600&q=80" alt="Outdoor"><span class="gallery-label">Outdoor Area</span></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80" alt="Ambiance"><span class="gallery-label">Ambiance</span></div>
         </div>
     </div>
 </section>
@@ -676,18 +297,72 @@
 <!-- ABOUT -->
 <section class="section" id="about">
     <div class="about-section fade-in">
-        <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80" alt="Interior Kafe">
-        </div>
+        <div class="about-img"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80" alt="Interior"></div>
         <div class="about-text">
             <p class="section-tag">Our Story</p>
             <h2>Lebih dari Sekadar <span>Kopi</span></h2>
-            <p>Kafe Senja lahir dari kecintaan kami terhadap kopi Indonesia. Setiap biji yang kami gunakan dipilih langsung dari perkebunan di dataran tinggi Toraja dan Gayo.</p>
+            <p>Kafe Senja lahir dari kecintaan kami terhadap kopi Indonesia. Setiap biji dipilih langsung dari perkebunan di dataran tinggi Toraja dan Gayo.</p>
             <p>Kami percaya bahwa secangkir kopi terbaik adalah yang dinikmati dalam suasana yang tepat — hangat, nyaman, dan penuh cerita.</p>
             <div class="about-stats">
                 <div class="about-stat"><h3>5+</h3><p>Tahun Berdiri</p></div>
                 <div class="about-stat"><h3>50K+</h3><p>Cangkir Tersaji</p></div>
                 <div class="about-stat"><h3>4.9</h3><p>Rating</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== LOKASI (BARU) ===== -->
+<section class="section lokasi-section" id="lokasi">
+    <div class="section-header fade-in">
+        <p class="section-tag">Find Us</p>
+        <h2 class="section-title">Kunjungi Kami</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="lokasi-wrapper fade-in">
+        <div class="lokasi-info">
+            <h3 class="lokasi-title">Temukan Kami di <span>Jantung Kota</span></h3>
+            <div class="lokasi-details">
+                <div class="lokasi-item">
+                    <div class="lokasi-icon">📍</div>
+                    <div>
+                        <h4>Alamat</h4>
+                        <p>Jl. Senja No. 12, Kemang<br>Jakarta Selatan, 12730</p>
+                    </div>
+                </div>
+                <div class="lokasi-item">
+                    <div class="lokasi-icon">🕐</div>
+                    <div>
+                        <h4>Jam Operasional</h4>
+                        <p>Senin – Jumat : 07.00 – 22.00<br>Sabtu – Minggu : 08.00 – 23.00</p>
+                    </div>
+                </div>
+                <div class="lokasi-item">
+                    <div class="lokasi-icon">📞</div>
+                    <div>
+                        <h4>Reservasi & Info</h4>
+                        <p>+62 812-3456-7890<br>hello@kafesenja.id</p>
+                    </div>
+                </div>
+                <div class="lokasi-item">
+                    <div class="lokasi-icon">📱</div>
+                    <div>
+                        <h4>Sosial Media</h4>
+                        <p>@kafesenja<br>Instagram · TikTok · X</p>
+                    </div>
+                </div>
+            </div>
+            <a class="btn-gold" href="https://maps.google.com/?q=Kemang,Jakarta+Selatan" target="_blank" style="margin-top:1.5rem;">
+                🗺 Buka di Google Maps
+            </a>
+        </div>
+        <div class="lokasi-map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2!2d106.81!3d-6.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f14d030dfa51%3A0x5c08e7e4e1e2e3f4!2sKemang%2C+Jakarta+Selatan!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="lokasi-map-overlay">
+                <strong>KAFE SENJA</strong> — Kemang, Jakarta Selatan
             </div>
         </div>
     </div>
@@ -709,31 +384,13 @@
         </div>
         <div class="reservasi-form-box">
             <form id="reservation-form">
-                <div class="form-group">
-                    <label>Nama Lengkap</label>
-                    <input type="text" id="res-name" placeholder="Masukkan nama Anda" required>
+                <div class="form-group"><label>Nama Lengkap</label><input type="text" id="res-name" placeholder="Masukkan nama Anda" required></div>
+                <div class="form-group"><label>Jumlah Tamu</label>
+                    <select id="res-pax"><option value="1">1 Orang</option><option value="2">2 Orang</option><option value="4">3-4 Orang</option><option value="6">5-6 Orang</option><option value="10">7+ Orang</option></select>
                 </div>
-                <div class="form-group">
-                    <label>Jumlah Tamu</label>
-                    <select id="res-pax">
-                        <option value="1">1 Orang</option>
-                        <option value="2">2 Orang</option>
-                        <option value="4">3-4 Orang</option>
-                        <option value="6">5-6 Orang</option>
-                        <option value="10">7+ Orang</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Tanggal & Waktu</label>
-                    <input type="datetime-local" id="res-date" required>
-                </div>
-                <div class="form-group">
-                    <label>Area</label>
-                    <select id="res-area">
-                        <option value="Indoor">Indoor</option>
-                        <option value="Outdoor">Outdoor</option>
-                        <option value="Rooftop">Rooftop</option>
-                    </select>
+                <div class="form-group"><label>Tanggal & Waktu</label><input type="datetime-local" id="res-date" required></div>
+                <div class="form-group"><label>Area</label>
+                    <select id="res-area"><option value="Indoor">Indoor</option><option value="Outdoor">Outdoor</option><option value="Rooftop">Rooftop</option></select>
                 </div>
                 <button type="submit" class="btn-full">Reservasi Sekarang</button>
             </form>
@@ -744,172 +401,92 @@
 <!-- FOOTER -->
 <footer class="footer">
     <div class="footer-grid">
-        <div class="footer-brand">
-            <h3>KAFE SENJA</h3>
-            <p>Tempat di mana kopi terbaik bertemu dengan suasana yang sempurna. Setiap kunjungan adalah cerita baru.</p>
-        </div>
-        <div class="footer-col">
-            <h4>Navigasi</h4>
-            <a href="#home">Beranda</a>
-            <a href="#menu">Menu</a>
-            <a href="#gallery">Galeri</a>
-            <a href="#reservasi">Reservasi</a>
-        </div>
-        <div class="footer-col">
-            <h4>Jam Buka</h4>
-            <p>Sen - Jum: 07.00 - 22.00</p>
-            <p>Sabtu: 08.00 - 23.00</p>
-            <p>Minggu: 08.00 - 21.00</p>
-        </div>
-        <div class="footer-col">
-            <h4>Kontak</h4>
-            <p>Jl. Senja No. 12, Jakarta</p>
-            <p>+62 812-3456-7890</p>
-            <p>hello@kafesenja.id</p>
-        </div>
+        <div class="footer-brand"><h3>KAFE SENJA</h3><p>Tempat di mana kopi terbaik bertemu suasana sempurna. Setiap kunjungan adalah cerita baru.</p></div>
+        <div class="footer-col"><h4>Navigasi</h4><a href="#home">Beranda</a><a href="#menu">Menu</a><a href="#gallery">Galeri</a><a href="#lokasi">Lokasi</a><a href="#reservasi">Reservasi</a></div>
+        <div class="footer-col"><h4>Jam Buka</h4><p>Sen-Jum: 07.00–22.00</p><p>Sabtu: 08.00–23.00</p><p>Minggu: 08.00–21.00</p></div>
+        <div class="footer-col"><h4>Kontak</h4><p>Jl. Senja No.12, Jakarta</p><p>+62 812-3456-7890</p><p>hello@kafesenja.id</p></div>
     </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Kafe Senja. Crafted with ☕ & ❤️</p>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Kafe Senja. Crafted with ☕ & ❤️</p></div>
 </footer>
 
 <!-- ADMIN PANEL -->
 <div class="admin-overlay" id="admin-overlay">
     <div class="admin-sidebar">
         <div class="admin-sidebar-logo">☕ SENJA CMS</div>
-        <ul class="admin-nav">
-            <li class="active">📊 Dashboard</li>
-            <li>☕ Menu</li>
-            <li>📋 Reservasi</li>
-            <li>⚙️ Pengaturan</li>
-        </ul>
+        <ul class="admin-nav"><li class="active">📊 Dashboard</li><li>☕ Menu</li><li>📋 Reservasi</li><li>⚙️ Pengaturan</li></ul>
     </div>
     <div class="admin-main">
-        <div class="admin-header">
-            <h1>Dashboard</h1>
-            <button class="admin-header-btn" onclick="closeAdmin()">✕ Keluar</button>
-        </div>
-
+        <div class="admin-header"><h1>Dashboard</h1><button class="admin-header-btn" onclick="closeAdmin()">✕ Keluar</button></div>
         <div class="admin-stats">
             <div class="admin-stat-card"><div class="label">Total Menu</div><div class="value" id="stat-menu">0</div></div>
             <div class="admin-stat-card"><div class="label">Reservasi</div><div class="value" id="stat-res">0</div></div>
             <div class="admin-stat-card"><div class="label">Kategori</div><div class="value">4</div></div>
             <div class="admin-stat-card"><div class="label">Rating</div><div class="value">4.9</div></div>
         </div>
-
         <div class="admin-card">
             <h3>➕ Tambah Menu Baru</h3>
             <form id="admin-add-form" class="admin-form-row">
                 <input type="text" id="adm-name" placeholder="Nama menu..." required>
                 <input type="number" id="adm-price" placeholder="Harga" required>
-                <select id="adm-cat">
-                    <option value="Kopi">Kopi</option>
-                    <option value="Non-Kopi">Non-Kopi</option>
-                    <option value="Makanan">Makanan</option>
-                    <option value="Dessert">Dessert</option>
-                </select>
+                <select id="adm-cat"><option value="Kopi">Kopi</option><option value="Non-Kopi">Non-Kopi</option><option value="Makanan">Makanan</option><option value="Dessert">Dessert</option></select>
                 <button type="submit" class="admin-add-btn">+ Tambah</button>
             </form>
         </div>
-
         <div class="admin-card">
             <h3>☕ Daftar Menu Aktif</h3>
-            <table class="admin-table">
-                <thead><tr><th>Nama</th><th>Kategori</th><th>Harga</th><th>Aksi</th></tr></thead>
-                <tbody id="admin-menu-tbody"></tbody>
-            </table>
+            <table class="admin-table"><thead><tr><th>Nama</th><th>Kategori</th><th>Harga</th><th>Aksi</th></tr></thead><tbody id="admin-menu-tbody"></tbody></table>
         </div>
-
         <div class="admin-card">
             <h3>📋 Reservasi Masuk</h3>
-            <table class="admin-table">
-                <thead><tr><th>Nama</th><th>Tamu</th><th>Waktu</th><th>Area</th><th>Aksi</th></tr></thead>
-                <tbody id="admin-res-tbody"></tbody>
-            </table>
+            <table class="admin-table"><thead><tr><th>Nama</th><th>Tamu</th><th>Waktu</th><th>Area</th><th>Aksi</th></tr></thead><tbody id="admin-res-tbody"></tbody></table>
         </div>
     </div>
 </div>
 
 <script>
-const defaultMenus = [
-    { id: 1, name: "Kopi Susu Gula Aren", price: 28000, category: "Kopi", desc: "Espresso premium dengan gula aren asli dan susu segar", img: "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&q=80" },
-    { id: 2, name: "Croissant Butter", price: 32000, category: "Makanan", desc: "Croissant renyah dengan butter premium Perancis", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&q=80" },
-    { id: 3, name: "Matcha Latte", price: 35000, category: "Non-Kopi", desc: "Matcha Jepang grade A dengan susu oat", img: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=400&q=80" },
-    { id: 4, name: "Tiramisu Classic", price: 38000, category: "Dessert", desc: "Tiramisu homemade dengan mascarpone dan kopi", img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80" },
-    { id: 5, name: "V60 Single Origin", price: 40000, category: "Kopi", desc: "Pour over dari biji Toraja pilihan, notes fruity", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80" },
-    { id: 6, name: "Nasi Goreng Senja", price: 35000, category: "Makanan", desc: "Nasi goreng spesial dengan telur dan kerupuk", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400&q=80" },
-    { id: 7, name: "Affogato", price: 30000, category: "Dessert", desc: "Espresso panas dituang di atas gelato vanilla", img: "https://images.unsplash.com/photo-1579888944880-d98341245702?w=400&q=80" },
-    { id: 8, name: "Iced Americano", price: 25000, category: "Kopi", desc: "Double shot espresso dengan air dingin dan es", img: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=400&q=80" }
+const defaultMenus=[
+    {id:1,name:"Kopi Susu Gula Aren",price:28000,category:"Kopi",desc:"Espresso premium dengan gula aren asli dan susu segar",img:"https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&q=80"},
+    {id:2,name:"Croissant Butter",price:32000,category:"Makanan",desc:"Croissant renyah dengan butter premium Perancis",img:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&q=80"},
+    {id:3,name:"Matcha Latte",price:35000,category:"Non-Kopi",desc:"Matcha Jepang grade A dengan susu oat",img:"https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=400&q=80"},
+    {id:4,name:"Tiramisu Classic",price:38000,category:"Dessert",desc:"Tiramisu homemade dengan mascarpone dan kopi",img:"https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80"},
+    {id:5,name:"V60 Single Origin",price:40000,category:"Kopi",desc:"Pour over dari biji Toraja pilihan, notes fruity",img:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80"},
+    {id:6,name:"Nasi Goreng Senja",price:35000,category:"Makanan",desc:"Nasi goreng spesial dengan telur dan kerupuk",img:"https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400&q=80"},
+    {id:7,name:"Affogato",price:30000,category:"Dessert",desc:"Espresso panas dituang di atas gelato vanilla",img:"https://images.unsplash.com/photo-1579888944880-d98341245702?w=400&q=80"},
+    {id:8,name:"Iced Americano",price:25000,category:"Kopi",desc:"Double shot espresso dengan air dingin dan es",img:"https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=400&q=80"}
 ];
-
-function getData(key, def) { return JSON.parse(localStorage.getItem(key)) || def; }
-function saveData(key, data) { localStorage.setItem(key, JSON.stringify(data)); renderAll(); }
-
-function renderPublic() {
-    const menus = getData('kafe_menus', defaultMenus);
-    document.getElementById('menu-container').innerHTML = menus.map(item => `
+function getData(k,d){return JSON.parse(localStorage.getItem(k))||d;}
+function saveData(k,d){localStorage.setItem(k,JSON.stringify(d));renderAll();}
+function renderPublic(){
+    const menus=getData('kafe_menus',defaultMenus);
+    document.getElementById('menu-container').innerHTML=menus.map(item=>`
         <div class="menu-card fade-in visible">
-            <div class="menu-card-img">
-                <img src="${item.img || 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80'}" alt="${item.name}">
-                <span class="menu-card-badge">${item.category}</span>
-            </div>
+            <div class="menu-card-img"><img src="${item.img||'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80'}" alt="${item.name}"><span class="menu-card-badge">${item.category}</span></div>
             <div class="menu-card-body">
                 <p class="menu-card-category">${item.category}</p>
                 <h3 class="menu-card-name">${item.name}</h3>
-                <p class="menu-card-desc">${item.desc || 'Dibuat dengan bahan pilihan terbaik.'}</p>
-                <div class="menu-card-footer">
-                    <span class="menu-card-price">Rp ${parseInt(item.price).toLocaleString()}</span>
-                    <button class="menu-card-btn" onclick="alert('Fitur pemesanan segera hadir!')">Order</button>
-                </div>
+                <p class="menu-card-desc">${item.desc||'Dibuat dengan bahan pilihan terbaik.'}</p>
+                <div class="menu-card-footer"><span class="menu-card-price">Rp ${parseInt(item.price).toLocaleString()}</span><button class="menu-card-btn" onclick="alert('Fitur pemesanan segera hadir!')">Order</button></div>
             </div>
-        </div>
-    `).join('');
+        </div>`).join('');
 }
-
-function renderAdmin() {
-    const menus = getData('kafe_menus', defaultMenus);
-    const reservations = getData('kafe_reservations', []);
-    document.getElementById('stat-menu').textContent = menus.length;
-    document.getElementById('stat-res').textContent = reservations.length;
-    document.getElementById('admin-menu-tbody').innerHTML = menus.map((m, i) => `
-        <tr><td>${m.name}</td><td>${m.category}</td><td>Rp ${parseInt(m.price).toLocaleString()}</td><td><button class="btn-sm-danger" onclick="deleteMenu(${i})">Hapus</button></td></tr>
-    `).join('');
-    document.getElementById('admin-res-tbody').innerHTML = reservations.map((r, i) => `
-        <tr><td>${r.name}</td><td>${r.pax} org</td><td>${new Date(r.date).toLocaleString('id-ID')}</td><td>${r.area||'-'}</td><td><button class="btn-sm-danger" onclick="deleteRes(${i})">Selesai</button></td></tr>
-    `).join('') || '<tr><td colspan="5" style="text-align:center;color:#555;">Belum ada reservasi</td></tr>';
+function renderAdmin(){
+    const menus=getData('kafe_menus',defaultMenus),res=getData('kafe_reservations',[]);
+    document.getElementById('stat-menu').textContent=menus.length;
+    document.getElementById('stat-res').textContent=res.length;
+    document.getElementById('admin-menu-tbody').innerHTML=menus.map((m,i)=>`<tr><td>${m.name}</td><td>${m.category}</td><td>Rp ${parseInt(m.price).toLocaleString()}</td><td><button class="btn-sm-danger" onclick="deleteMenu(${i})">Hapus</button></td></tr>`).join('');
+    document.getElementById('admin-res-tbody').innerHTML=res.map((r,i)=>`<tr><td>${r.name}</td><td>${r.pax} org</td><td>${new Date(r.date).toLocaleString('id-ID')}</td><td>${r.area||'-'}</td><td><button class="btn-sm-danger" onclick="deleteRes(${i})">Selesai</button></td></tr>`).join('')||'<tr><td colspan="5" style="text-align:center;color:#555;">Belum ada reservasi</td></tr>';
 }
-
-function renderAll() { renderPublic(); renderAdmin(); }
-
-document.getElementById('admin-add-form').addEventListener('submit', e => {
-    e.preventDefault();
-    const menus = getData('kafe_menus', defaultMenus);
-    menus.push({ id: Date.now(), name: document.getElementById('adm-name').value, price: document.getElementById('adm-price').value, category: document.getElementById('adm-cat').value, desc: 'Menu spesial Kafe Senja', img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80' });
-    saveData('kafe_menus', menus);
-    e.target.reset();
-});
-
-window.deleteMenu = i => { if(confirm('Hapus menu ini?')) { const m = getData('kafe_menus', defaultMenus); m.splice(i,1); saveData('kafe_menus', m); } };
-
-document.getElementById('reservation-form').addEventListener('submit', e => {
-    e.preventDefault();
-    const res = getData('kafe_reservations', []);
-    res.push({ name: document.getElementById('res-name').value, pax: document.getElementById('res-pax').value, date: document.getElementById('res-date').value, area: document.getElementById('res-area').value });
-    saveData('kafe_reservations', res);
-    e.target.reset();
-    alert('✅ Reservasi berhasil dikirim!');
-});
-
-window.deleteRes = i => { const r = getData('kafe_reservations', []); r.splice(i,1); saveData('kafe_reservations', r); };
-
-window.openAdmin = () => { const p = prompt('🔐 Password admin:'); if(p==='admin123'){document.getElementById('admin-overlay').style.display='block';document.body.style.overflow='hidden';renderAdmin();}else if(p!==null)alert('Password salah!'); };
-window.closeAdmin = () => { document.getElementById('admin-overlay').style.display='none'; document.body.style.overflow=''; };
-window.scrollTo = sel => document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
-window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
-
-const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.1});
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
+function renderAll(){renderPublic();renderAdmin();}
+document.getElementById('admin-add-form').addEventListener('submit',e=>{e.preventDefault();const m=getData('kafe_menus',defaultMenus);m.push({id:Date.now(),name:document.getElementById('adm-name').value,price:document.getElementById('adm-price').value,category:document.getElementById('adm-cat').value,desc:'Menu spesial Kafe Senja',img:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80'});saveData('kafe_menus',m);e.target.reset();});
+window.deleteMenu=i=>{if(confirm('Hapus menu ini?')){const m=getData('kafe_menus',defaultMenus);m.splice(i,1);saveData('kafe_menus',m);}};
+document.getElementById('reservation-form').addEventListener('submit',e=>{e.preventDefault();const r=getData('kafe_reservations',[]);r.push({name:document.getElementById('res-name').value,pax:document.getElementById('res-pax').value,date:document.getElementById('res-date').value,area:document.getElementById('res-area').value});saveData('kafe_reservations',r);e.target.reset();alert('✅ Reservasi berhasil dikirim!');});
+window.deleteRes=i=>{const r=getData('kafe_reservations',[]);r.splice(i,1);saveData('kafe_reservations',r);};
+window.openAdmin=()=>{const p=prompt('🔐 Password admin:');if(p==='admin123'){document.getElementById('admin-overlay').style.display='block';document.body.style.overflow='hidden';renderAdmin();}else if(p!==null)alert('Password salah!');};
+window.closeAdmin=()=>{document.getElementById('admin-overlay').style.display='none';document.body.style.overflow='';};
+window.scrollTo=sel=>document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 renderAll();
 </script>
 </body>
