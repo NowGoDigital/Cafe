@@ -112,7 +112,6 @@
             overflow:hidden;
             border:1px solid rgba(201,169,110,0.12);
             background:var(--dark-2);
-            min-height:300px;
         }
         .lokasi-info { padding:2.5rem; display:flex; flex-direction:column; justify-content:center; }
         .lokasi-title { font-size:1.8rem; margin-bottom:1.8rem; color:var(--white); }
@@ -133,22 +132,48 @@
             font-family:'Inter',sans-serif; font-weight:600;
         }
         .lokasi-item p { font-size:.8rem; color:var(--gray); line-height:1.6; }
-        .lokasi-map { position:relative; min-height:320px; }
+
+        /* MAPS - tinggi tetap 220px, tombol di bawah */
+        .lokasi-map {
+            position:relative;
+            display:flex;
+            flex-direction:column;
+        }
         .lokasi-map iframe {
-            position:absolute; inset:0;
-            width:100%; height:100%; border:0;
+            width:100%;
+            height:220px;
+            border:0;
             filter:grayscale(.85) contrast(1.1) brightness(.65) sepia(.15);
             transition:filter .6s ease;
+            flex-shrink:0;
         }
         .lokasi-map:hover iframe { filter:grayscale(.2) contrast(1) brightness(.85) sepia(0); }
         .lokasi-map-overlay {
-            position:absolute; bottom:1rem; left:1rem; z-index:5;
+            position:absolute; bottom:calc(48px + 1rem); left:1rem; z-index:5;
             background:rgba(10,10,10,.85); backdrop-filter:blur(10px);
             padding:.6rem 1.2rem; border-radius:8px;
             border:1px solid rgba(201,169,110,.15);
             font-size:.7rem; color:var(--gold-light); letter-spacing:.5px;
         }
         .lokasi-map-overlay strong { color:var(--gold); }
+        .lokasi-map-btn {
+            display:block;
+            text-align:center;
+            padding:14px;
+            font-size:.75rem;
+            text-decoration:none;
+            background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+            color:var(--dark);
+            font-weight:600;
+            letter-spacing:1px;
+            text-transform:uppercase;
+            transition:all .3s;
+            border-radius:0;
+        }
+        .lokasi-map-btn:hover {
+            background:var(--gold-light);
+            box-shadow:0 5px 20px rgba(201,169,110,.3);
+        }
 
         /* RESERVASI */
         .reservasi-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:center; }
@@ -219,7 +244,9 @@
             .gallery-item:nth-child(1){grid-column:span 2;} .gallery-item:nth-child(4){grid-column:span 1;}
             .about-section{grid-template-columns:1fr;} .reservasi-wrapper{grid-template-columns:1fr;}
             .lokasi-section{padding:0 1.5rem;}
-            .lokasi-wrapper{grid-template-columns:1fr;} .lokasi-map{height:150px;}
+            .lokasi-wrapper{grid-template-columns:1fr;}
+            .lokasi-map iframe{height:150px;}
+            .lokasi-map-overlay{bottom:calc(48px + .6rem);}
             .footer-grid{grid-template-columns:1fr 1fr;}
             .admin-sidebar{display:none;} .admin-main{margin-left:0;padding:1.5rem;}
             .admin-stats{grid-template-columns:repeat(2,1fr);} .admin-form-row{grid-template-columns:1fr;}
@@ -313,7 +340,7 @@
     </div>
 </section>
 
-<!-- ===== LOKASI (BARU) ===== -->
+<!-- ===== LOKASI ===== -->
 <section class="section lokasi-section" id="lokasi">
     <div class="section-header fade-in">
         <p class="section-tag">Find Us</p>
@@ -353,9 +380,6 @@
                     </div>
                 </div>
             </div>
-            <a class="btn-gold" href="https://maps.google.com/?q=Kemang,Jakarta+Selatan" target="_blank" style="margin-top:1.5rem;">
-                🗺 Buka di Google Maps
-            </a>
         </div>
         <div class="lokasi-map">
             <iframe
@@ -365,6 +389,9 @@
             <div class="lokasi-map-overlay">
                 <strong>KAFE SENJA</strong> — Kemang, Jakarta Selatan
             </div>
+            <a class="lokasi-map-btn" href="https://maps.google.com/?q=Kemang,Jakarta+Selatan" target="_blank">
+                🗺 Buka di Google Maps
+            </a>
         </div>
     </div>
 </section>
