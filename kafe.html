@@ -21,7 +21,7 @@
         .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
         .nav-links a:hover,.nav-links a.active{color:var(--gold)}
         .nav-links a:hover::after,.nav-links a.active::after{width:100%}
-        .nav-cart-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 16px;border-radius:30px;cursor:pointer;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-family:'Inter',sans-serif;font-weight:600;position:relative}
+        .nav-cart-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 16px;border-radius:30px;cursor:pointer;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-family:'Inter',sans-serif;font-weight:600}
         .nav-cart-btn:hover{background:var(--gold);color:var(--dark)}
         .nav-admin-btn{background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);padding:6px 16px;border-radius:30px;cursor:pointer;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-family:'Inter',sans-serif;font-weight:600}
         .nav-admin-btn:hover{border-color:var(--white);color:var(--white)}
@@ -171,67 +171,31 @@
         .footer-col a:hover{color:var(--gold)}
         .footer-bottom{text-align:center;padding-top:1.5rem;margin-top:1.5rem;border-top:1px solid var(--glass-border);color:var(--gray-dark);font-size:.7rem}
 
-        /* ===== FLOATING CART BUTTON ===== */
-        .cart-float{
-            position:fixed;bottom:2rem;right:2rem;z-index:999;
-            width:60px;height:60px;border-radius:50%;
-            background:linear-gradient(135deg,var(--gold),var(--gold-dark));
-            display:flex;align-items:center;justify-content:center;
-            box-shadow:0 5px 25px rgba(201,169,110,.4);
-            cursor:pointer;transition:all .3s;border:none;
-        }
+        /* FLOATING CART */
+        .cart-float{position:fixed;bottom:2rem;right:2rem;z-index:999;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;box-shadow:0 5px 25px rgba(201,169,110,.4);cursor:pointer;transition:all .3s;border:none}
         .cart-float:hover{transform:scale(1.1);box-shadow:0 8px 35px rgba(201,169,110,.5)}
         .cart-float svg{width:26px;height:26px;fill:var(--dark)}
-        .cart-badge{
-            position:absolute;top:-4px;right:-4px;
-            background:var(--red);color:#fff;
-            width:22px;height:22px;border-radius:50%;
-            font-size:.65rem;font-weight:700;
-            display:flex;align-items:center;justify-content:center;
-            font-family:'Inter',sans-serif;
-            transition:transform .3s;
-        }
+        .cart-badge{position:absolute;top:-4px;right:-4px;background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif}
         .cart-badge.bump{animation:bumpAnim .3s ease}
         @keyframes bumpAnim{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
 
-        /* ===== CART DRAWER ===== */
-        .cart-overlay{
-            display:none;position:fixed;inset:0;z-index:2500;
-            background:rgba(0,0,0,.6);backdrop-filter:blur(3px);
-        }
+        /* CART DRAWER */
+        .cart-overlay{display:none;position:fixed;inset:0;z-index:2500;background:rgba(0,0,0,.6);backdrop-filter:blur(3px)}
         .cart-overlay.show{display:block}
-        .cart-drawer{
-            position:fixed;top:0;right:-420px;width:400px;max-width:90vw;height:100vh;
-            background:var(--dark-2);z-index:2600;
-            border-left:1px solid rgba(201,169,110,.15);
-            display:flex;flex-direction:column;
-            transition:right .4s cubic-bezier(.4,0,.2,1);
-        }
+        .cart-drawer{position:fixed;top:0;right:-420px;width:400px;max-width:90vw;height:100vh;background:var(--dark-2);z-index:2600;border-left:1px solid rgba(201,169,110,.15);display:flex;flex-direction:column;transition:right .4s cubic-bezier(.4,0,.2,1)}
         .cart-drawer.show{right:0}
-        .cart-drawer-header{
-            padding:1.5rem;border-bottom:1px solid var(--glass-border);
-            display:flex;justify-content:space-between;align-items:center;
-        }
+        .cart-drawer-header{padding:1.5rem;border-bottom:1px solid var(--glass-border);display:flex;justify-content:space-between;align-items:center}
         .cart-drawer-header h3{font-size:1.1rem;color:var(--gold);font-family:'Playfair Display',serif}
         .cart-close-btn{background:none;border:none;color:var(--gray);font-size:1.3rem;cursor:pointer;transition:color .3s}
         .cart-close-btn:hover{color:var(--red)}
         .cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem}
-        .cart-item{
-            display:flex;gap:1rem;align-items:center;
-            padding:1rem 0;border-bottom:1px solid var(--glass-border);
-        }
+        .cart-item{display:flex;gap:1rem;align-items:center;padding:1rem 0;border-bottom:1px solid var(--glass-border)}
         .cart-item-img{width:55px;height:55px;border-radius:10px;object-fit:cover;border:1px solid var(--glass-border);flex-shrink:0}
         .cart-item-info{flex:1}
         .cart-item-info h4{font-size:.8rem;color:var(--white);font-family:'Inter',sans-serif;font-weight:600;margin-bottom:.2rem}
         .cart-item-info p{font-size:.75rem;color:var(--gold);font-weight:600}
         .cart-item-controls{display:flex;align-items:center;gap:.5rem}
-        .qty-btn{
-            width:26px;height:26px;border-radius:6px;
-            background:var(--dark-3);border:1px solid var(--glass-border);
-            color:var(--white);cursor:pointer;font-size:.85rem;
-            display:flex;align-items:center;justify-content:center;
-            transition:all .2s;font-family:'Inter',sans-serif;
-        }
+        .qty-btn{width:26px;height:26px;border-radius:6px;background:var(--dark-3);border:1px solid var(--glass-border);color:var(--white);cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:'Inter',sans-serif}
         .qty-btn:hover{border-color:var(--gold);color:var(--gold)}
         .qty-num{font-size:.85rem;color:var(--white);min-width:20px;text-align:center;font-weight:600}
         .cart-item-remove{background:none;border:none;color:var(--gray);cursor:pointer;font-size:.9rem;transition:color .2s;padding:4px}
@@ -239,51 +203,31 @@
         .cart-empty{text-align:center;color:var(--gray-dark);padding:3rem 1rem;font-size:.85rem}
         .cart-empty span{font-size:2.5rem;display:block;margin-bottom:.8rem;opacity:.3}
         .cart-drawer-footer{padding:1.5rem;border-top:1px solid var(--glass-border)}
-        .cart-table-row{padding:.3rem 0;font-size:.85rem}
-        .cart-meja{margin:.8rem 0}
-        .cart-meja input{width:100%;padding:10px 14px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:8px;color:var(--white);font-size:.8rem;font-family:'Inter',sans-serif}
-        .cart-meja input:focus{outline:none;border-color:var(--gold)}
-        .cart-checkout-btn{
-            width:100%;padding:14px;
-            background:linear-gradient(135deg,var(--gold),var(--gold-dark));
-            color:var(--dark);border:none;border-radius:10px;
-            font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-            cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s;margin-top:.8rem;
-        }
+        .cart-field{margin-bottom:.8rem}
+        .cart-field label{font-size:.62rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem;font-weight:500}
+        .cart-field input{width:100%;padding:10px 14px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:8px;color:var(--white);font-size:.8rem;font-family:'Inter',sans-serif}
+        .cart-field input:focus{outline:none;border-color:var(--gold)}
+        .cart-field input.error{border-color:var(--red)}
+        .cart-table-row{padding:.3rem 0;font-size:.85rem;display:flex;justify-content:space-between}
+        .cart-checkout-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);border:none;border-radius:10px;font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s;margin-top:.8rem}
         .cart-checkout-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(201,169,110,.3)}
 
-        /* ===== ORDER CONFIRM MODAL ===== */
-        .confirm-overlay{
-            display:none;position:fixed;inset:0;z-index:3000;
-            background:rgba(0,0,0,.75);backdrop-filter:blur(6px);
-            align-items:center;justify-content:center;
-        }
+        /* CONFIRM MODAL */
+        .confirm-overlay{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);align-items:center;justify-content:center}
         .confirm-overlay.show{display:flex}
-        .confirm-box{
-            background:var(--dark-2);border:1px solid rgba(201,169,110,.2);
-            border-radius:20px;padding:2rem;width:90%;max-width:440px;
-            animation:fadeUp .3s ease;max-height:85vh;overflow-y:auto;
-        }
+        .confirm-box{background:var(--dark-2);border:1px solid rgba(201,169,110,.2);border-radius:20px;padding:2rem;width:90%;max-width:440px;animation:fadeUp .3s ease;max-height:85vh;overflow-y:auto}
         .confirm-box h3{color:var(--gold);margin-bottom:.3rem;font-size:1.2rem}
         .confirm-box .confirm-sub{color:var(--gray);font-size:.75rem;margin-bottom:1.5rem}
-        .confirm-item{
-            display:flex;justify-content:space-between;align-items:center;
-            padding:.7rem 0;border-bottom:1px solid var(--glass-border);
-            font-size:.83rem;
-        }
+        .confirm-name-note{background:var(--dark-3);border-radius:8px;padding:.8rem 1rem;font-size:.8rem;color:var(--gray);margin-bottom:.5rem}
+        .confirm-name-note strong{color:var(--white)}
+        .confirm-item{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--glass-border);font-size:.83rem}
         .confirm-item-left{display:flex;align-items:center;gap:.6rem}
         .confirm-item-left .ci-name{color:var(--white);font-weight:500}
         .confirm-item-left .ci-qty{color:var(--gray);font-size:.75rem}
         .confirm-item-price{color:var(--gold);font-weight:600}
-        .confirm-total-row{
-            display:flex;justify-content:space-between;
-            padding:1rem 0 .5rem;font-size:1rem;font-weight:700;
-        }
+        .confirm-total-row{display:flex;justify-content:space-between;padding:1rem 0 .5rem;font-size:1rem;font-weight:700}
         .confirm-total-row span:last-child{color:var(--gold)}
-        .confirm-meja-note{
-            background:var(--dark-3);border-radius:8px;padding:.8rem 1rem;
-            font-size:.78rem;color:var(--gray);margin:.5rem 0 1rem;
-        }
+        .confirm-meja-note{background:var(--dark-3);border-radius:8px;padding:.8rem 1rem;font-size:.78rem;color:var(--gray);margin:.5rem 0 1rem}
         .confirm-meja-note strong{color:var(--gold)}
         .confirm-btns{display:flex;gap:.8rem;margin-top:1rem}
         .confirm-btns button{flex:1;padding:13px;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;transition:all .3s;text-transform:uppercase;letter-spacing:.5px}
@@ -346,7 +290,7 @@
         .status-confirmed{background:rgba(76,175,80,.1);color:var(--green);border:1px solid rgba(76,175,80,.2)}
         .status-done{background:rgba(255,255,255,.05);color:var(--gray);border:1px solid rgba(255,255,255,.1)}
 
-        .modal-overlay{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.7);backdrop-filter:blur(5px);align-items:center;justify-content:center}
+        .modal-overlay{display:none;position:fixed;inset:0;z-index:3100;background:rgba(0,0,0,.7);backdrop-filter:blur(5px);align-items:center;justify-content:center}
         .modal-overlay.show{display:flex}
         .modal-box{background:var(--dark-2);border:1px solid rgba(201,169,110,.2);border-radius:16px;padding:2rem;width:90%;max-width:480px;animation:fadeUp .3s ease;max-height:90vh;overflow-y:auto}
         .modal-box h3{color:var(--gold);margin-bottom:1.5rem;font-size:1.1rem}
@@ -594,13 +538,13 @@
     <div class="footer-bottom"><p>&copy; 2026 Kafe Senja. Crafted with ☕ & ❤️</p></div>
 </footer>
 
-<!-- ===== FLOATING CART BUTTON ===== -->
+<!-- FLOATING CART -->
 <button class="cart-float" onclick="openCart()" title="Keranjang">
     <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
     <span class="cart-badge" id="cart-badge">0</span>
 </button>
 
-<!-- ===== CART DRAWER ===== -->
+<!-- CART DRAWER -->
 <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
 <div class="cart-drawer" id="cart-drawer">
     <div class="cart-drawer-header">
@@ -609,33 +553,38 @@
     </div>
     <div class="cart-items" id="cart-items"></div>
     <div class="cart-drawer-footer" id="cart-footer">
-        <div class="cart-meja">
-            <label style="font-size:.65rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem;font-weight:500;">🪑 Nomor Meja (Opsional)</label>
+        <div class="cart-field">
+            <label>👤 Nama Pemesan <span style="color:var(--red)">*</span></label>
+            <input type="text" id="cart-name-input" placeholder="Masukkan nama kamu">
+        </div>
+        <div class="cart-field">
+            <label>🪑 Nomor Meja (Opsional)</label>
             <input type="text" id="cart-meja-input" placeholder="Contoh: Meja 5 / Area Outdoor">
         </div>
-        <div class="cart-table-row" style="display:flex;justify-content:space-between;color:var(--gray);">
+        <div class="cart-table-row" style="color:var(--gray);">
             <span>Total Item</span><span id="cart-total-items" style="color:var(--white);font-weight:600;">0</span>
         </div>
-        <div class="cart-table-row" style="display:flex;justify-content:space-between;font-size:1.05rem;font-weight:700;">
+        <div class="cart-table-row" style="font-size:1.05rem;font-weight:700;">
             <span>Total</span><span id="cart-total-price" style="color:var(--gold);">Rp 0</span>
         </div>
-        <button class="cart-checkout-btn" onclick="showConfirmModal()">✅ Konfirmasi Order</button>
+        <button class="cart-checkout-btn" id="checkout-btn">✅ Konfirmasi Order</button>
     </div>
 </div>
 
-<!-- ===== ORDER CONFIRM MODAL ===== -->
+<!-- CONFIRM MODAL -->
 <div class="confirm-overlay" id="confirm-modal">
     <div class="confirm-box">
         <h3>📋 Konfirmasi Order</h3>
         <p class="confirm-sub">Periksa kembali pesananmu sebelum dikirim via WhatsApp</p>
+        <div class="confirm-name-note" id="confirm-name-note"></div>
         <div id="confirm-items"></div>
         <div class="confirm-total-row">
             <span>Total</span><span id="confirm-total">Rp 0</span>
         </div>
         <div class="confirm-meja-note" id="confirm-meja-note"></div>
         <div class="confirm-btns">
-            <button class="confirm-back" onclick="closeConfirmModal()">← Kembali</button>
-            <button class="confirm-send" onclick="sendOrderWA()">
+            <button class="confirm-back" id="confirm-back-btn">← Kembali</button>
+            <button class="confirm-send" id="confirm-send-btn">
                 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 Kirim via WhatsApp
             </button>
@@ -737,7 +686,7 @@ const defaultTestimonials=[
 ];
 
 let editIndex=null,addImgData='',editImgData='',activeCategory='Semua',currentRating=5;
-let cart=[]; // [{id,name,price,img,qty}]
+let cart=[];
 const defaultImg='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80';
 
 function getMenus(){return JSON.parse(localStorage.getItem('kafe_menus'))||defaultMenus;}
@@ -749,54 +698,49 @@ function setTestimonials(d){localStorage.setItem('kafe_testimonials',JSON.string
 function getWaNumber(){return localStorage.getItem('kafe_wa_number')||'6281234567890';}
 function getWaGreeting(){return localStorage.getItem('kafe_wa_greeting')||'Halo Kafe Senja!';}
 
-function showToast(msg,icon='✅'){
+function showToast(msg,icon){
     document.getElementById('toast-msg').textContent=msg;
-    document.getElementById('toast-icon').textContent=icon;
+    document.getElementById('toast-icon').textContent=icon||'✅';
     document.getElementById('toast').classList.add('show');
-    setTimeout(()=>document.getElementById('toast').classList.remove('show'),3000);
+    setTimeout(function(){document.getElementById('toast').classList.remove('show');},3000);
 }
 
-// ===== CART SYSTEM =====
-function getCartTotal(){return cart.reduce((s,i)=>s+i.price*i.qty,0);}
-function getCartCount(){return cart.reduce((s,i)=>s+i.qty,0);}
+// ===== CART =====
+function getCartTotal(){return cart.reduce(function(s,i){return s+i.price*i.qty;},0);}
+function getCartCount(){return cart.reduce(function(s,i){return s+i.qty;},0);}
 
-window.addToCart=function(id){
+function addToCart(id){
     const menus=getMenus();
-    const item=menus.find(m=>m.id===id);
+    const item=menus.find(function(m){return m.id===id;});
     if(!item||!item.available)return;
-    const existing=cart.find(c=>c.id===id);
+    const existing=cart.find(function(c){return c.id===id;});
     if(existing){existing.qty++;}
     else{cart.push({id:item.id,name:item.name,price:parseInt(item.price),img:item.img||defaultImg,qty:1});}
     updateCartUI();renderPublic();
-    showToast(`"${item.name}" ditambahkan ke keranjang`,'🛒');
-    bumpBadge();
-};
+    showToast('"'+item.name+'" ditambahkan ke keranjang','🛒');
+    const badge=document.getElementById('cart-badge');
+    badge.classList.remove('bump');void badge.offsetWidth;badge.classList.add('bump');
+}
 
-window.changeQty=function(id,delta){
-    const item=cart.find(c=>c.id===id);
+function changeQty(id,delta){
+    const item=cart.find(function(c){return c.id===id;});
     if(!item)return;
     item.qty+=delta;
-    if(item.qty<=0)cart=cart.filter(c=>c.id!==id);
+    if(item.qty<=0){cart=cart.filter(function(c){return c.id!==id;});}
     updateCartUI();renderPublic();
-};
+}
 
-window.removeFromCart=function(id){
-    cart=cart.filter(c=>c.id!==id);
+function removeFromCart(id){
+    cart=cart.filter(function(c){return c.id!==id;});
     updateCartUI();renderPublic();
-};
-
-function bumpBadge(){
-    const badge=document.getElementById('cart-badge');
-    badge.classList.remove('bump');
-    void badge.offsetWidth;
-    badge.classList.add('bump');
 }
 
 function updateCartUI(){
     const count=getCartCount();
-    document.getElementById('cart-badge').textContent=count;
-    document.getElementById('cart-badge').style.display=count>0?'flex':'none';
-    document.getElementById('nav-cart-count').textContent=`(${count})`;
+    const badge=document.getElementById('cart-badge');
+    badge.textContent=count;
+    badge.style.display=count>0?'flex':'none';
+    document.getElementById('nav-cart-count').textContent='('+count+')';
 
     const container=document.getElementById('cart-items');
     if(cart.length===0){
@@ -804,145 +748,159 @@ function updateCartUI(){
         document.getElementById('cart-footer').style.display='none';
     }else{
         document.getElementById('cart-footer').style.display='block';
-        container.innerHTML=cart.map(item=>`
-            <div class="cart-item">
-                <img class="cart-item-img" src="${item.img}" alt="${item.name}">
-                <div class="cart-item-info">
-                    <h4>${item.name}</h4>
-                    <p>Rp ${(item.price*item.qty).toLocaleString()}</p>
-                </div>
-                <div class="cart-item-controls">
-                    <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
-                    <span class="qty-num">${item.qty}</span>
-                    <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
-                </div>
-                <button class="cart-item-remove" onclick="removeFromCart(${item.id})">🗑</button>
-            </div>
-        `).join('');
+        container.innerHTML=cart.map(function(item){
+            return '<div class="cart-item">'
+                +'<img class="cart-item-img" src="'+item.img+'" alt="'+item.name+'">'
+                +'<div class="cart-item-info"><h4>'+item.name+'</h4><p>Rp '+(item.price*item.qty).toLocaleString()+'</p></div>'
+                +'<div class="cart-item-controls">'
+                +'<button class="qty-btn" onclick="changeQty('+item.id+',-1)">−</button>'
+                +'<span class="qty-num">'+item.qty+'</span>'
+                +'<button class="qty-btn" onclick="changeQty('+item.id+',1)">+</button>'
+                +'</div>'
+                +'<button class="cart-item-remove" onclick="removeFromCart('+item.id+')">🗑</button>'
+                +'</div>';
+        }).join('');
         document.getElementById('cart-total-items').textContent=count;
         document.getElementById('cart-total-price').textContent='Rp '+getCartTotal().toLocaleString();
     }
 }
 
-window.openCart=function(){
+function openCart(){
     document.getElementById('cart-overlay').classList.add('show');
     document.getElementById('cart-drawer').classList.add('show');
-};
-window.closeCart=function(){
+}
+function closeCart(){
     document.getElementById('cart-overlay').classList.remove('show');
     document.getElementById('cart-drawer').classList.remove('show');
-};
+}
 
-// ===== CONFIRM MODAL =====
-window.showConfirmModal=function(){
-    if(cart.length===0){showToast('Keranjang masih kosong!','⚠️');return;}
-    closeCart();
+// ===== CONFIRM ORDER (DIPERBAIKI) =====
+function showConfirmModal(){
+    if(cart.length===0){
+        showToast('Keranjang masih kosong!','⚠️');
+        return;
+    }
+    const nameInput=document.getElementById('cart-name-input');
+    const nama=nameInput.value.trim();
+    if(!nama){
+        nameInput.classList.add('error');
+        nameInput.focus();
+        showToast('Mohon isi nama pemesan dulu ya!','⚠️');
+        return;
+    }
+    nameInput.classList.remove('error');
+
     const meja=document.getElementById('cart-meja-input').value.trim();
-    document.getElementById('confirm-items').innerHTML=cart.map(item=>`
-        <div class="confirm-item">
-            <div class="confirm-item-left">
-                <span class="ci-name">${item.name}</span>
-                <span class="ci-qty">×${item.qty}</span>
-            </div>
-            <span class="confirm-item-price">Rp ${(item.price*item.qty).toLocaleString()}</span>
-        </div>
-    `).join('');
+
+    document.getElementById('confirm-name-note').innerHTML='👤 Pemesan: <strong>'+nama+'</strong>';
+    document.getElementById('confirm-items').innerHTML=cart.map(function(item){
+        return '<div class="confirm-item">'
+            +'<div class="confirm-item-left"><span class="ci-name">'+item.name+'</span><span class="ci-qty">×'+item.qty+'</span></div>'
+            +'<span class="confirm-item-price">Rp '+(item.price*item.qty).toLocaleString()+'</span>'
+            +'</div>';
+    }).join('');
     document.getElementById('confirm-total').textContent='Rp '+getCartTotal().toLocaleString();
     document.getElementById('confirm-meja-note').innerHTML=meja
-        ?`🪑 Meja: <strong>${meja}</strong>`
+        ?'🪑 Meja: <strong>'+meja+'</strong>'
         :'🪑 Meja: <strong>Belum ditentukan</strong> (akan diarahkan saat tiba)';
+
+    closeCart();
     document.getElementById('confirm-modal').classList.add('show');
-};
+}
 
-window.closeConfirmModal=function(){
+function closeConfirmModal(){
     document.getElementById('confirm-modal').classList.remove('show');
-};
+}
 
-window.sendOrderWA=function(){
+function sendOrderWA(){
+    const nama=document.getElementById('cart-name-input').value.trim();
     const meja=document.getElementById('cart-meja-input').value.trim();
     const greeting=getWaGreeting();
-    let msg=`${greeting} Saya ingin memesan:\n\n`;
-    cart.forEach((item,i)=>{
-        msg+=`${i+1}. ${item.name} ×${item.qty} — Rp ${(item.price*item.qty).toLocaleString()}\n`;
+    let msg=greeting+'\n\n';
+    msg+='👤 *Nama: '+nama+'*\n\n';
+    msg+='📝 *Pesanan:*\n';
+    cart.forEach(function(item,i){
+        msg+=(i+1)+'. '+item.name+' ×'+item.qty+' — Rp '+(item.price*item.qty).toLocaleString()+'\n';
     });
-    msg+=`\n💰 *Total: Rp ${getCartTotal().toLocaleString()}*`;
-    if(meja) msg+=`\n🪑 Meja: ${meja}`;
-    msg+='\n\nMohon dikonfirmasi ya. Terima kasih! ☕';
-    window.open(`https://wa.me/${getWaNumber()}?text=${encodeURIComponent(msg)}`,'_blank');
+    msg+='\n💰 *Total: Rp '+getCartTotal().toLocaleString()+'*\n';
+    if(meja){msg+='🪑 Meja: '+meja+'\n';}
+    msg+='\nMohon dikonfirmasi ya. Terima kasih! ☕';
+
+    window.open('https://wa.me/'+getWaNumber()+'?text='+encodeURIComponent(msg),'_blank');
+
     cart=[];
+    document.getElementById('cart-name-input').value='';
     document.getElementById('cart-meja-input').value='';
     updateCartUI();renderPublic();
     closeConfirmModal();
     showToast('Order dikirim via WhatsApp! 🎉','✅');
-};
+}
 
 // ===== FILTER & MENU =====
 function renderCategoryButtons(){
     const menus=getMenus();
-    const categories=['Semua',...new Set(menus.map(m=>m.category))];
-    document.getElementById('menu-filter').innerHTML=categories.map(cat=>
-        `<button class="filter-btn ${activeCategory===cat?'active':''}" onclick="filterCategory('${cat}')">${cat}</button>`
-    ).join('');
+    const categories=['Semua'].concat(Array.from(new Set(menus.map(function(m){return m.category;}))));
+    document.getElementById('menu-filter').innerHTML=categories.map(function(cat){
+        return '<button class="filter-btn '+(activeCategory===cat?'active':'')+'" onclick="filterCategory(\''+cat+'\')">'+cat+'</button>';
+    }).join('');
 }
-window.filterCategory=cat=>{activeCategory=cat;renderPublic();renderCategoryButtons();};
+function filterCategory(cat){activeCategory=cat;renderPublic();renderCategoryButtons();}
 
 function renderPublic(){
     const menus=getMenus();
-    const filtered=activeCategory==='Semua'?menus:menus.filter(m=>m.category===activeCategory);
+    const filtered=activeCategory==='Semua'?menus:menus.filter(function(m){return m.category===activeCategory;});
     const container=document.getElementById('menu-container');
     if(filtered.length===0){container.innerHTML='<div class="menu-empty">Belum ada menu di kategori ini.</div>';return;}
-    container.innerHTML=filtered.map(item=>{
-        let badge=item.bestSeller?'<span class="menu-card-badge best">Best Seller</span>':item.isNew?'<span class="menu-card-badge new">New</span>':`<span class="menu-card-badge">${item.category}</span>`;
+    container.innerHTML=filtered.map(function(item){
+        let badge=item.bestSeller?'<span class="menu-card-badge best">Best Seller</span>':item.isNew?'<span class="menu-card-badge new">New</span>':'<span class="menu-card-badge">'+item.category+'</span>';
         const overlay=!item.available?'<div class="menu-card-unavailable"><span>Habis</span></div>':'';
-        const inCart=cart.find(c=>c.id===item.id);
-        const orderBtn=item.available
-            ?(inCart
-                ?`<button class="menu-card-btn in-cart" onclick="openCart()">✓ Di Keranjang (${inCart.qty})</button>`
-                :`<button class="menu-card-btn" onclick="addToCart(${item.id})">+ Order</button>`)
-            :`<button class="menu-card-btn" style="background:var(--dark-3);color:var(--gray);cursor:not-allowed;border:1px solid var(--glass-border);">Habis</button>`;
-        return `<div class="menu-card fade-in visible">
-            ${overlay}
-            <div class="menu-card-img"><img src="${item.img||defaultImg}" alt="${item.name}">${badge}</div>
-            <div class="menu-card-body">
-                <p class="menu-card-category">${item.category}</p>
-                <h3 class="menu-card-name">${item.name}</h3>
-                <p class="menu-card-desc">${item.desc||'Dibuat dengan bahan pilihan terbaik.'}</p>
-                <div class="menu-card-footer">
-                    <span class="menu-card-price">Rp ${parseInt(item.price).toLocaleString()}</span>
-                    ${orderBtn}
-                </div>
-            </div>
-        </div>`;
+        const inCart=cart.find(function(c){return c.id===item.id;});
+        let orderBtn;
+        if(item.available){
+            orderBtn=inCart
+                ?'<button class="menu-card-btn in-cart" onclick="openCart()">✓ Di Keranjang ('+inCart.qty+')</button>'
+                :'<button class="menu-card-btn" onclick="addToCart('+item.id+')">+ Order</button>';
+        }else{
+            orderBtn='<button class="menu-card-btn" style="background:var(--dark-3);color:var(--gray);cursor:not-allowed;border:1px solid var(--glass-border);">Habis</button>';
+        }
+        return '<div class="menu-card fade-in visible">'
+            +overlay
+            +'<div class="menu-card-img"><img src="'+(item.img||defaultImg)+'" alt="'+item.name+'">'+badge+'</div>'
+            +'<div class="menu-card-body">'
+            +'<p class="menu-card-category">'+item.category+'</p>'
+            +'<h3 class="menu-card-name">'+item.name+'</h3>'
+            +'<p class="menu-card-desc">'+(item.desc||'Dibuat dengan bahan pilihan terbaik.')+'</p>'
+            +'<div class="menu-card-footer"><span class="menu-card-price">Rp '+parseInt(item.price).toLocaleString()+'</span>'+orderBtn+'</div>'
+            +'</div></div>';
     }).join('');
 }
 
 // ===== TESTIMONI =====
-function starsHtml(r){let s='';for(let i=1;i<=5;i++)s+=`<span class="${i<=r?'':'dim'}">★</span>`;return s;}
+function starsHtml(r){let s='';for(let i=1;i<=5;i++){s+='<span class="'+(i<=r?'':'dim')+'">★</span>';}return s;}
 function renderTestimonials(){
-    const list=getTestimonials().filter(t=>t.approved);
+    const list=getTestimonials().filter(function(t){return t.approved;});
     const grid=document.getElementById('testimoni-grid');
     if(list.length===0){grid.innerHTML='<div class="menu-empty" style="min-width:100%;">Belum ada testimoni.</div>';return;}
-    grid.innerHTML=list.map(t=>`
-        <div class="testimoni-card">
-            <div class="testimoni-quote">"</div>
-            <div class="testimoni-stars">${starsHtml(t.rating)}</div>
-            <p class="testimoni-text">"${t.msg}"</p>
-            <div class="testimoni-author">
-                <div class="testimoni-avatar">${t.name.charAt(0).toUpperCase()}</div>
-                <div class="testimoni-author-info"><h4>${t.name}</h4><p>${new Date(t.date).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'})}</p></div>
-            </div>
-        </div>
-    `).join('');
+    grid.innerHTML=list.map(function(t){
+        return '<div class="testimoni-card">'
+            +'<div class="testimoni-quote">"</div>'
+            +'<div class="testimoni-stars">'+starsHtml(t.rating)+'</div>'
+            +'<p class="testimoni-text">"'+t.msg+'"</p>'
+            +'<div class="testimoni-author">'
+            +'<div class="testimoni-avatar">'+t.name.charAt(0).toUpperCase()+'</div>'
+            +'<div class="testimoni-author-info"><h4>'+t.name+'</h4><p>'+new Date(t.date).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'})+'</p></div>'
+            +'</div></div>';
+    }).join('');
 }
-window.scrollTesti=dir=>{document.getElementById('testimoni-grid').scrollBy({left:dir*350,behavior:'smooth'});};
+function scrollTesti(dir){document.getElementById('testimoni-grid').scrollBy({left:dir*350,behavior:'smooth'});}
 
 // ===== ADMIN =====
 function renderAdmin(){
     const menus=getMenus(),res=getReservations(),testi=getTestimonials();
-    const pending=res.filter(r=>r.status==='Pending').length;
-    const testiPending=testi.filter(t=>!t.approved).length;
+    const pending=res.filter(function(r){return r.status==='Pending';}).length;
+    const testiPending=testi.filter(function(t){return !t.approved;}).length;
     document.getElementById('stat-menu').textContent=menus.length;
-    document.getElementById('stat-active').textContent=menus.filter(m=>m.available).length;
+    document.getElementById('stat-active').textContent=menus.filter(function(m){return m.available;}).length;
     document.getElementById('stat-res-pending').textContent=pending;
     document.getElementById('stat-testi-pending').textContent=testiPending;
     document.getElementById('menu-count-label').textContent=menus.length+' item';
@@ -951,82 +909,94 @@ function renderAdmin(){
     document.getElementById('wa-number-input').value=getWaNumber();
     document.getElementById('wa-greeting-input').value=getWaGreeting();
 
-    document.getElementById('admin-menu-tbody').innerHTML=menus.map((m,i)=>`
-        <tr><td><img class="table-thumb" src="${m.img||defaultImg}"></td><td>${m.name}</td><td>${m.category}</td><td>Rp ${parseInt(m.price).toLocaleString()}</td>
-        <td><div class="toggle-wrap"><div class="toggle ${m.available?'on':''}" onclick="toggleAvailable(${i})"></div><span class="toggle-label">${m.available?'Aktif':'Habis'}</span></div></td>
-        <td><div class="toggle-wrap"><div class="toggle ${m.bestSeller?'on':''}" onclick="toggleBest(${i})"></div></div></td>
-        <td><div class="btn-group"><button class="btn-sm btn-sm-edit" onclick="openEditModal(${i})">✏️</button><button class="btn-sm btn-sm-danger" onclick="deleteMenu(${i})">🗑</button></div></td></tr>`).join('');
+    document.getElementById('admin-menu-tbody').innerHTML=menus.map(function(m,i){
+        return '<tr><td><img class="table-thumb" src="'+(m.img||defaultImg)+'"></td><td>'+m.name+'</td><td>'+m.category+'</td><td>Rp '+parseInt(m.price).toLocaleString()+'</td>'
+        +'<td><div class="toggle-wrap"><div class="toggle '+(m.available?'on':'')+'" onclick="toggleAvailable('+i+')"></div><span class="toggle-label">'+(m.available?'Aktif':'Habis')+'</span></div></td>'
+        +'<td><div class="toggle-wrap"><div class="toggle '+(m.bestSeller?'on':'')+'" onclick="toggleBest('+i+')"></div></div></td>'
+        +'<td><div class="btn-group"><button class="btn-sm btn-sm-edit" onclick="openEditModal('+i+')">✏️</button><button class="btn-sm btn-sm-danger" onclick="deleteMenu('+i+')">🗑</button></div></td></tr>';
+    }).join('');
 
-    document.getElementById('admin-res-tbody').innerHTML=res.map((r,i)=>{
-        let sb=r.status==='Pending'?'<span class="status-badge status-pending">Pending</span>':r.status==='Dikonfirmasi'?'<span class="status-badge status-confirmed">Dikonfirmasi</span>':'<span class="status-badge status-done">Selesai</span>';
-        let act=r.status==='Pending'?`<button class="btn-sm btn-sm-success" onclick="confirmRes(${i})">✔</button>`:r.status==='Dikonfirmasi'?`<button class="btn-sm btn-sm-gold" onclick="doneRes(${i})">✔</button>`:'';
-        return `<tr><td>${r.name}</td><td>${r.pax} org</td><td>${new Date(r.date).toLocaleString('id-ID')}</td><td>${r.area||'-'}</td><td>${sb}</td><td><div class="btn-group">${act}<button class="btn-sm btn-sm-danger" onclick="deleteRes(${i})">🗑</button></div></td></tr>`;
+    document.getElementById('admin-res-tbody').innerHTML=res.map(function(r,i){
+        const sb=r.status==='Pending'?'<span class="status-badge status-pending">Pending</span>':r.status==='Dikonfirmasi'?'<span class="status-badge status-confirmed">Dikonfirmasi</span>':'<span class="status-badge status-done">Selesai</span>';
+        let act=r.status==='Pending'?'<button class="btn-sm btn-sm-success" onclick="confirmRes('+i+')">✔</button>':r.status==='Dikonfirmasi'?'<button class="btn-sm btn-sm-gold" onclick="doneRes('+i+')">✔</button>':'';
+        return '<tr><td>'+r.name+'</td><td>'+r.pax+' org</td><td>'+new Date(r.date).toLocaleString('id-ID')+'</td><td>'+(r.area||'-')+'</td><td>'+sb+'</td><td><div class="btn-group">'+act+'<button class="btn-sm btn-sm-danger" onclick="deleteRes('+i+')">🗑</button></div></td></tr>';
     }).join('')||'<tr><td colspan="6" style="text-align:center;color:#555;padding:2rem;">Belum ada reservasi</td></tr>';
 
-    document.getElementById('admin-testi-tbody').innerHTML=testi.map((t,i)=>{
+    document.getElementById('admin-testi-tbody').innerHTML=testi.map(function(t,i){
         const sb=t.approved?'<span class="status-badge status-confirmed">Tampil</span>':'<span class="status-badge status-pending">Pending</span>';
-        const act=t.approved?`<button class="btn-sm btn-sm-gold" onclick="hideTesti(${i})">⏸</button>`:`<button class="btn-sm btn-sm-success" onclick="approveTesti(${i})">✔</button>`;
-        return `<tr><td>${t.name}</td><td style="color:var(--gold)">${'★'.repeat(t.rating)}</td><td style="max-width:250px">${t.msg}</td><td>${new Date(t.date).toLocaleDateString('id-ID')}</td><td>${sb}</td><td><div class="btn-group">${act}<button class="btn-sm btn-sm-danger" onclick="deleteTesti(${i})">🗑</button></div></td></tr>`;
+        const act=t.approved?'<button class="btn-sm btn-sm-gold" onclick="hideTesti('+i+')">⏸</button>':'<button class="btn-sm btn-sm-success" onclick="approveTesti('+i+')">✔</button>';
+        return '<tr><td>'+t.name+'</td><td style="color:var(--gold)">'+'★'.repeat(t.rating)+'</td><td style="max-width:250px">'+t.msg+'</td><td>'+new Date(t.date).toLocaleDateString('id-ID')+'</td><td>'+sb+'</td><td><div class="btn-group">'+act+'<button class="btn-sm btn-sm-danger" onclick="deleteTesti('+i+')">🗑</button></div></td></tr>';
     }).join('')||'<tr><td colspan="6" style="text-align:center;color:#555;padding:2rem;">Belum ada testimoni</td></tr>';
 }
 
 function renderAll(){renderCategoryButtons();renderPublic();renderTestimonials();renderAdmin();updateCartUI();}
 
-window.saveWaSettings=function(){
+function saveWaSettings(){
     const num=document.getElementById('wa-number-input').value.trim();
     const greet=document.getElementById('wa-greeting-input').value.trim();
     if(num)localStorage.setItem('kafe_wa_number',num);
     if(greet)localStorage.setItem('kafe_wa_greeting',greet);
     showToast('Pengaturan WhatsApp disimpan!','⚙️');
-};
+}
 
-window.previewAddImg=function(input){if(input.files&&input.files[0]){const r=new FileReader();r.onload=e=>{addImgData=e.target.result;document.getElementById('adm-img-preview').innerHTML=`<img src="${e.target.result}">`;document.getElementById('adm-img-url').value='';};r.readAsDataURL(input.files[0]);}};
-window.previewEditUrl=function(){const url=document.getElementById('edit-img-url').value.trim();if(url){editImgData=url;document.getElementById('edit-img-preview').innerHTML=`<img src="${url}">`;}};
-window.previewEditFile=function(input){if(input.files&&input.files[0]){const r=new FileReader();r.onload=e=>{editImgData=e.target.result;document.getElementById('edit-img-preview').innerHTML=`<img src="${e.target.result}">`;document.getElementById('edit-img-url').value='';};r.readAsDataURL(input.files[0]);}};
+function previewAddImg(input){if(input.files&&input.files[0]){const r=new FileReader();r.onload=function(e){addImgData=e.target.result;document.getElementById('adm-img-preview').innerHTML='<img src="'+e.target.result+'">';document.getElementById('adm-img-url').value='';};r.readAsDataURL(input.files[0]);}}
+function previewEditUrl(){const url=document.getElementById('edit-img-url').value.trim();if(url){editImgData=url;document.getElementById('edit-img-preview').innerHTML='<img src="'+url+'">';}}
+function previewEditFile(input){if(input.files&&input.files[0]){const r=new FileReader();r.onload=function(e){editImgData=e.target.result;document.getElementById('edit-img-preview').innerHTML='<img src="'+e.target.result+'">';document.getElementById('edit-img-url').value='';};r.readAsDataURL(input.files[0]);}}
 
-document.getElementById('admin-add-form').addEventListener('submit',e=>{
-    e.preventDefault();const menus=getMenus();const urlVal=document.getElementById('adm-img-url').value.trim();
+document.getElementById('admin-add-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    const menus=getMenus();const urlVal=document.getElementById('adm-img-url').value.trim();
     menus.push({id:Date.now(),name:document.getElementById('adm-name').value,price:document.getElementById('adm-price').value,category:document.getElementById('adm-cat').value,desc:document.getElementById('adm-desc').value||'Menu spesial Kafe Senja',img:addImgData||urlVal||defaultImg,available:true,bestSeller:false,isNew:true});
     setMenus(menus);renderAll();e.target.reset();addImgData='';
     document.getElementById('adm-img-preview').innerHTML='<span class="placeholder">🖼</span>';
     showToast('Menu ditambahkan!','✅');
 });
-window.deleteMenu=i=>{if(confirm('Hapus menu ini?')){const menus=getMenus();menus.splice(i,1);setMenus(menus);renderAll();showToast('Menu dihapus','🗑');}};
-window.toggleAvailable=i=>{const m=getMenus();m[i].available=!m[i].available;setMenus(m);renderAll();};
-window.toggleBest=i=>{const m=getMenus();m[i].bestSeller=!m[i].bestSeller;setMenus(m);renderAll();};
+function deleteMenu(i){if(confirm('Hapus menu ini?')){const menus=getMenus();menus.splice(i,1);setMenus(menus);renderAll();showToast('Menu dihapus','🗑');}}
+function toggleAvailable(i){const m=getMenus();m[i].available=!m[i].available;setMenus(m);renderAll();}
+function toggleBest(i){const m=getMenus();m[i].bestSeller=!m[i].bestSeller;setMenus(m);renderAll();}
 
-window.openEditModal=i=>{editIndex=i;editImgData='';const m=getMenus()[i];document.getElementById('edit-name').value=m.name;document.getElementById('edit-price').value=m.price;document.getElementById('edit-cat').value=m.category;document.getElementById('edit-desc').value=m.desc||'';document.getElementById('edit-img-url').value=m.img||'';editImgData=m.img||'';document.getElementById('edit-img-preview').innerHTML=m.img?`<img src="${m.img}">`:'<span class="placeholder">🖼</span>';document.getElementById('edit-modal').classList.add('show');};
-window.closeEditModal=()=>{document.getElementById('edit-modal').classList.remove('show');editIndex=null;};
-window.saveEdit=()=>{if(editIndex===null)return;const menus=getMenus();menus[editIndex].name=document.getElementById('edit-name').value;menus[editIndex].price=document.getElementById('edit-price').value;menus[editIndex].category=document.getElementById('edit-cat').value;menus[editIndex].desc=document.getElementById('edit-desc').value;if(editImgData)menus[editIndex].img=editImgData;setMenus(menus);renderAll();closeEditModal();showToast('Menu diupdate!','✏️');};
+function openEditModal(i){editIndex=i;editImgData='';const m=getMenus()[i];document.getElementById('edit-name').value=m.name;document.getElementById('edit-price').value=m.price;document.getElementById('edit-cat').value=m.category;document.getElementById('edit-desc').value=m.desc||'';document.getElementById('edit-img-url').value=m.img||'';editImgData=m.img||'';document.getElementById('edit-img-preview').innerHTML=m.img?'<img src="'+m.img+'">':'<span class="placeholder">🖼</span>';document.getElementById('edit-modal').classList.add('show');}
+function closeEditModal(){document.getElementById('edit-modal').classList.remove('show');editIndex=null;}
+function saveEdit(){if(editIndex===null)return;const menus=getMenus();menus[editIndex].name=document.getElementById('edit-name').value;menus[editIndex].price=document.getElementById('edit-price').value;menus[editIndex].category=document.getElementById('edit-cat').value;menus[editIndex].desc=document.getElementById('edit-desc').value;if(editImgData)menus[editIndex].img=editImgData;setMenus(menus);renderAll();closeEditModal();showToast('Menu diupdate!','✏️');}
 
-document.getElementById('reservation-form').addEventListener('submit',e=>{e.preventDefault();const r=getReservations();r.push({name:document.getElementById('res-name').value,pax:document.getElementById('res-pax').value,date:document.getElementById('res-date').value,area:document.getElementById('res-area').value,status:'Pending',createdAt:new Date().toISOString()});setReservations(r);renderAll();e.target.reset();showToast('Reservasi dikirim!','🎉');});
-window.confirmRes=i=>{const r=getReservations();r[i].status='Dikonfirmasi';setReservations(r);renderAll();};
-window.doneRes=i=>{const r=getReservations();r[i].status='Selesai';setReservations(r);renderAll();};
-window.deleteRes=i=>{if(confirm('Hapus reservasi?')){const r=getReservations();r.splice(i,1);setReservations(r);renderAll();}};
+document.getElementById('reservation-form').addEventListener('submit',function(e){e.preventDefault();const r=getReservations();r.push({name:document.getElementById('res-name').value,pax:document.getElementById('res-pax').value,date:document.getElementById('res-date').value,area:document.getElementById('res-area').value,status:'Pending',createdAt:new Date().toISOString()});setReservations(r);renderAll();e.target.reset();showToast('Reservasi dikirim!','🎉');});
+function confirmRes(i){const r=getReservations();r[i].status='Dikonfirmasi';setReservations(r);renderAll();}
+function doneRes(i){const r=getReservations();r[i].status='Selesai';setReservations(r);renderAll();}
+function deleteRes(i){if(confirm('Hapus reservasi?')){const r=getReservations();r.splice(i,1);setReservations(r);renderAll();}}
 
 const starInput=document.getElementById('star-input');const stars=starInput.querySelectorAll('span');
-function paintStars(n){stars.forEach((s,i)=>s.classList.toggle('lit',i<n));}
-stars.forEach(star=>{star.addEventListener('mouseenter',()=>paintStars(parseInt(star.dataset.val)));star.addEventListener('mouseleave',()=>paintStars(currentRating));star.addEventListener('click',()=>{currentRating=parseInt(star.dataset.val);paintStars(currentRating);});});
+function paintStars(n){stars.forEach(function(s,i){s.classList.toggle('lit',i<n);});}
+stars.forEach(function(star){
+    star.addEventListener('mouseenter',function(){paintStars(parseInt(star.dataset.val));});
+    star.addEventListener('mouseleave',function(){paintStars(currentRating);});
+    star.addEventListener('click',function(){currentRating=parseInt(star.dataset.val);paintStars(currentRating);});
+});
 paintStars(currentRating);
 
-document.getElementById('testimoni-form').addEventListener('submit',e=>{e.preventDefault();const testi=getTestimonials();testi.push({id:Date.now(),name:document.getElementById('testi-name').value,rating:currentRating,msg:document.getElementById('testi-msg').value,date:new Date().toISOString(),approved:false});setTestimonials(testi);renderAll();e.target.reset();currentRating=5;paintStars(5);showToast('Testimoni dikirim! Sedang kami review.','💛');});
-window.approveTesti=i=>{const t=getTestimonials();t[i].approved=true;setTestimonials(t);renderAll();};
-window.hideTesti=i=>{const t=getTestimonials();t[i].approved=false;setTestimonials(t);renderAll();};
-window.deleteTesti=i=>{if(confirm('Hapus testimoni?')){const t=getTestimonials();t.splice(i,1);setTestimonials(t);renderAll();}};
+document.getElementById('testimoni-form').addEventListener('submit',function(e){e.preventDefault();const testi=getTestimonials();testi.push({id:Date.now(),name:document.getElementById('testi-name').value,rating:currentRating,msg:document.getElementById('testi-msg').value,date:new Date().toISOString(),approved:false});setTestimonials(testi);renderAll();e.target.reset();currentRating=5;paintStars(5);showToast('Testimoni dikirim! Sedang kami review.','💛');});
+function approveTesti(i){const t=getTestimonials();t[i].approved=true;setTestimonials(t);renderAll();}
+function hideTesti(i){const t=getTestimonials();t[i].approved=false;setTestimonials(t);renderAll();}
+function deleteTesti(i){if(confirm('Hapus testimoni?')){const t=getTestimonials();t.splice(i,1);setTestimonials(t);renderAll();}}
 
-window.openAdmin=()=>{const p=prompt('🔐 Password admin:');if(p==='admin123'){document.getElementById('admin-overlay').style.display='block';document.body.style.overflow='hidden';renderAll();}else if(p!==null)alert('Password salah!');};
-window.closeAdmin=()=>{document.getElementById('admin-overlay').style.display='none';document.body.style.overflow='';};
-window.goTo=sel=>document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
+function openAdmin(){const p=prompt('🔐 Password admin:');if(p==='admin123'){document.getElementById('admin-overlay').style.display='block';document.body.style.overflow='hidden';renderAll();}else if(p!==null)alert('Password salah!');}
+function closeAdmin(){document.getElementById('admin-overlay').style.display='none';document.body.style.overflow='';}
+function goTo(sel){const el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth'});}
 
-window.addEventListener('scroll',()=>{
+// ===== EVENT LISTENERS TOMBOL KRUSIAL (FIX) =====
+document.getElementById('checkout-btn').addEventListener('click',showConfirmModal);
+document.getElementById('confirm-back-btn').addEventListener('click',closeConfirmModal);
+document.getElementById('confirm-send-btn').addEventListener('click',sendOrderWA);
+
+window.addEventListener('scroll',function(){
     document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
     const sections=['home','menu','gallery','about','testimoni','lokasi','reservasi'];let current='';
-    sections.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-200)current=id;});
-    document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.dataset.section===current));
+    sections.forEach(function(id){const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-200)current=id;});
+    document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.toggle('active',a.dataset.section===current);});
 });
 
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
-document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+const observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el);});
+
 renderAll();
 </script>
 </body>
