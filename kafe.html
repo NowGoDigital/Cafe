@@ -44,6 +44,12 @@
         .section-title{font-size:clamp(1.6rem,3vw,2.3rem);color:var(--white)}
         .section-line{width:45px;height:1.5px;background:var(--gold);margin:.8rem auto 0}
 
+        /* ===== FILTER KATEGORI (BARU) ===== */
+        .menu-filter{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+        .filter-btn{background:transparent;border:1px solid rgba(201,169,110,.3);color:var(--gray);padding:8px 22px;border-radius:30px;font-size:.7rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif}
+        .filter-btn:hover{border-color:var(--gold);color:var(--gold)}
+        .filter-btn.active{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);border-color:transparent;font-weight:600}
+
         .menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
         .menu-card{background:var(--dark-2);border-radius:14px;overflow:hidden;border:1px solid var(--glass-border);transition:all .4s cubic-bezier(.175,.885,.32,1.275);position:relative}
         .menu-card:hover{transform:translateY(-6px);border-color:rgba(201,169,110,.3);box-shadow:0 15px 40px rgba(0,0,0,.4)}
@@ -63,6 +69,7 @@
         .menu-card-btn:hover{background:var(--gold);color:var(--dark)}
         .menu-card-unavailable{position:absolute;inset:0;background:rgba(10,10,10,.7);display:flex;align-items:center;justify-content:center;z-index:5;border-radius:14px}
         .menu-card-unavailable span{background:rgba(255,68,68,.2);color:#ff6b6b;padding:6px 16px;border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,68,68,.3)}
+        .menu-empty{text-align:center;color:var(--gray-dark);padding:3rem;font-size:.85rem;grid-column:1/-1}
 
         .gallery-section{background:var(--dark-2);border-radius:20px;padding:2.5rem;margin:0 3rem}
         .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,190px);gap:.8rem}
@@ -128,7 +135,6 @@
         .footer-col a:hover{color:var(--gold)}
         .footer-bottom{text-align:center;padding-top:1.5rem;margin-top:1.5rem;border-top:1px solid var(--glass-border);color:var(--gray-dark);font-size:.7rem}
 
-        /* ===== ADMIN ===== */
         .admin-overlay{display:none;position:fixed;inset:0;z-index:2000;background:#0A0A0A;overflow-y:auto}
         .admin-sidebar{position:fixed;left:0;top:0;width:230px;height:100vh;background:var(--dark-2);border-right:1px solid var(--glass-border);padding:1.8rem 0;z-index:10}
         .admin-sidebar-logo{padding:0 1.3rem;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:2rem}
@@ -147,12 +153,10 @@
         .admin-card{background:var(--dark-2);border-radius:10px;border:1px solid var(--glass-border);padding:1.3rem;margin-bottom:1.3rem}
         .admin-card h3{font-size:.85rem;color:var(--white);margin-bottom:1rem;font-family:'Inter',sans-serif;font-weight:600}
 
-        /* Admin Add Form - 2 baris */
         .admin-form-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.7rem;margin-bottom:.7rem}
         .admin-form-grid input,.admin-form-grid select{padding:9px 12px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:6px;color:var(--white);font-family:'Inter',sans-serif;font-size:.75rem;width:100%}
         .admin-form-grid input:focus,.admin-form-grid select:focus{outline:none;border-color:var(--gold)}
 
-        /* Image Upload Area */
         .img-upload-area{display:grid;grid-template-columns:1fr 1fr auto;gap:.7rem;align-items:end}
         .img-upload-area input[type="text"]{padding:9px 12px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:6px;color:var(--white);font-family:'Inter',sans-serif;font-size:.75rem;width:100%}
         .img-upload-area input[type="text"]:focus{outline:none;border-color:var(--gold)}
@@ -191,7 +195,6 @@
         .status-confirmed{background:rgba(76,175,80,.1);color:var(--green);border:1px solid rgba(76,175,80,.2)}
         .status-done{background:rgba(255,255,255,.05);color:var(--gray);border:1px solid rgba(255,255,255,.1)}
 
-        /* Edit Modal */
         .modal-overlay{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.7);backdrop-filter:blur(5px);align-items:center;justify-content:center}
         .modal-overlay.show{display:flex}
         .modal-box{background:var(--dark-2);border:1px solid rgba(201,169,110,.2);border-radius:16px;padding:2rem;width:90%;max-width:480px;animation:fadeUp .3s ease;max-height:90vh;overflow-y:auto}
@@ -204,7 +207,6 @@
         .modal-cancel{background:transparent;color:var(--gray);border:1px solid var(--glass-border)}
         .modal-cancel:hover{border-color:var(--red);color:var(--red)}
 
-        /* Modal image section */
         .modal-img-section{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem}
         .modal-img-preview{width:100px;height:100px;border-radius:12px;overflow:hidden;border:1px solid var(--glass-border);background:var(--dark-3);flex-shrink:0;display:flex;align-items:center;justify-content:center}
         .modal-img-preview img{width:100%;height:100%;object-fit:cover}
@@ -252,6 +254,7 @@
             .hero-cta{flex-direction:column;align-items:center}
             .lokasi-info{padding:1.5rem}
             .admin-form-grid{grid-template-columns:1fr}
+            .filter-btn{padding:7px 16px;font-size:.65rem}
         }
     </style>
 </head>
@@ -292,6 +295,8 @@
         <h2 class="section-title">Menu Pilihan</h2>
         <div class="section-line"></div>
     </div>
+    <!-- FILTER KATEGORI (BARU) -->
+    <div class="menu-filter" id="menu-filter"></div>
     <div class="menu-grid" id="menu-container"></div>
 </section>
 
@@ -397,7 +402,7 @@
     <div class="footer-bottom"><p>&copy; 2026 Kafe Senja. Crafted with ☕ & ❤️</p></div>
 </footer>
 
-<!-- ===== ADMIN PANEL ===== -->
+<!-- ADMIN PANEL -->
 <div class="admin-overlay" id="admin-overlay">
     <div class="admin-sidebar">
         <div class="admin-sidebar-logo">☕ SENJA CMS</div>
@@ -421,7 +426,6 @@
             <div class="admin-stat-card"><div class="label">Reservasi Total</div><div class="value" id="stat-res-total">0</div></div>
         </div>
 
-        <!-- ===== ADD MENU FORM (dengan gambar) ===== -->
         <div class="admin-card">
             <h3>➕ Tambah Menu Baru</h3>
             <form id="admin-add-form">
@@ -450,7 +454,6 @@
             </form>
         </div>
 
-        <!-- Menu Table -->
         <div class="admin-card">
             <h3>☕ Daftar Menu — <span id="menu-count-label" style="color:var(--gold)">0 item</span></h3>
             <table class="admin-table">
@@ -459,7 +462,6 @@
             </table>
         </div>
 
-        <!-- Reservation Table -->
         <div class="admin-card">
             <h3>📋 Reservasi Masuk — <span id="res-count-label" style="color:var(--gold)">0 pending</span></h3>
             <table class="admin-table">
@@ -470,12 +472,10 @@
     </div>
 </div>
 
-<!-- ===== EDIT MODAL (dengan gambar) ===== -->
+<!-- EDIT MODAL -->
 <div class="modal-overlay" id="edit-modal">
     <div class="modal-box">
         <h3>✏️ Edit Menu</h3>
-
-        <!-- Image Section -->
         <div class="modal-img-section">
             <div class="modal-img-preview" id="edit-img-preview">
                 <span class="placeholder">🖼</span>
@@ -488,14 +488,12 @@
                 </label>
             </div>
         </div>
-
         <div class="form-group"><label>Nama Menu</label><input type="text" id="edit-name"></div>
         <div class="form-group"><label>Harga (Rp)</label><input type="number" id="edit-price"></div>
         <div class="form-group"><label>Kategori</label>
             <select id="edit-cat"><option value="Kopi">Kopi</option><option value="Non-Kopi">Non-Kopi</option><option value="Makanan">Makanan</option><option value="Dessert">Dessert</option></select>
         </div>
         <div class="form-group"><label>Deskripsi</label><input type="text" id="edit-desc"></div>
-
         <div class="modal-actions">
             <button class="modal-cancel" onclick="closeEditModal()">Batal</button>
             <button class="modal-save" onclick="saveEdit()">💾 Simpan Perubahan</button>
@@ -524,6 +522,7 @@ const defaultMenus=[
 let editIndex=null;
 let addImgData='';
 let editImgData='';
+let activeCategory='Semua';
 const defaultImg='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80';
 
 function getMenus(){return JSON.parse(localStorage.getItem('kafe_menus'))||defaultMenus;}
@@ -539,10 +538,33 @@ function showToast(msg,icon='✅'){
     setTimeout(()=>t.classList.remove('show'),3000);
 }
 
+// ===== FILTER KATEGORI (BARU) =====
+function renderCategoryButtons(){
+    const menus=getMenus();
+    const categories=['Semua',...new Set(menus.map(m=>m.category))];
+    document.getElementById('menu-filter').innerHTML=categories.map(cat=>
+        `<button class="filter-btn ${activeCategory===cat?'active':''}" onclick="filterCategory('${cat}')">${cat}</button>`
+    ).join('');
+}
+
+window.filterCategory=cat=>{
+    activeCategory=cat;
+    renderPublic();
+    renderCategoryButtons();
+};
+
 // ===== RENDER PUBLIC =====
 function renderPublic(){
     const menus=getMenus();
-    document.getElementById('menu-container').innerHTML=menus.map(item=>{
+    const filtered=activeCategory==='Semua'?menus:menus.filter(m=>m.category===activeCategory);
+    const container=document.getElementById('menu-container');
+
+    if(filtered.length===0){
+        container.innerHTML='<div class="menu-empty">Belum ada menu di kategori ini.</div>';
+        return;
+    }
+
+    container.innerHTML=filtered.map(item=>{
         let badge='';
         if(item.bestSeller) badge='<span class="menu-card-badge best">Best Seller</span>';
         else if(item.isNew) badge='<span class="menu-card-badge new">New</span>';
@@ -597,9 +619,9 @@ function renderAdmin(){
     }).join('')||'<tr><td colspan="6" style="text-align:center;color:#555;padding:2rem;">Belum ada reservasi masuk</td></tr>';
 }
 
-function renderAll(){renderPublic();renderAdmin();}
+function renderAll(){renderCategoryButtons();renderPublic();renderAdmin();}
 
-// ===== IMAGE HANDLING - ADD FORM =====
+// ===== IMAGE HANDLING =====
 window.previewAddImg=function(input){
     if(input.files&&input.files[0]){
         const reader=new FileReader();
@@ -612,7 +634,6 @@ window.previewAddImg=function(input){
     }
 };
 
-// ===== IMAGE HANDLING - EDIT MODAL =====
 window.previewEditUrl=function(){
     const url=document.getElementById('edit-img-url').value.trim();
     if(url){
