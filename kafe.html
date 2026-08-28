@@ -21,8 +21,11 @@
         .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
         .nav-links a:hover,.nav-links a.active{color:var(--gold)}
         .nav-links a:hover::after,.nav-links a.active::after{width:100%}
-        .nav-admin-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 16px;border-radius:30px;cursor:pointer;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-family:'Inter',sans-serif;font-weight:600}
-        .nav-admin-btn:hover{background:var(--gold);color:var(--dark)}
+        .nav-cart-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 16px;border-radius:30px;cursor:pointer;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-family:'Inter',sans-serif;font-weight:600;position:relative}
+        .nav-cart-btn:hover{background:var(--gold);color:var(--dark)}
+        .nav-admin-btn{background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);padding:6px 16px;border-radius:30px;cursor:pointer;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;font-family:'Inter',sans-serif;font-weight:600}
+        .nav-admin-btn:hover{border-color:var(--white);color:var(--white)}
+        .nav-btns{display:flex;gap:.6rem;align-items:center}
 
         .hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;background:linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,.85) 100%),url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=80') center/cover no-repeat}
         .hero-content{animation:fadeUp 1.2s ease}
@@ -66,7 +69,7 @@
         .menu-card-price{font-size:.95rem;font-weight:700;color:var(--gold)}
         .menu-card-btn{background:linear-gradient(135deg,var(--wa),#1DA851);border:none;color:#fff;padding:5px 14px;border-radius:15px;font-size:.6rem;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px}
         .menu-card-btn:hover{transform:scale(1.05);box-shadow:0 5px 20px rgba(37,211,102,.3)}
-        .menu-card-btn svg{width:12px;height:12px}
+        .menu-card-btn.in-cart{background:var(--dark-3);color:var(--gold);border:1px solid var(--gold)}
         .menu-card-unavailable{position:absolute;inset:0;background:rgba(10,10,10,.7);display:flex;align-items:center;justify-content:center;z-index:5;border-radius:14px}
         .menu-card-unavailable span{background:rgba(255,68,68,.2);color:#ff6b6b;padding:6px 16px;border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,68,68,.3)}
         .menu-empty{text-align:center;color:var(--gray-dark);padding:3rem;font-size:.85rem;grid-column:1/-1}
@@ -93,7 +96,6 @@
         .about-stat h3{font-size:1.6rem;color:var(--gold);font-family:'Inter',sans-serif;font-weight:700}
         .about-stat p{font-size:.7rem;color:var(--gray)}
 
-        /* TESTIMONI */
         .testimoni-section{background:linear-gradient(180deg,var(--dark-2) 0%,var(--dark) 100%);padding:2.5rem 3rem}
         .testimoni-inner{max-width:1400px;margin:0 auto}
         .testimoni-header-row{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.5rem}
@@ -106,7 +108,6 @@
         .testimoni-grid::-webkit-scrollbar{height:5px}
         .testimoni-grid::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:3px}
         .testimoni-grid::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--gold),var(--gold-dark));border-radius:3px}
-        .testimoni-grid::-webkit-scrollbar-thumb:hover{background:var(--gold-light)}
         .testimoni-card{min-width:330px;max-width:330px;flex-shrink:0;scroll-snap-align:start;background:var(--dark-2);border:1px solid var(--glass-border);border-radius:18px;padding:1.8rem;position:relative;transition:all .4s}
         .testimoni-card:hover{transform:translateY(-5px);border-color:rgba(201,169,110,.25);box-shadow:0 15px 40px rgba(0,0,0,.35)}
         .testimoni-quote{position:absolute;top:1rem;right:1.3rem;font-family:'Playfair Display',serif;font-size:3rem;color:rgba(201,169,110,.12);line-height:1}
@@ -170,19 +171,127 @@
         .footer-col a:hover{color:var(--gold)}
         .footer-bottom{text-align:center;padding-top:1.5rem;margin-top:1.5rem;border-top:1px solid var(--glass-border);color:var(--gray-dark);font-size:.7rem}
 
-        /* ===== FLOATING WA BUTTON (BARU) ===== */
-        .wa-float{
+        /* ===== FLOATING CART BUTTON ===== */
+        .cart-float{
             position:fixed;bottom:2rem;right:2rem;z-index:999;
             width:60px;height:60px;border-radius:50%;
-            background:var(--wa);
+            background:linear-gradient(135deg,var(--gold),var(--gold-dark));
             display:flex;align-items:center;justify-content:center;
-            box-shadow:0 5px 25px rgba(37,211,102,.4);
-            cursor:pointer;transition:all .3s;
-            animation:waFloat 3s ease-in-out infinite;
+            box-shadow:0 5px 25px rgba(201,169,110,.4);
+            cursor:pointer;transition:all .3s;border:none;
         }
-        .wa-float:hover{transform:scale(1.1);box-shadow:0 8px 35px rgba(37,211,102,.5)}
-        .wa-float svg{width:32px;height:32px;fill:#fff}
-        @keyframes waFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+        .cart-float:hover{transform:scale(1.1);box-shadow:0 8px 35px rgba(201,169,110,.5)}
+        .cart-float svg{width:26px;height:26px;fill:var(--dark)}
+        .cart-badge{
+            position:absolute;top:-4px;right:-4px;
+            background:var(--red);color:#fff;
+            width:22px;height:22px;border-radius:50%;
+            font-size:.65rem;font-weight:700;
+            display:flex;align-items:center;justify-content:center;
+            font-family:'Inter',sans-serif;
+            transition:transform .3s;
+        }
+        .cart-badge.bump{animation:bumpAnim .3s ease}
+        @keyframes bumpAnim{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
+
+        /* ===== CART DRAWER ===== */
+        .cart-overlay{
+            display:none;position:fixed;inset:0;z-index:2500;
+            background:rgba(0,0,0,.6);backdrop-filter:blur(3px);
+        }
+        .cart-overlay.show{display:block}
+        .cart-drawer{
+            position:fixed;top:0;right:-420px;width:400px;max-width:90vw;height:100vh;
+            background:var(--dark-2);z-index:2600;
+            border-left:1px solid rgba(201,169,110,.15);
+            display:flex;flex-direction:column;
+            transition:right .4s cubic-bezier(.4,0,.2,1);
+        }
+        .cart-drawer.show{right:0}
+        .cart-drawer-header{
+            padding:1.5rem;border-bottom:1px solid var(--glass-border);
+            display:flex;justify-content:space-between;align-items:center;
+        }
+        .cart-drawer-header h3{font-size:1.1rem;color:var(--gold);font-family:'Playfair Display',serif}
+        .cart-close-btn{background:none;border:none;color:var(--gray);font-size:1.3rem;cursor:pointer;transition:color .3s}
+        .cart-close-btn:hover{color:var(--red)}
+        .cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem}
+        .cart-item{
+            display:flex;gap:1rem;align-items:center;
+            padding:1rem 0;border-bottom:1px solid var(--glass-border);
+        }
+        .cart-item-img{width:55px;height:55px;border-radius:10px;object-fit:cover;border:1px solid var(--glass-border);flex-shrink:0}
+        .cart-item-info{flex:1}
+        .cart-item-info h4{font-size:.8rem;color:var(--white);font-family:'Inter',sans-serif;font-weight:600;margin-bottom:.2rem}
+        .cart-item-info p{font-size:.75rem;color:var(--gold);font-weight:600}
+        .cart-item-controls{display:flex;align-items:center;gap:.5rem}
+        .qty-btn{
+            width:26px;height:26px;border-radius:6px;
+            background:var(--dark-3);border:1px solid var(--glass-border);
+            color:var(--white);cursor:pointer;font-size:.85rem;
+            display:flex;align-items:center;justify-content:center;
+            transition:all .2s;font-family:'Inter',sans-serif;
+        }
+        .qty-btn:hover{border-color:var(--gold);color:var(--gold)}
+        .qty-num{font-size:.85rem;color:var(--white);min-width:20px;text-align:center;font-weight:600}
+        .cart-item-remove{background:none;border:none;color:var(--gray);cursor:pointer;font-size:.9rem;transition:color .2s;padding:4px}
+        .cart-item-remove:hover{color:var(--red)}
+        .cart-empty{text-align:center;color:var(--gray-dark);padding:3rem 1rem;font-size:.85rem}
+        .cart-empty span{font-size:2.5rem;display:block;margin-bottom:.8rem;opacity:.3}
+        .cart-drawer-footer{padding:1.5rem;border-top:1px solid var(--glass-border)}
+        .cart-table-row{padding:.3rem 0;font-size:.85rem}
+        .cart-meja{margin:.8rem 0}
+        .cart-meja input{width:100%;padding:10px 14px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:8px;color:var(--white);font-size:.8rem;font-family:'Inter',sans-serif}
+        .cart-meja input:focus{outline:none;border-color:var(--gold)}
+        .cart-checkout-btn{
+            width:100%;padding:14px;
+            background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+            color:var(--dark);border:none;border-radius:10px;
+            font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+            cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s;margin-top:.8rem;
+        }
+        .cart-checkout-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(201,169,110,.3)}
+
+        /* ===== ORDER CONFIRM MODAL ===== */
+        .confirm-overlay{
+            display:none;position:fixed;inset:0;z-index:3000;
+            background:rgba(0,0,0,.75);backdrop-filter:blur(6px);
+            align-items:center;justify-content:center;
+        }
+        .confirm-overlay.show{display:flex}
+        .confirm-box{
+            background:var(--dark-2);border:1px solid rgba(201,169,110,.2);
+            border-radius:20px;padding:2rem;width:90%;max-width:440px;
+            animation:fadeUp .3s ease;max-height:85vh;overflow-y:auto;
+        }
+        .confirm-box h3{color:var(--gold);margin-bottom:.3rem;font-size:1.2rem}
+        .confirm-box .confirm-sub{color:var(--gray);font-size:.75rem;margin-bottom:1.5rem}
+        .confirm-item{
+            display:flex;justify-content:space-between;align-items:center;
+            padding:.7rem 0;border-bottom:1px solid var(--glass-border);
+            font-size:.83rem;
+        }
+        .confirm-item-left{display:flex;align-items:center;gap:.6rem}
+        .confirm-item-left .ci-name{color:var(--white);font-weight:500}
+        .confirm-item-left .ci-qty{color:var(--gray);font-size:.75rem}
+        .confirm-item-price{color:var(--gold);font-weight:600}
+        .confirm-total-row{
+            display:flex;justify-content:space-between;
+            padding:1rem 0 .5rem;font-size:1rem;font-weight:700;
+        }
+        .confirm-total-row span:last-child{color:var(--gold)}
+        .confirm-meja-note{
+            background:var(--dark-3);border-radius:8px;padding:.8rem 1rem;
+            font-size:.78rem;color:var(--gray);margin:.5rem 0 1rem;
+        }
+        .confirm-meja-note strong{color:var(--gold)}
+        .confirm-btns{display:flex;gap:.8rem;margin-top:1rem}
+        .confirm-btns button{flex:1;padding:13px;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;transition:all .3s;text-transform:uppercase;letter-spacing:.5px}
+        .confirm-back{background:transparent;color:var(--gray);border:1px solid var(--glass-border)}
+        .confirm-back:hover{border-color:var(--red);color:var(--red)}
+        .confirm-send{background:linear-gradient(135deg,var(--wa),#1DA851);color:#fff;border:none;display:flex;align-items:center;justify-content:center;gap:6px}
+        .confirm-send:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,.3)}
+        .confirm-send svg{width:16px;height:16px;fill:#fff}
 
         .admin-overlay{display:none;position:fixed;inset:0;z-index:2000;background:#0A0A0A;overflow-y:auto}
         .admin-sidebar{position:fixed;left:0;top:0;width:230px;height:100vh;background:var(--dark-2);border-right:1px solid var(--glass-border);padding:1.8rem 0;z-index:10}
@@ -201,11 +310,9 @@
         .admin-stat-card .value{font-size:1.6rem;font-weight:700;color:var(--gold);margin-top:.2rem}
         .admin-card{background:var(--dark-2);border-radius:10px;border:1px solid var(--glass-border);padding:1.3rem;margin-bottom:1.3rem}
         .admin-card h3{font-size:.85rem;color:var(--white);margin-bottom:1rem;font-family:'Inter',sans-serif;font-weight:600}
-
         .admin-form-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.7rem;margin-bottom:.7rem}
         .admin-form-grid input,.admin-form-grid select{padding:9px 12px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:6px;color:var(--white);font-family:'Inter',sans-serif;font-size:.75rem;width:100%}
         .admin-form-grid input:focus,.admin-form-grid select:focus{outline:none;border-color:var(--gold)}
-
         .img-upload-area{display:grid;grid-template-columns:1fr 1fr auto;gap:.7rem;align-items:end}
         .img-upload-area input[type="text"]{padding:9px 12px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:6px;color:var(--white);font-family:'Inter',sans-serif;font-size:.75rem;width:100%}
         .img-upload-area input[type="text"]:focus{outline:none;border-color:var(--gold)}
@@ -215,30 +322,25 @@
         .img-preview-box{width:50px;height:50px;border-radius:8px;overflow:hidden;border:1px solid var(--glass-border);background:var(--dark-3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
         .img-preview-box img{width:100%;height:100%;object-fit:cover}
         .img-preview-box .placeholder{font-size:1.2rem;opacity:.3}
-
         .admin-add-btn{padding:9px 18px;background:var(--gold);color:var(--dark);border:none;border-radius:6px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;font-size:.75rem;transition:all .3s;white-space:nowrap;margin-top:.7rem}
         .admin-add-btn:hover{background:var(--gold-light)}
-
         .admin-table{width:100%;border-collapse:collapse}
         .admin-table th{text-align:left;padding:9px 12px;font-size:.6rem;text-transform:uppercase;letter-spacing:1px;color:var(--gray);border-bottom:1px solid var(--glass-border)}
         .admin-table td{padding:10px 12px;font-size:.75rem;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.02);vertical-align:middle}
         .admin-table tr:hover td{background:rgba(201,169,110,.02)}
         .table-thumb{width:45px;height:45px;border-radius:8px;object-fit:cover;border:1px solid var(--glass-border)}
-
         .btn-sm{padding:4px 10px;border-radius:4px;cursor:pointer;font-size:.6rem;transition:all .3s;border:1px solid;font-family:'Inter',sans-serif;background:transparent}
         .btn-sm-edit{color:var(--blue);border-color:rgba(91,155,213,.3)}.btn-sm-edit:hover{background:var(--blue);color:#fff}
         .btn-sm-danger{color:var(--red);border-color:rgba(255,68,68,.3)}.btn-sm-danger:hover{background:var(--red);color:#fff}
         .btn-sm-success{color:var(--green);border-color:rgba(76,175,80,.3)}.btn-sm-success:hover{background:var(--green);color:#fff}
         .btn-sm-gold{color:var(--gold);border-color:rgba(201,169,110,.3)}.btn-sm-gold:hover{background:var(--gold);color:var(--dark)}
         .btn-group{display:flex;gap:5px;flex-wrap:wrap}
-
         .toggle-wrap{display:flex;align-items:center;gap:6px}
         .toggle{width:36px;height:20px;border-radius:10px;background:var(--dark-3);border:1px solid var(--glass-border);cursor:pointer;position:relative;transition:all .3s;flex-shrink:0}
         .toggle.on{background:rgba(201,169,110,.3);border-color:var(--gold)}
         .toggle::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--gray);transition:all .3s}
         .toggle.on::after{left:18px;background:var(--gold)}
         .toggle-label{font-size:.6rem;color:var(--gray)}
-
         .status-badge{padding:3px 8px;border-radius:10px;font-size:.55rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;display:inline-block}
         .status-pending{background:rgba(255,193,7,.1);color:#FFC107;border:1px solid rgba(255,193,7,.2)}
         .status-confirmed{background:rgba(76,175,80,.1);color:var(--green);border:1px solid rgba(76,175,80,.2)}
@@ -255,7 +357,6 @@
         .modal-save:hover{background:var(--gold-light)}
         .modal-cancel{background:transparent;color:var(--gray);border:1px solid var(--glass-border)}
         .modal-cancel:hover{border-color:var(--red);color:var(--red)}
-
         .modal-img-section{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem}
         .modal-img-preview{width:100px;height:100px;border-radius:12px;overflow:hidden;border:1px solid var(--glass-border);background:var(--dark-3);flex-shrink:0;display:flex;align-items:center;justify-content:center}
         .modal-img-preview img{width:100%;height:100%;object-fit:cover}
@@ -267,7 +368,7 @@
         .modal-file-btn:hover{border-color:var(--gold);background:rgba(201,169,110,.05)}
         .modal-file-btn input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
 
-        .toast{position:fixed;bottom:2rem;right:2rem;z-index:4000;background:var(--dark-2);border:1px solid var(--gold);border-radius:10px;padding:1rem 1.5rem;color:var(--white);font-size:.8rem;transform:translateY(100px);opacity:0;transition:all .4s ease;display:flex;align-items:center;gap:.8rem}
+        .toast{position:fixed;bottom:6rem;right:2rem;z-index:4000;background:var(--dark-2);border:1px solid var(--gold);border-radius:10px;padding:1rem 1.5rem;color:var(--white);font-size:.8rem;transform:translateY(100px);opacity:0;transition:all .4s ease;display:flex;align-items:center;gap:.8rem}
         .toast.show{transform:translateY(0);opacity:1}
         .toast-icon{font-size:1.2rem}
 
@@ -308,8 +409,9 @@
             .lokasi-info{padding:1.5rem}
             .admin-form-grid{grid-template-columns:1fr}
             .filter-btn{padding:7px 16px;font-size:.65rem}
-            .wa-float{width:50px;height:50px;bottom:1.5rem;right:1.5rem}
-            .wa-float svg{width:26px;height:26px}
+            .cart-float{width:50px;height:50px;bottom:1.5rem;right:1.5rem}
+            .cart-float svg{width:22px;height:22px}
+            .toast{bottom:5rem;right:1rem;left:1rem}
         }
     </style>
 </head>
@@ -327,7 +429,10 @@
         <li><a onclick="goTo('#lokasi')" data-section="lokasi">Lokasi</a></li>
         <li><a onclick="goTo('#reservasi')" data-section="reservasi">Reservasi</a></li>
     </ul>
-    <button class="nav-admin-btn" onclick="openAdmin()">Admin</button>
+    <div class="nav-btns">
+        <button class="nav-cart-btn" onclick="openCart()">🛒 Keranjang <span id="nav-cart-count">(0)</span></button>
+        <button class="nav-admin-btn" onclick="openAdmin()">Admin</button>
+    </div>
 </nav>
 
 <!-- HERO -->
@@ -412,20 +517,11 @@
                 <p>Pernah menikmati suasana di Kafe Senja? Ceritakan pengalamanmu. Testimoni yang kamu kirim akan tampil di sini setelah kami review. ☕</p>
             </div>
             <form class="testimoni-form-box" id="testimoni-form">
-                <div class="form-group" style="margin-bottom:0;">
-                    <label>Nama Kamu</label>
-                    <input type="text" id="testi-name" placeholder="Masukkan nama" required>
+                <div class="form-group" style="margin-bottom:0;"><label>Nama Kamu</label><input type="text" id="testi-name" placeholder="Masukkan nama" required></div>
+                <div class="form-group" style="margin-bottom:0;"><label>Rating</label>
+                    <div class="star-input" id="star-input"><span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span></div>
                 </div>
-                <div class="form-group" style="margin-bottom:0;">
-                    <label>Rating</label>
-                    <div class="star-input" id="star-input">
-                        <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
-                    </div>
-                </div>
-                <div class="form-group" style="margin-bottom:0;">
-                    <label>Testimoni</label>
-                    <textarea id="testi-msg" rows="3" placeholder="Tulis pengalamanmu di sini..." required></textarea>
-                </div>
+                <div class="form-group" style="margin-bottom:0;"><label>Testimoni</label><textarea id="testi-msg" rows="3" placeholder="Tulis pengalamanmu di sini..." required></textarea></div>
                 <button type="submit" class="btn-full">Kirim Testimoni</button>
             </form>
         </div>
@@ -498,37 +594,71 @@
     <div class="footer-bottom"><p>&copy; 2026 Kafe Senja. Crafted with ☕ & ❤️</p></div>
 </footer>
 
-<!-- ===== FLOATING WA BUTTON (BARU) ===== -->
-<a class="wa-float" id="wa-float-btn" href="#" target="_blank" title="Chat WhatsApp">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+<!-- ===== FLOATING CART BUTTON ===== -->
+<button class="cart-float" onclick="openCart()" title="Keranjang">
+    <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+    <span class="cart-badge" id="cart-badge">0</span>
+</button>
+
+<!-- ===== CART DRAWER ===== -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+        <h3>🛒 Keranjang Kamu</h3>
+        <button class="cart-close-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-drawer-footer" id="cart-footer">
+        <div class="cart-meja">
+            <label style="font-size:.65rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem;font-weight:500;">🪑 Nomor Meja (Opsional)</label>
+            <input type="text" id="cart-meja-input" placeholder="Contoh: Meja 5 / Area Outdoor">
+        </div>
+        <div class="cart-table-row" style="display:flex;justify-content:space-between;color:var(--gray);">
+            <span>Total Item</span><span id="cart-total-items" style="color:var(--white);font-weight:600;">0</span>
+        </div>
+        <div class="cart-table-row" style="display:flex;justify-content:space-between;font-size:1.05rem;font-weight:700;">
+            <span>Total</span><span id="cart-total-price" style="color:var(--gold);">Rp 0</span>
+        </div>
+        <button class="cart-checkout-btn" onclick="showConfirmModal()">✅ Konfirmasi Order</button>
+    </div>
+</div>
+
+<!-- ===== ORDER CONFIRM MODAL ===== -->
+<div class="confirm-overlay" id="confirm-modal">
+    <div class="confirm-box">
+        <h3>📋 Konfirmasi Order</h3>
+        <p class="confirm-sub">Periksa kembali pesananmu sebelum dikirim via WhatsApp</p>
+        <div id="confirm-items"></div>
+        <div class="confirm-total-row">
+            <span>Total</span><span id="confirm-total">Rp 0</span>
+        </div>
+        <div class="confirm-meja-note" id="confirm-meja-note"></div>
+        <div class="confirm-btns">
+            <button class="confirm-back" onclick="closeConfirmModal()">← Kembali</button>
+            <button class="confirm-send" onclick="sendOrderWA()">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Kirim via WhatsApp
+            </button>
+        </div>
+    </div>
+</div>
 
 <!-- ADMIN PANEL -->
 <div class="admin-overlay" id="admin-overlay">
     <div class="admin-sidebar">
         <div class="admin-sidebar-logo">☕ SENJA CMS</div>
         <ul class="admin-nav">
-            <li class="active">📊 Dashboard</li>
-            <li>☕ Menu</li>
-            <li>📋 Reservasi</li>
-            <li>💬 Testimoni</li>
-            <li>⚙️ Pengaturan</li>
+            <li class="active">📊 Dashboard</li><li>☕ Menu</li><li>📋 Reservasi</li><li>💬 Testimoni</li><li>⚙️ Pengaturan</li>
         </ul>
     </div>
     <div class="admin-main">
-        <div class="admin-header">
-            <h1>Dashboard</h1>
-            <button class="admin-header-btn" onclick="closeAdmin()">✕ Keluar</button>
-        </div>
-
+        <div class="admin-header"><h1>Dashboard</h1><button class="admin-header-btn" onclick="closeAdmin()">✕ Keluar</button></div>
         <div class="admin-stats">
             <div class="admin-stat-card"><div class="label">Total Menu</div><div class="value" id="stat-menu">0</div></div>
             <div class="admin-stat-card"><div class="label">Menu Aktif</div><div class="value" id="stat-active">0</div></div>
             <div class="admin-stat-card"><div class="label">Reservasi Pending</div><div class="value" id="stat-res-pending">0</div></div>
             <div class="admin-stat-card"><div class="label">Testimoni Pending</div><div class="value" id="stat-testi-pending">0</div></div>
         </div>
-
-        <!-- Add Menu -->
         <div class="admin-card">
             <h3>➕ Tambah Menu Baru</h3>
             <form id="admin-add-form">
@@ -536,12 +666,7 @@
                     <input type="text" id="adm-name" placeholder="Nama menu..." required>
                     <input type="number" id="adm-price" placeholder="Harga (Rp)" required>
                     <input type="text" id="adm-desc" placeholder="Deskripsi singkat...">
-                    <select id="adm-cat">
-                        <option value="Kopi">Kopi</option>
-                        <option value="Non-Kopi">Non-Kopi</option>
-                        <option value="Makanan">Makanan</option>
-                        <option value="Dessert">Dessert</option>
-                    </select>
+                    <select id="adm-cat"><option value="Kopi">Kopi</option><option value="Non-Kopi">Non-Kopi</option><option value="Makanan">Makanan</option><option value="Dessert">Dessert</option></select>
                 </div>
                 <div class="img-upload-area">
                     <input type="text" id="adm-img-url" placeholder="🔗 Paste URL gambar (opsional)...">
@@ -551,45 +676,22 @@
                 <button type="submit" class="admin-add-btn">+ Tambah Menu</button>
             </form>
         </div>
-
-        <!-- Menu Table -->
         <div class="admin-card">
             <h3>☕ Daftar Menu — <span id="menu-count-label" style="color:var(--gold)">0 item</span></h3>
-            <table class="admin-table">
-                <thead><tr><th>Foto</th><th>Nama</th><th>Kategori</th><th>Harga</th><th>Status</th><th>Best</th><th>Aksi</th></tr></thead>
-                <tbody id="admin-menu-tbody"></tbody>
-            </table>
+            <table class="admin-table"><thead><tr><th>Foto</th><th>Nama</th><th>Kategori</th><th>Harga</th><th>Status</th><th>Best</th><th>Aksi</th></tr></thead><tbody id="admin-menu-tbody"></tbody></table>
         </div>
-
-        <!-- Reservation Table -->
         <div class="admin-card">
             <h3>📋 Reservasi Masuk — <span id="res-count-label" style="color:var(--gold)">0 pending</span></h3>
-            <table class="admin-table">
-                <thead><tr><th>Nama</th><th>Tamu</th><th>Waktu</th><th>Area</th><th>Status</th><th>Aksi</th></tr></thead>
-                <tbody id="admin-res-tbody"></tbody>
-            </table>
+            <table class="admin-table"><thead><tr><th>Nama</th><th>Tamu</th><th>Waktu</th><th>Area</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="admin-res-tbody"></tbody></table>
         </div>
-
-        <!-- Testimoni Table -->
         <div class="admin-card">
-            <h3>💬 Testimoni Pengunjung — <span id="testi-count-label" style="color:var(--gold)">0 pending</span></h3>
-            <table class="admin-table">
-                <thead><tr><th>Nama</th><th>Rating</th><th>Pesan</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead>
-                <tbody id="admin-testi-tbody"></tbody>
-            </table>
+            <h3>💬 Testimoni — <span id="testi-count-label" style="color:var(--gold)">0 pending</span></h3>
+            <table class="admin-table"><thead><tr><th>Nama</th><th>Rating</th><th>Pesan</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="admin-testi-tbody"></tbody></table>
         </div>
-
-        <!-- Settings (BARU - Pengaturan WA) -->
         <div class="admin-card">
             <h3>⚙️ Pengaturan WhatsApp</h3>
-            <div class="form-group">
-                <label>Nomor WhatsApp (format: 62812xxxxxxx)</label>
-                <input type="text" id="wa-number-input" placeholder="6281234567890">
-            </div>
-            <div class="form-group">
-                <label>Pesan Pembuka Otomatis</label>
-                <input type="text" id="wa-greeting-input" placeholder="Halo Kafe Senja!">
-            </div>
+            <div class="form-group"><label>Nomor WhatsApp (format: 62812xxxxxxx)</label><input type="text" id="wa-number-input" placeholder="6281234567890"></div>
+            <div class="form-group"><label>Pesan Pembuka</label><input type="text" id="wa-greeting-input" placeholder="Halo Kafe Senja!"></div>
             <button class="admin-add-btn" onclick="saveWaSettings()">💾 Simpan Pengaturan</button>
         </div>
     </div>
@@ -608,22 +710,14 @@
         </div>
         <div class="form-group"><label>Nama Menu</label><input type="text" id="edit-name"></div>
         <div class="form-group"><label>Harga (Rp)</label><input type="number" id="edit-price"></div>
-        <div class="form-group"><label>Kategori</label>
-            <select id="edit-cat"><option value="Kopi">Kopi</option><option value="Non-Kopi">Non-Kopi</option><option value="Makanan">Makanan</option><option value="Dessert">Dessert</option></select>
-        </div>
+        <div class="form-group"><label>Kategori</label><select id="edit-cat"><option value="Kopi">Kopi</option><option value="Non-Kopi">Non-Kopi</option><option value="Makanan">Makanan</option><option value="Dessert">Dessert</option></select></div>
         <div class="form-group"><label>Deskripsi</label><input type="text" id="edit-desc"></div>
-        <div class="modal-actions">
-            <button class="modal-cancel" onclick="closeEditModal()">Batal</button>
-            <button class="modal-save" onclick="saveEdit()">💾 Simpan Perubahan</button>
-        </div>
+        <div class="modal-actions"><button class="modal-cancel" onclick="closeEditModal()">Batal</button><button class="modal-save" onclick="saveEdit()">💾 Simpan</button></div>
     </div>
 </div>
 
 <!-- TOAST -->
-<div class="toast" id="toast">
-    <span class="toast-icon" id="toast-icon">✅</span>
-    <span id="toast-msg">Berhasil!</span>
-</div>
+<div class="toast" id="toast"><span class="toast-icon" id="toast-icon">✅</span><span id="toast-msg">Berhasil!</span></div>
 
 <script>
 const defaultMenus=[
@@ -636,7 +730,6 @@ const defaultMenus=[
     {id:7,name:"Affogato",price:30000,category:"Dessert",desc:"Espresso panas dituang di atas gelato vanilla",img:"https://images.unsplash.com/photo-1579888944880-d98341245702?w=400&q=80",available:true,bestSeller:false,isNew:true},
     {id:8,name:"Iced Americano",price:25000,category:"Kopi",desc:"Double shot espresso dengan air dingin dan es",img:"https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=400&q=80",available:true,bestSeller:false,isNew:false}
 ];
-
 const defaultTestimonials=[
     {id:1,name:"Andi Pratama",rating:5,msg:"Kopinya juara banget! Suasana cozy, cocok buat kerja. Barista ramah dan latte art-nya cantik. Pasti balik lagi.",date:"2026-08-10",approved:true},
     {id:2,name:"Siti Rahma",rating:5,msg:"Tempatnya estetik, kopinya enak, dan pelayanannya cepat. Tiramisu-nya wajib dicoba! Highly recommended.",date:"2026-08-15",approved:true},
@@ -644,9 +737,9 @@ const defaultTestimonials=[
 ];
 
 let editIndex=null,addImgData='',editImgData='',activeCategory='Semua',currentRating=5;
+let cart=[]; // [{id,name,price,img,qty}]
 const defaultImg='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80';
 
-// ===== DATA HELPERS =====
 function getMenus(){return JSON.parse(localStorage.getItem('kafe_menus'))||defaultMenus;}
 function setMenus(d){localStorage.setItem('kafe_menus',JSON.stringify(d));}
 function getReservations(){return JSON.parse(localStorage.getItem('kafe_reservations'))||[];}
@@ -657,23 +750,133 @@ function getWaNumber(){return localStorage.getItem('kafe_wa_number')||'628123456
 function getWaGreeting(){return localStorage.getItem('kafe_wa_greeting')||'Halo Kafe Senja!';}
 
 function showToast(msg,icon='✅'){
-    const t=document.getElementById('toast');
     document.getElementById('toast-msg').textContent=msg;
     document.getElementById('toast-icon').textContent=icon;
-    t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),3000);
+    document.getElementById('toast').classList.add('show');
+    setTimeout(()=>document.getElementById('toast').classList.remove('show'),3000);
 }
 
-// ===== WA ORDER FUNCTION (BARU) =====
-window.orderViaWA=function(name,price){
-    const waNum=getWaNumber();
-    const greeting=getWaGreeting();
-    const msg=`${greeting} Saya ingin memesan:\n\n☕ *${name}*\n💰 Rp ${parseInt(price).toLocaleString()}\n\nMohon info ketersediaan. Terima kasih!`;
-    const url=`https://wa.me/${waNum}?text=${encodeURIComponent(msg)}`;
-    window.open(url,'_blank');
+// ===== CART SYSTEM =====
+function getCartTotal(){return cart.reduce((s,i)=>s+i.price*i.qty,0);}
+function getCartCount(){return cart.reduce((s,i)=>s+i.qty,0);}
+
+window.addToCart=function(id){
+    const menus=getMenus();
+    const item=menus.find(m=>m.id===id);
+    if(!item||!item.available)return;
+    const existing=cart.find(c=>c.id===id);
+    if(existing){existing.qty++;}
+    else{cart.push({id:item.id,name:item.name,price:parseInt(item.price),img:item.img||defaultImg,qty:1});}
+    updateCartUI();renderPublic();
+    showToast(`"${item.name}" ditambahkan ke keranjang`,'🛒');
+    bumpBadge();
 };
 
-// ===== FILTER KATEGORI =====
+window.changeQty=function(id,delta){
+    const item=cart.find(c=>c.id===id);
+    if(!item)return;
+    item.qty+=delta;
+    if(item.qty<=0)cart=cart.filter(c=>c.id!==id);
+    updateCartUI();renderPublic();
+};
+
+window.removeFromCart=function(id){
+    cart=cart.filter(c=>c.id!==id);
+    updateCartUI();renderPublic();
+};
+
+function bumpBadge(){
+    const badge=document.getElementById('cart-badge');
+    badge.classList.remove('bump');
+    void badge.offsetWidth;
+    badge.classList.add('bump');
+}
+
+function updateCartUI(){
+    const count=getCartCount();
+    document.getElementById('cart-badge').textContent=count;
+    document.getElementById('cart-badge').style.display=count>0?'flex':'none';
+    document.getElementById('nav-cart-count').textContent=`(${count})`;
+
+    const container=document.getElementById('cart-items');
+    if(cart.length===0){
+        container.innerHTML='<div class="cart-empty"><span>🛒</span>Keranjang masih kosong.<br>Yuk pilih menu favoritmu!</div>';
+        document.getElementById('cart-footer').style.display='none';
+    }else{
+        document.getElementById('cart-footer').style.display='block';
+        container.innerHTML=cart.map(item=>`
+            <div class="cart-item">
+                <img class="cart-item-img" src="${item.img}" alt="${item.name}">
+                <div class="cart-item-info">
+                    <h4>${item.name}</h4>
+                    <p>Rp ${(item.price*item.qty).toLocaleString()}</p>
+                </div>
+                <div class="cart-item-controls">
+                    <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+                    <span class="qty-num">${item.qty}</span>
+                    <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+                </div>
+                <button class="cart-item-remove" onclick="removeFromCart(${item.id})">🗑</button>
+            </div>
+        `).join('');
+        document.getElementById('cart-total-items').textContent=count;
+        document.getElementById('cart-total-price').textContent='Rp '+getCartTotal().toLocaleString();
+    }
+}
+
+window.openCart=function(){
+    document.getElementById('cart-overlay').classList.add('show');
+    document.getElementById('cart-drawer').classList.add('show');
+};
+window.closeCart=function(){
+    document.getElementById('cart-overlay').classList.remove('show');
+    document.getElementById('cart-drawer').classList.remove('show');
+};
+
+// ===== CONFIRM MODAL =====
+window.showConfirmModal=function(){
+    if(cart.length===0){showToast('Keranjang masih kosong!','⚠️');return;}
+    closeCart();
+    const meja=document.getElementById('cart-meja-input').value.trim();
+    document.getElementById('confirm-items').innerHTML=cart.map(item=>`
+        <div class="confirm-item">
+            <div class="confirm-item-left">
+                <span class="ci-name">${item.name}</span>
+                <span class="ci-qty">×${item.qty}</span>
+            </div>
+            <span class="confirm-item-price">Rp ${(item.price*item.qty).toLocaleString()}</span>
+        </div>
+    `).join('');
+    document.getElementById('confirm-total').textContent='Rp '+getCartTotal().toLocaleString();
+    document.getElementById('confirm-meja-note').innerHTML=meja
+        ?`🪑 Meja: <strong>${meja}</strong>`
+        :'🪑 Meja: <strong>Belum ditentukan</strong> (akan diarahkan saat tiba)';
+    document.getElementById('confirm-modal').classList.add('show');
+};
+
+window.closeConfirmModal=function(){
+    document.getElementById('confirm-modal').classList.remove('show');
+};
+
+window.sendOrderWA=function(){
+    const meja=document.getElementById('cart-meja-input').value.trim();
+    const greeting=getWaGreeting();
+    let msg=`${greeting} Saya ingin memesan:\n\n`;
+    cart.forEach((item,i)=>{
+        msg+=`${i+1}. ${item.name} ×${item.qty} — Rp ${(item.price*item.qty).toLocaleString()}\n`;
+    });
+    msg+=`\n💰 *Total: Rp ${getCartTotal().toLocaleString()}*`;
+    if(meja) msg+=`\n🪑 Meja: ${meja}`;
+    msg+='\n\nMohon dikonfirmasi ya. Terima kasih! ☕';
+    window.open(`https://wa.me/${getWaNumber()}?text=${encodeURIComponent(msg)}`,'_blank');
+    cart=[];
+    document.getElementById('cart-meja-input').value='';
+    updateCartUI();renderPublic();
+    closeConfirmModal();
+    showToast('Order dikirim via WhatsApp! 🎉','✅');
+};
+
+// ===== FILTER & MENU =====
 function renderCategoryButtons(){
     const menus=getMenus();
     const categories=['Semua',...new Set(menus.map(m=>m.category))];
@@ -683,20 +886,19 @@ function renderCategoryButtons(){
 }
 window.filterCategory=cat=>{activeCategory=cat;renderPublic();renderCategoryButtons();};
 
-// ===== RENDER PUBLIC MENU =====
 function renderPublic(){
     const menus=getMenus();
     const filtered=activeCategory==='Semua'?menus:menus.filter(m=>m.category===activeCategory);
     const container=document.getElementById('menu-container');
     if(filtered.length===0){container.innerHTML='<div class="menu-empty">Belum ada menu di kategori ini.</div>';return;}
     container.innerHTML=filtered.map(item=>{
-        let badge='';
-        if(item.bestSeller) badge='<span class="menu-card-badge best">Best Seller</span>';
-        else if(item.isNew) badge='<span class="menu-card-badge new">New</span>';
-        else badge=`<span class="menu-card-badge">${item.category}</span>`;
+        let badge=item.bestSeller?'<span class="menu-card-badge best">Best Seller</span>':item.isNew?'<span class="menu-card-badge new">New</span>':`<span class="menu-card-badge">${item.category}</span>`;
         const overlay=!item.available?'<div class="menu-card-unavailable"><span>Habis</span></div>':'';
+        const inCart=cart.find(c=>c.id===item.id);
         const orderBtn=item.available
-            ?`<button class="menu-card-btn" onclick="orderViaWA('${item.name.replace(/'/g,"\\'")}','${item.price}')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Order</button>`
+            ?(inCart
+                ?`<button class="menu-card-btn in-cart" onclick="openCart()">✓ Di Keranjang (${inCart.qty})</button>`
+                :`<button class="menu-card-btn" onclick="addToCart(${item.id})">+ Order</button>`)
             :`<button class="menu-card-btn" style="background:var(--dark-3);color:var(--gray);cursor:not-allowed;border:1px solid var(--glass-border);">Habis</button>`;
         return `<div class="menu-card fade-in visible">
             ${overlay}
@@ -714,12 +916,12 @@ function renderPublic(){
     }).join('');
 }
 
-// ===== RENDER TESTIMONI =====
-function starsHtml(rating){let s='';for(let i=1;i<=5;i++)s+=`<span class="${i<=rating?'':'dim'}">★</span>`;return s;}
+// ===== TESTIMONI =====
+function starsHtml(r){let s='';for(let i=1;i<=5;i++)s+=`<span class="${i<=r?'':'dim'}">★</span>`;return s;}
 function renderTestimonials(){
     const list=getTestimonials().filter(t=>t.approved);
     const grid=document.getElementById('testimoni-grid');
-    if(list.length===0){grid.innerHTML='<div class="menu-empty" style="min-width:100%;">Belum ada testimoni. Jadilah yang pertama!</div>';return;}
+    if(list.length===0){grid.innerHTML='<div class="menu-empty" style="min-width:100%;">Belum ada testimoni.</div>';return;}
     grid.innerHTML=list.map(t=>`
         <div class="testimoni-card">
             <div class="testimoni-quote">"</div>
@@ -734,7 +936,7 @@ function renderTestimonials(){
 }
 window.scrollTesti=dir=>{document.getElementById('testimoni-grid').scrollBy({left:dir*350,behavior:'smooth'});};
 
-// ===== RENDER ADMIN =====
+// ===== ADMIN =====
 function renderAdmin(){
     const menus=getMenus(),res=getReservations(),testi=getTestimonials();
     const pending=res.filter(r=>r.status==='Pending').length;
@@ -746,25 +948,19 @@ function renderAdmin(){
     document.getElementById('menu-count-label').textContent=menus.length+' item';
     document.getElementById('res-count-label').textContent=pending+' pending';
     document.getElementById('testi-count-label').textContent=testiPending+' pending';
-
-    // Load WA settings
     document.getElementById('wa-number-input').value=getWaNumber();
     document.getElementById('wa-greeting-input').value=getWaGreeting();
 
     document.getElementById('admin-menu-tbody').innerHTML=menus.map((m,i)=>`
-        <tr>
-            <td><img class="table-thumb" src="${m.img||defaultImg}" alt="${m.name}"></td>
-            <td>${m.name}</td><td>${m.category}</td><td>Rp ${parseInt(m.price).toLocaleString()}</td>
-            <td><div class="toggle-wrap"><div class="toggle ${m.available?'on':''}" onclick="toggleAvailable(${i})"></div><span class="toggle-label">${m.available?'Aktif':'Habis'}</span></div></td>
-            <td><div class="toggle-wrap"><div class="toggle ${m.bestSeller?'on':''}" onclick="toggleBest(${i})"></div></div></td>
-            <td><div class="btn-group"><button class="btn-sm btn-sm-edit" onclick="openEditModal(${i})">✏️</button><button class="btn-sm btn-sm-danger" onclick="deleteMenu(${i})">🗑</button></div></td>
-        </tr>`).join('');
+        <tr><td><img class="table-thumb" src="${m.img||defaultImg}"></td><td>${m.name}</td><td>${m.category}</td><td>Rp ${parseInt(m.price).toLocaleString()}</td>
+        <td><div class="toggle-wrap"><div class="toggle ${m.available?'on':''}" onclick="toggleAvailable(${i})"></div><span class="toggle-label">${m.available?'Aktif':'Habis'}</span></div></td>
+        <td><div class="toggle-wrap"><div class="toggle ${m.bestSeller?'on':''}" onclick="toggleBest(${i})"></div></div></td>
+        <td><div class="btn-group"><button class="btn-sm btn-sm-edit" onclick="openEditModal(${i})">✏️</button><button class="btn-sm btn-sm-danger" onclick="deleteMenu(${i})">🗑</button></div></td></tr>`).join('');
 
     document.getElementById('admin-res-tbody').innerHTML=res.map((r,i)=>{
         let sb=r.status==='Pending'?'<span class="status-badge status-pending">Pending</span>':r.status==='Dikonfirmasi'?'<span class="status-badge status-confirmed">Dikonfirmasi</span>':'<span class="status-badge status-done">Selesai</span>';
         let act=r.status==='Pending'?`<button class="btn-sm btn-sm-success" onclick="confirmRes(${i})">✔</button>`:r.status==='Dikonfirmasi'?`<button class="btn-sm btn-sm-gold" onclick="doneRes(${i})">✔</button>`:'';
-        act+=`<button class="btn-sm btn-sm-danger" onclick="deleteRes(${i})">🗑</button>`;
-        return `<tr><td>${r.name}</td><td>${r.pax} org</td><td>${new Date(r.date).toLocaleString('id-ID')}</td><td>${r.area||'-'}</td><td>${sb}</td><td><div class="btn-group">${act}</div></td></tr>`;
+        return `<tr><td>${r.name}</td><td>${r.pax} org</td><td>${new Date(r.date).toLocaleString('id-ID')}</td><td>${r.area||'-'}</td><td>${sb}</td><td><div class="btn-group">${act}<button class="btn-sm btn-sm-danger" onclick="deleteRes(${i})">🗑</button></div></td></tr>`;
     }).join('')||'<tr><td colspan="6" style="text-align:center;color:#555;padding:2rem;">Belum ada reservasi</td></tr>';
 
     document.getElementById('admin-testi-tbody').innerHTML=testi.map((t,i)=>{
@@ -774,63 +970,50 @@ function renderAdmin(){
     }).join('')||'<tr><td colspan="6" style="text-align:center;color:#555;padding:2rem;">Belum ada testimoni</td></tr>';
 }
 
-function renderAll(){renderCategoryButtons();renderPublic();renderTestimonials();renderAdmin();}
+function renderAll(){renderCategoryButtons();renderPublic();renderTestimonials();renderAdmin();updateCartUI();}
 
-// ===== WA SETTINGS (BARU) =====
 window.saveWaSettings=function(){
     const num=document.getElementById('wa-number-input').value.trim();
     const greet=document.getElementById('wa-greeting-input').value.trim();
     if(num)localStorage.setItem('kafe_wa_number',num);
     if(greet)localStorage.setItem('kafe_wa_greeting',greet);
-    updateWaFloat();
     showToast('Pengaturan WhatsApp disimpan!','⚙️');
 };
 
-function updateWaFloat(){
-    const greeting=getWaGreeting();
-    document.getElementById('wa-float-btn').href=`https://wa.me/${getWaNumber()}?text=${encodeURIComponent(greeting)}`;
-}
-
-// ===== IMAGE HANDLING =====
 window.previewAddImg=function(input){if(input.files&&input.files[0]){const r=new FileReader();r.onload=e=>{addImgData=e.target.result;document.getElementById('adm-img-preview').innerHTML=`<img src="${e.target.result}">`;document.getElementById('adm-img-url').value='';};r.readAsDataURL(input.files[0]);}};
 window.previewEditUrl=function(){const url=document.getElementById('edit-img-url').value.trim();if(url){editImgData=url;document.getElementById('edit-img-preview').innerHTML=`<img src="${url}">`;}};
 window.previewEditFile=function(input){if(input.files&&input.files[0]){const r=new FileReader();r.onload=e=>{editImgData=e.target.result;document.getElementById('edit-img-preview').innerHTML=`<img src="${e.target.result}">`;document.getElementById('edit-img-url').value='';};r.readAsDataURL(input.files[0]);}};
 
-// ===== ADD MENU =====
 document.getElementById('admin-add-form').addEventListener('submit',e=>{
     e.preventDefault();const menus=getMenus();const urlVal=document.getElementById('adm-img-url').value.trim();
     menus.push({id:Date.now(),name:document.getElementById('adm-name').value,price:document.getElementById('adm-price').value,category:document.getElementById('adm-cat').value,desc:document.getElementById('adm-desc').value||'Menu spesial Kafe Senja',img:addImgData||urlVal||defaultImg,available:true,bestSeller:false,isNew:true});
     setMenus(menus);renderAll();e.target.reset();addImgData='';
     document.getElementById('adm-img-preview').innerHTML='<span class="placeholder">🖼</span>';
-    showToast('Menu berhasil ditambahkan!','✅');
+    showToast('Menu ditambahkan!','✅');
 });
-window.deleteMenu=i=>{if(confirm('Hapus menu ini?')){const menus=getMenus();const name=menus[i].name;menus.splice(i,1);setMenus(menus);renderAll();showToast(`"${name}" dihapus`,'🗑');}};
+window.deleteMenu=i=>{if(confirm('Hapus menu ini?')){const menus=getMenus();menus.splice(i,1);setMenus(menus);renderAll();showToast('Menu dihapus','🗑');}};
 window.toggleAvailable=i=>{const m=getMenus();m[i].available=!m[i].available;setMenus(m);renderAll();};
 window.toggleBest=i=>{const m=getMenus();m[i].bestSeller=!m[i].bestSeller;setMenus(m);renderAll();};
 
-// ===== EDIT MODAL =====
-window.openEditModal=i=>{editIndex=i;editImgData='';const m=getMenus()[i];document.getElementById('edit-name').value=m.name;document.getElementById('edit-price').value=m.price;document.getElementById('edit-cat').value=m.category;document.getElementById('edit-desc').value=m.desc||'';document.getElementById('edit-img-url').value=m.img||'';document.getElementById('edit-img-file').value='';editImgData=m.img||'';document.getElementById('edit-img-preview').innerHTML=m.img?`<img src="${m.img}">`:'<span class="placeholder">🖼</span>';document.getElementById('edit-modal').classList.add('show');};
+window.openEditModal=i=>{editIndex=i;editImgData='';const m=getMenus()[i];document.getElementById('edit-name').value=m.name;document.getElementById('edit-price').value=m.price;document.getElementById('edit-cat').value=m.category;document.getElementById('edit-desc').value=m.desc||'';document.getElementById('edit-img-url').value=m.img||'';editImgData=m.img||'';document.getElementById('edit-img-preview').innerHTML=m.img?`<img src="${m.img}">`:'<span class="placeholder">🖼</span>';document.getElementById('edit-modal').classList.add('show');};
 window.closeEditModal=()=>{document.getElementById('edit-modal').classList.remove('show');editIndex=null;};
 window.saveEdit=()=>{if(editIndex===null)return;const menus=getMenus();menus[editIndex].name=document.getElementById('edit-name').value;menus[editIndex].price=document.getElementById('edit-price').value;menus[editIndex].category=document.getElementById('edit-cat').value;menus[editIndex].desc=document.getElementById('edit-desc').value;if(editImgData)menus[editIndex].img=editImgData;setMenus(menus);renderAll();closeEditModal();showToast('Menu diupdate!','✏️');};
 
-// ===== RESERVATIONS =====
-document.getElementById('reservation-form').addEventListener('submit',e=>{e.preventDefault();const r=getReservations();r.push({name:document.getElementById('res-name').value,pax:document.getElementById('res-pax').value,date:document.getElementById('res-date').value,area:document.getElementById('res-area').value,status:'Pending',createdAt:new Date().toISOString()});setReservations(r);renderAll();e.target.reset();showToast('Reservasi berhasil dikirim!','🎉');});
-window.confirmRes=i=>{const r=getReservations();r[i].status='Dikonfirmasi';setReservations(r);renderAll();showToast('Reservasi dikonfirmasi','✅');};
-window.doneRes=i=>{const r=getReservations();r[i].status='Selesai';setReservations(r);renderAll();showToast('Reservasi selesai','🏁');};
-window.deleteRes=i=>{if(confirm('Hapus reservasi?')){const r=getReservations();r.splice(i,1);setReservations(r);renderAll();showToast('Reservasi dihapus','🗑');}};
+document.getElementById('reservation-form').addEventListener('submit',e=>{e.preventDefault();const r=getReservations();r.push({name:document.getElementById('res-name').value,pax:document.getElementById('res-pax').value,date:document.getElementById('res-date').value,area:document.getElementById('res-area').value,status:'Pending',createdAt:new Date().toISOString()});setReservations(r);renderAll();e.target.reset();showToast('Reservasi dikirim!','🎉');});
+window.confirmRes=i=>{const r=getReservations();r[i].status='Dikonfirmasi';setReservations(r);renderAll();};
+window.doneRes=i=>{const r=getReservations();r[i].status='Selesai';setReservations(r);renderAll();};
+window.deleteRes=i=>{if(confirm('Hapus reservasi?')){const r=getReservations();r.splice(i,1);setReservations(r);renderAll();}};
 
-// ===== TESTIMONI =====
 const starInput=document.getElementById('star-input');const stars=starInput.querySelectorAll('span');
 function paintStars(n){stars.forEach((s,i)=>s.classList.toggle('lit',i<n));}
 stars.forEach(star=>{star.addEventListener('mouseenter',()=>paintStars(parseInt(star.dataset.val)));star.addEventListener('mouseleave',()=>paintStars(currentRating));star.addEventListener('click',()=>{currentRating=parseInt(star.dataset.val);paintStars(currentRating);});});
 paintStars(currentRating);
 
-document.getElementById('testimoni-form').addEventListener('submit',e=>{e.preventDefault();const testi=getTestimonials();testi.push({id:Date.now(),name:document.getElementById('testi-name').value,rating:currentRating,msg:document.getElementById('testi-msg').value,date:new Date().toISOString(),approved:false});setTestimonials(testi);renderAll();e.target.reset();currentRating=5;paintStars(5);showToast('Terima kasih! Testimoni sedang kami review.','💛');});
-window.approveTesti=i=>{const t=getTestimonials();t[i].approved=true;setTestimonials(t);renderAll();showToast('Testimoni ditampilkan!','✅');};
-window.hideTesti=i=>{const t=getTestimonials();t[i].approved=false;setTestimonials(t);renderAll();showToast('Testimoni disembunyikan','⏸');};
-window.deleteTesti=i=>{if(confirm('Hapus testimoni?')){const t=getTestimonials();t.splice(i,1);setTestimonials(t);renderAll();showToast('Testimoni dihapus','🗑');}};
+document.getElementById('testimoni-form').addEventListener('submit',e=>{e.preventDefault();const testi=getTestimonials();testi.push({id:Date.now(),name:document.getElementById('testi-name').value,rating:currentRating,msg:document.getElementById('testi-msg').value,date:new Date().toISOString(),approved:false});setTestimonials(testi);renderAll();e.target.reset();currentRating=5;paintStars(5);showToast('Testimoni dikirim! Sedang kami review.','💛');});
+window.approveTesti=i=>{const t=getTestimonials();t[i].approved=true;setTestimonials(t);renderAll();};
+window.hideTesti=i=>{const t=getTestimonials();t[i].approved=false;setTestimonials(t);renderAll();};
+window.deleteTesti=i=>{if(confirm('Hapus testimoni?')){const t=getTestimonials();t.splice(i,1);setTestimonials(t);renderAll();}};
 
-// ===== ADMIN TOGGLE =====
 window.openAdmin=()=>{const p=prompt('🔐 Password admin:');if(p==='admin123'){document.getElementById('admin-overlay').style.display='block';document.body.style.overflow='hidden';renderAll();}else if(p!==null)alert('Password salah!');};
 window.closeAdmin=()=>{document.getElementById('admin-overlay').style.display='none';document.body.style.overflow='';};
 window.goTo=sel=>document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
@@ -844,9 +1027,6 @@ window.addEventListener('scroll',()=>{
 
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
 document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
-
-// Init
-updateWaFloat();
 renderAll();
 </script>
 </body>
