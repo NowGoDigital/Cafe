@@ -242,7 +242,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .receipt-btn-close:hover{border-color:var(--white);color:var(--white)}
 @media(max-width:580px){.receipt-box,.receipt-actions{width:100%;max-width:340px}}
 @media print{body *{visibility:hidden}.receipt-overlay{display:flex!important;background:none}.receipt-box,.receipt-box *{visibility:visible}.receipt-box{position:absolute;left:50%;top:20px;transform:translateX(-50%);box-shadow:none}.receipt-actions{display:none!important}.receipt-wrapper{overflow:visible;padding:0}}
-/* LOGIN MODAL */
 .login-overlay{display:none;position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);align-items:center;justify-content:center}
 .login-overlay.show{display:flex}
 .login-box{background:var(--dark-2);border:1px solid rgba(201,169,110,.25);border-radius:20px;padding:2.2rem 2rem 1.8rem;width:90%;max-width:380px;text-align:center;animation:fadeUp .3s ease;box-shadow:0 25px 80px rgba(0,0,0,.6)}
@@ -261,7 +260,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .login-btn-cancel:hover{border-color:var(--red);color:var(--red)}
 .login-btn-ok{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);border:none}
 .login-btn-ok:hover{box-shadow:0 8px 25px rgba(201,169,110,.35)}
-/* ADMIN */
 .admin-overlay{display:none;position:fixed;inset:0;z-index:2000;background:#0A0A0A;overflow-y:auto}
 .admin-sidebar{position:fixed;left:0;top:0;width:230px;height:100vh;background:var(--dark-2);border-right:1px solid var(--glass-border);padding:1.8rem 0;z-index:10;overflow-y:auto}
 .admin-sidebar-logo{padding:0 1.3rem;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:2rem}
@@ -291,6 +289,7 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .img-preview-box img{width:100%;height:100%;object-fit:cover}
 .admin-add-btn{padding:9px 18px;background:var(--gold);color:var(--dark);border:none;border-radius:6px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;font-size:.75rem;margin-top:.7rem}
 .admin-add-btn:hover{background:var(--gold-light)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .admin-table{width:100%;border-collapse:collapse}
 .admin-table th{text-align:left;padding:9px 12px;font-size:.6rem;text-transform:uppercase;letter-spacing:1px;color:var(--gray);border-bottom:1px solid var(--glass-border)}
 .admin-table td{padding:10px 12px;font-size:.75rem;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.02);vertical-align:middle}
@@ -364,30 +363,44 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .lokasi-section{padding:0 1.5rem}.lokasi-wrapper{grid-template-columns:1fr}
 .lokasi-map iframe{height:150px}
 .footer-grid{grid-template-columns:1fr 1fr}
-.admin-sidebar{display:none}.admin-main{margin-left:0;padding:1.5rem}
+.admin-sidebar{display:none}
+.admin-main{margin-left:0;padding:1.2rem}
+.admin-card{padding:1.1rem}
 .admin-stats{grid-template-columns:repeat(2,1fr)}
 .sales-stats{grid-template-columns:repeat(2,1fr)}
 .admin-form-grid{grid-template-columns:1fr 1fr}
 .img-upload-area{grid-template-columns:1fr}
-.admin-nav-mobile{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
-.admin-nav-mobile button{padding:8px 16px;border-radius:20px;background:var(--dark-3);border:1px solid var(--glass-border);color:var(--gray);font-size:.7rem;cursor:pointer;font-family:'Inter',sans-serif}
+.admin-table{min-width:600px}
+.admin-nav-mobile{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:.4rem;margin-bottom:1.2rem;padding-bottom:.5rem}
+.admin-nav-mobile button{padding:8px 16px;border-radius:20px;background:var(--dark-3);border:1px solid var(--glass-border);color:var(--gray);font-size:.7rem;cursor:pointer;font-family:'Inter',sans-serif;flex-shrink:0;white-space:nowrap}
 .admin-nav-mobile button.active{background:var(--gold);color:var(--dark);border-color:var(--gold);font-weight:600}
 }
 @media(min-width:969px){.admin-nav-mobile{display:none}}
 @media(max-width:580px){
-.menu-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}
+#menu,#about{padding:2rem .5rem}
+.menu-grid{grid-template-columns:repeat(2,1fr);gap:.5rem}
 .menu-card-img{height:110px}
-.gallery-grid{grid-template-columns:1fr;grid-template-rows:auto}
+.gallery-section{margin:0 .5rem;padding:1.2rem}
+.gallery-grid{grid-template-columns:1fr;grid-template-rows:auto;gap:.5rem}
 .gallery-item:nth-child(1){grid-column:span 1;grid-row:span 1}
 .gallery-item:nth-child(4){grid-column:span 1}
 .gallery-item{height:170px}
+.about-section{padding:1.2rem;gap:1.2rem}
+.lokasi-section{padding:0 .5rem}
+.lokasi-info{padding:1.2rem}
 .hero-cta{flex-direction:column;align-items:center}
+.admin-main{padding:1rem .7rem}
+.admin-header{flex-wrap:wrap;gap:.6rem}
+.admin-header h1{font-size:1.05rem}
+.admin-stat-card{padding:1rem}
+.admin-stat-card .value{font-size:1.2rem}
 .admin-form-grid{grid-template-columns:1fr}
 .filter-btn{padding:7px 16px;font-size:.65rem}
 .cart-float{width:50px;height:50px;bottom:1.5rem;right:1.5rem}
 .admin-table th,.admin-table td{padding:8px 6px;font-size:.65rem}
-.bar-label{width:100px;font-size:.65rem}
-.sales-stats{grid-template-columns:1fr}
+.bar-label{width:85px;font-size:.62rem}
+.sales-stats{grid-template-columns:1fr 1fr;gap:.6rem}
+.gal-admin-grid{grid-template-columns:repeat(2,1fr);gap:.6rem}
 }
 </style>
 </head>
@@ -603,25 +616,25 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 </div>
 <div class="admin-card">
 <h3>☕ Daftar Menu — <span id="menu-count-label" style="color:var(--gold)">0 item</span></h3>
-<table class="admin-table"><thead><tr><th>Foto</th><th>Nama</th><th>Kategori</th><th>Harga</th><th>Status</th><th>Best</th><th>Aksi</th></tr></thead><tbody id="admin-menu-tbody"></tbody></table>
+<div class="table-wrap"><table class="admin-table"><thead><tr><th>Foto</th><th>Nama</th><th>Kategori</th><th>Harga</th><th>Status</th><th>Best</th><th>Aksi</th></tr></thead><tbody id="admin-menu-tbody"></tbody></table></div>
 </div>
 </div>
 <div class="admin-section" id="admin-sec-reservasi">
 <div class="admin-card">
 <h3>📋 Reservasi Masuk — <span id="res-count-label" style="color:var(--gold)">0 pending</span></h3>
-<table class="admin-table"><thead><tr><th>Nama</th><th>Tamu</th><th>Waktu</th><th>Area</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="admin-res-tbody"></tbody></table>
+<div class="table-wrap"><table class="admin-table"><thead><tr><th>Nama</th><th>Tamu</th><th>Waktu</th><th>Area</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="admin-res-tbody"></tbody></table></div>
 </div>
 </div>
 <div class="admin-section" id="admin-sec-testimoni">
 <div class="admin-card">
 <h3>💬 Testimoni — <span id="testi-count-label" style="color:var(--gold)">0 pending</span></h3>
-<table class="admin-table"><thead><tr><th>Nama</th><th>Rating</th><th>Pesan</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="admin-testi-tbody"></tbody></table>
+<div class="table-wrap"><table class="admin-table"><thead><tr><th>Nama</th><th>Rating</th><th>Pesan</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="admin-testi-tbody"></tbody></table></div>
 </div>
 </div>
 <div class="admin-section" id="admin-sec-pesanan">
 <div class="admin-card">
 <h3>📦 Riwayat Pesanan — <span id="order-count-label" style="color:var(--gold)">0 pesanan</span></h3>
-<table class="admin-table"><thead><tr><th>No. Order</th><th>Pemesan</th><th>Item</th><th>Total</th><th>Meja</th><th>Waktu</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="admin-orders-tbody"></tbody></table>
+<div class="table-wrap"><table class="admin-table"><thead><tr><th>No. Order</th><th>Pemesan</th><th>Item</th><th>Total</th><th>Meja</th><th>Waktu</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="admin-orders-tbody"></tbody></table></div>
 </div>
 </div>
 <div class="admin-section" id="admin-sec-laporan">
@@ -643,7 +656,7 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 <div class="admin-card"><h3>🏆 Item Terlaris</h3><div id="sales-bars"></div></div>
 <div class="admin-card">
 <h3>📋 Rincian Penjualan per Item</h3>
-<table class="admin-table"><thead><tr><th>Nama Item</th><th>Qty Terjual</th><th>Pendapatan</th><th>Kontribusi</th></tr></thead><tbody id="sales-tbody"></tbody></table>
+<div class="table-wrap"><table class="admin-table"><thead><tr><th>Nama Item</th><th>Qty Terjual</th><th>Pendapatan</th><th>Kontribusi</th></tr></thead><tbody id="sales-tbody"></tbody></table></div>
 <p class="report-note">* Laporan dihitung dari semua pesanan yang tercatat (semua status).</p>
 </div>
 </div>
