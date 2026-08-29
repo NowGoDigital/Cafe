@@ -288,17 +288,16 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .modal-file-btn{position:relative;overflow:hidden;padding:9px 14px;background:var(--dark-3);border:1px dashed rgba(201,169,110,.4);border-radius:6px;color:var(--gold);font-size:.7rem;cursor:pointer;text-align:center;font-family:'Inter',sans-serif}
 .modal-file-btn input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
 
-.toast{position:fixed;bottom:6rem;right:2rem;z-index:4000;background:var(--dark-2);border:1px solid var(--gold);border-radius:10px;padding:1rem 1.5rem;color:var(--white);font-size:.8rem;transform:translateY(100px);opacity:0;transition:all .4s;display:flex;align-items:center;gap:.8rem}
-.toast.show{transform:translateY(0);opacity:1}
+.toast{position:fixed;bottom:6rem;right:2rem;z-index:4000;background:var(--dark-2);border:1px solid var(--gold);border-radius:10px;padding:1rem 1.5rem;color:var(--white);font-size:.8rem;transform:translateY(100px);opacity:0;transition:all .4s;display:flex;align-items:center;gap:.8rem;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1;pointer-events:auto}
 .toast-icon{font-size:1.2rem}
 
-/* ============================================= */
-/* ===== FIX TOMBOL KONFIRMASI ORDER (BARU) ===== */
-/* ============================================= */
+/* ===== FIX TOMBOL KONFIRMASI ORDER ===== */
+.cart-drawer{overflow:hidden}
 .cart-drawer-header{flex-shrink:0}
-.cart-items{min-height:0}
-.cart-drawer-footer{flex-shrink:0;position:relative;z-index:10}
-.cart-checkout-btn{display:block;width:100%;position:relative;z-index:5;pointer-events:auto;flex-shrink:0}
+.cart-items{min-height:0;flex:1 1 auto}
+.cart-drawer-footer{flex-shrink:0;position:relative;z-index:10;overflow-y:auto;max-height:60vh}
+.cart-checkout-btn{display:block;width:100%;position:relative;z-index:5;pointer-events:auto}
 .cart-float.hide,.cart-float.hide:hover{opacity:0;pointer-events:none;transform:scale(.5)}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
