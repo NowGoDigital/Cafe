@@ -292,6 +292,15 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .toast.show{transform:translateY(0);opacity:1}
 .toast-icon{font-size:1.2rem}
 
+/* ============================================= */
+/* ===== FIX TOMBOL KONFIRMASI ORDER (BARU) ===== */
+/* ============================================= */
+.cart-drawer-header{flex-shrink:0}
+.cart-items{min-height:0}
+.cart-drawer-footer{flex-shrink:0;position:relative;z-index:10}
+.cart-checkout-btn{display:block;width:100%;position:relative;z-index:5;pointer-events:auto;flex-shrink:0}
+.cart-float.hide,.cart-float.hide:hover{opacity:0;pointer-events:none;transform:scale(.5)}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-8px)}60%{transform:translateY(-4px)}}
 .fade-in{opacity:0;transform:translateY(20px);transition:all .7s}
@@ -1089,15 +1098,6 @@ for(var i=0;i<fadeEls.length;i++){observer.observe(fadeEls[i]);}
 
 // INIT
 renderAll();
-
-/* ===== FIX TOMBOL KONFIRMASI ORDER ===== */
-.cart-drawer-header{flex-shrink:0}
-.cart-items{min-height:0}
-.cart-drawer-footer{flex-shrink:0;position:relative;z-index:10}
-.cart-checkout-btn{display:block;width:100%;position:relative;z-index:5;pointer-events:auto;flex-shrink:0}
-.cart-float{transition:all .3s}
-.cart-float.hide{opacity:0;pointer-events:none;transform:scale(.5)}
-
 </script>
 </body>
 </html>
