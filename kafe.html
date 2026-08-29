@@ -777,7 +777,21 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </div>
 
-<!-- ===== ADMIN PANEL ===== -->
+<!-- ===== LOGIN MODAL (BARU) ===== -->
+<div class="login-overlay" id="login-modal" onclick="closeLogin()">
+    <div class="login-box" onclick="event.stopPropagation()">
+        <div class="login-logo">☕</div>
+        <p class="login-says"><strong>Kafe Senja</strong> menyatakan</p>
+        <h3>🔐 Login Admin</h3>
+        <input type="password" class="login-input" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter'){doLogin();}">
+        <p class="login-error" id="login-error"></p>
+        <div class="login-btns">
+            <button class="login-btn-cancel" onclick="closeLogin()">Batal</button>
+            <button class="login-btn-ok" onclick="doLogin()">Oke</button>
+        </div>
+    </div>
+</div>
+  
 <div class="admin-overlay" id="admin-overlay">
     <div class="admin-sidebar">
         <div class="admin-sidebar-logo">☕ SENJA CMS</div>
@@ -1555,13 +1569,29 @@ function hideTesti(i){var t=getTestimonials();t[i].approved=false;setTestimonial
 function deleteTesti(i){if(confirm('Hapus testimoni?')){var t=getTestimonials();t.splice(i,1);setTestimonials(t);renderAll();}}
 
 function openAdmin(){
-    var p=prompt('🔐 Password admin:');
+    document.getElementById('login-pass').value='';
+    document.getElementById('login-error').textContent='';
+    document.getElementById('login-modal').classList.add('show');
+    setTimeout(function(){document.getElementById('login-pass').focus();},150);
+}
+function closeLogin(){document.getElementById('login-modal').classList.remove('show');}
+function doLogin(){
+    var input=document.getElementById('login-pass');
+    var p=input.value;
     if(p==='admin123'){
+        closeLogin();
         document.getElementById('admin-overlay').style.display='block';
         document.body.style.overflow='hidden';
         renderAll();
         switchAdminTab('dashboard');
-    }else if(p!==null){alert('Password salah!');}
+        showToast('Selamat datang, Admin!','👋');
+    }else{
+        input.classList.add('error');
+        document.getElementById('login-error').textContent='❌ Password salah! Coba lagi.';
+        input.value='';
+        input.focus();
+        setTimeout(function(){input.classList.remove('error');},450);
+    }
 }
 function closeAdmin(){document.getElementById('admin-overlay').style.display='none';document.body.style.overflow='';}
 function goTo(sel){var el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth'});}
@@ -1580,6 +1610,28 @@ var fadeEls=document.querySelectorAll('.fade-in');
 for(var i=0;i<fadeEls.length;i++){observer.observe(fadeEls[i]);}
 
 renderAll();
+
+/* ===== LOGIN MODAL ===== */
+.login-overlay{display:none;position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);align-items:center;justify-content:center}
+.login-overlay.show{display:flex}
+.login-box{background:var(--dark-2);border:1px solid rgba(201,169,110,.25);border-radius:20px;padding:2.2rem 2rem 1.8rem;width:90%;max-width:380px;text-align:center;animation:fadeUp .3s ease;box-shadow:0 25px 80px rgba(0,0,0,.6)}
+.login-logo{width:70px;height:70px;margin:0 auto 1rem;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:0 10px 30px rgba(201,169,110,.35)}
+.login-says{font-size:.72rem;color:var(--gray);letter-spacing:1px;margin-bottom:.2rem}
+.login-says strong{color:var(--gold);letter-spacing:2px;text-transform:uppercase}
+.login-box h3{color:var(--white);font-size:1.15rem;margin-bottom:1.3rem}
+.login-input{width:100%;padding:12px 16px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:10px;color:var(--white);font-size:.85rem;font-family:'Inter',sans-serif;text-align:center;letter-spacing:2px}
+.login-input:focus{outline:none;border-color:var(--gold)}
+.login-input.error{border-color:var(--red);animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.login-error{color:var(--red);font-size:.68rem;margin-top:.5rem;min-height:1rem}
+.login-btns{display:flex;gap:.8rem;margin-top:.8rem}
+.login-btns button{flex:1;padding:12px;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;transition:all .3s}
+.login-btn-cancel{background:transparent;color:var(--gray);border:1px solid var(--glass-border)}
+.login-btn-cancel:hover{border-color:var(--red);color:var(--red)}
+.login-btn-ok{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);border:none}
+.login-btn-ok:hover{box-shadow:0 8px 25px rgba(201,169,110,.35)}
+
+
 </script>
 </body>
 </html>
