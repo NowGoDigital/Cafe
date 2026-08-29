@@ -511,7 +511,7 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 </footer>
 
 <!-- FLOATING CART -->
-<button class="cart-float" onclick="openCart()" title="Keranjang">
+<button class="cart-float" id="cart-float-btn" onclick="openCart()" title="Keranjang">
     <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
     <span class="cart-badge" id="cart-badge">0</span>
 </button>
@@ -539,7 +539,7 @@ h1,h2,h3{font-family:'Playfair Display',serif}
         <div class="cart-table-row" style="font-size:1.05rem;font-weight:700;">
             <span>Total</span><span id="cart-total-price" style="color:var(--gold);">Rp 0</span>
         </div>
-        <button class="cart-checkout-btn" onclick="showConfirmModal()">✅ Konfirmasi Order</button>
+        <button type="button" class="cart-checkout-btn" onclick="showConfirmModal()">✅ Konfirmasi Order</button>
     </div>
 </div>
 
@@ -737,10 +737,12 @@ function updateCartUI(){
 function openCart(){
     document.getElementById('cart-overlay').classList.add('show');
     document.getElementById('cart-drawer').classList.add('show');
+    document.getElementById('cart-float-btn').classList.add('hide');
 }
 function closeCart(){
     document.getElementById('cart-overlay').classList.remove('show');
     document.getElementById('cart-drawer').classList.remove('show');
+    document.getElementById('cart-float-btn').classList.remove('hide');
 }
 
 // ===== KONFIRMASI ORDER =====
@@ -1087,6 +1089,15 @@ for(var i=0;i<fadeEls.length;i++){observer.observe(fadeEls[i]);}
 
 // INIT
 renderAll();
+
+/* ===== FIX TOMBOL KONFIRMASI ORDER ===== */
+.cart-drawer-header{flex-shrink:0}
+.cart-items{min-height:0}
+.cart-drawer-footer{flex-shrink:0;position:relative;z-index:10}
+.cart-checkout-btn{display:block;width:100%;position:relative;z-index:5;pointer-events:auto;flex-shrink:0}
+.cart-float{transition:all .3s}
+.cart-float.hide{opacity:0;pointer-events:none;transform:scale(.5)}
+
 </script>
 </body>
 </html>
