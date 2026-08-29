@@ -165,7 +165,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .footer-col a:hover{color:var(--gold)}
 .footer-bottom{text-align:center;padding-top:1.5rem;margin-top:1.5rem;border-top:1px solid var(--glass-border);color:var(--gray-dark);font-size:.7rem}
 
-/* CART */
 .cart-float{position:fixed;bottom:2rem;right:2rem;z-index:999;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;box-shadow:0 5px 25px rgba(201,169,110,.4);cursor:pointer;transition:all .3s;border:none}
 .cart-float:hover{transform:scale(1.1)}
 .cart-float svg{width:26px;height:26px;fill:var(--dark)}
@@ -174,7 +173,7 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .cart-overlay.show{display:block}
 .cart-drawer{position:fixed;top:0;right:-420px;width:400px;max-width:90vw;height:100vh;background:var(--dark-2);z-index:2600;border-left:1px solid rgba(201,169,110,.15);display:flex;flex-direction:column;transition:right .4s}
 .cart-drawer.show{right:0}
-.cart-drawer-header{padding:1.5rem;border-bottom:1px solid var(--glass-border);display:flex;justify-content:space-between;align-items:center}
+.cart-drawer-header{padding:1.5rem;border-bottom:1px solid var(--glass-border);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
 .cart-drawer-header h3{font-size:1.1rem;color:var(--gold)}
 .cart-close-btn{background:none;border:none;color:var(--gray);font-size:1.3rem;cursor:pointer}
 .cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem}
@@ -191,17 +190,17 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .cart-item-remove:hover{color:var(--red)}
 .cart-empty{text-align:center;color:var(--gray-dark);padding:3rem 1rem;font-size:.85rem}
 .cart-empty span{font-size:2.5rem;display:block;margin-bottom:.8rem;opacity:.3}
-.cart-drawer-footer{padding:1.5rem;border-top:1px solid var(--glass-border)}
+.cart-drawer-footer{padding:1.5rem;border-top:1px solid var(--glass-border);flex-shrink:0;position:relative;z-index:10;overflow-y:auto;max-height:60vh}
 .cart-field{margin-bottom:.8rem}
 .cart-field label{font-size:.62rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem;font-weight:500}
 .cart-field input{width:100%;padding:10px 14px;background:var(--dark-3);border:1px solid var(--glass-border);border-radius:8px;color:var(--white);font-size:.8rem;font-family:'Inter',sans-serif}
 .cart-field input:focus{outline:none;border-color:var(--gold)}
 .cart-field input.error{border-color:var(--red)}
 .cart-table-row{padding:.3rem 0;font-size:.85rem;display:flex;justify-content:space-between}
-.cart-checkout-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);border:none;border-radius:10px;font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;margin-top:.8rem}
+.cart-checkout-btn{display:block;width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);border:none;border-radius:10px;font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;margin-top:.8rem;position:relative;z-index:5;pointer-events:auto}
 .cart-checkout-btn:hover{box-shadow:0 8px 25px rgba(201,169,110,.3)}
+.cart-float.hide,.cart-float.hide:hover{opacity:0;pointer-events:none;transform:scale(.5)}
 
-/* CONFIRM MODAL */
 .confirm-overlay{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);align-items:center;justify-content:center}
 .confirm-overlay.show{display:flex}
 .confirm-box{background:var(--dark-2);border:1px solid rgba(201,169,110,.2);border-radius:20px;padding:2rem;width:90%;max-width:440px;animation:fadeUp .3s ease;max-height:85vh;overflow-y:auto}
@@ -224,7 +223,48 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .confirm-send{background:linear-gradient(135deg,var(--wa),#1DA851);color:#fff;border:none}
 .confirm-send:hover{box-shadow:0 8px 25px rgba(37,211,102,.3)}
 
-/* ADMIN */
+/* ===== RECEIPT / STRUK (BARU) ===== */
+.receipt-overlay{display:none;position:fixed;inset:0;z-index:3200;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);align-items:center;justify-content:center}
+.receipt-overlay.show{display:flex}
+.receipt-wrapper{max-height:92vh;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;align-items:center}
+.receipt-box{width:360px;background:#FBF6EC;color:#3B2F1E;padding:2.2rem 1.8rem 1.8rem;font-family:'Inter',sans-serif;box-shadow:0 25px 80px rgba(0,0,0,.6);position:relative;margin-top:12px}
+.receipt-box::before,.receipt-box::after{content:'';position:absolute;left:0;right:0;height:12px;background:linear-gradient(45deg,transparent 33.33%,#FBF6EC 33.33%,#FBF6EC 66.66%,transparent 66.66%),linear-gradient(-45deg,transparent 33.33%,#FBF6EC 33.33%,#FBF6EC 66.66%,transparent 66.66%);background-size:18px 24px}
+.receipt-box::before{top:-11px;transform:scaleY(-1)}
+.receipt-box::after{bottom:-11px}
+.receipt-logo{text-align:center;border-bottom:2px dashed #C9A96E;padding-bottom:1rem;margin-bottom:1rem}
+.receipt-logo h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:#3B2F1E;letter-spacing:5px}
+.receipt-logo p{font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:#A8853A;margin-top:.3rem}
+.receipt-meta{display:flex;flex-direction:column;gap:.35rem;font-size:.72rem;border-bottom:2px dashed #C9A96E;padding-bottom:1rem;margin-bottom:1rem}
+.receipt-meta-row{display:flex;justify-content:space-between}
+.receipt-meta-row span:first-child{color:#8A7A60}
+.receipt-meta-row span:last-child{font-weight:600;color:#3B2F1E}
+.receipt-items{border-bottom:2px dashed #C9A96E;padding-bottom:1rem;margin-bottom:1rem}
+.receipt-item{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;padding:.32rem 0}
+.receipt-item-name{flex:1;color:#3B2F1E}
+.receipt-item-qty{color:#8A7A60;margin:0 .6rem;font-size:.7rem}
+.receipt-item-price{font-weight:600;color:#3B2F1E}
+.receipt-total-row{display:flex;justify-content:space-between;font-size:1.15rem;font-weight:700;font-family:'Playfair Display',serif;color:#3B2F1E}
+.receipt-total-row span:last-child{color:#A8853A}
+.receipt-stamp{margin:1.4rem auto .5rem;width:fit-content;padding:.45rem 1.3rem;border:2px solid #A8853A;border-radius:6px;color:#A8853A;font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;transform:rotate(-3deg);opacity:.85}
+.receipt-footer{text-align:center;margin-top:1rem;font-size:.68rem;color:#8A7A60;line-height:1.8}
+.receipt-footer .receipt-ig{color:#A8853A;font-weight:600;letter-spacing:1px}
+.receipt-actions{display:flex;gap:.8rem;margin-top:1.5rem;width:360px}
+.receipt-btn{flex:1;padding:13px;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;transition:all .3s}
+.receipt-btn-print{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--dark);border:none}
+.receipt-btn-print:hover{box-shadow:0 8px 25px rgba(201,169,110,.4)}
+.receipt-btn-close{background:transparent;color:var(--gray);border:1px solid rgba(255,255,255,.2)}
+.receipt-btn-close:hover{border-color:var(--white);color:var(--white)}
+@media(max-width:580px){.receipt-box,.receipt-actions{width:100%;max-width:340px}}
+@media print{
+  body *{visibility:hidden}
+  .receipt-overlay{display:flex!important;background:none}
+  .receipt-box,.receipt-box *{visibility:visible}
+  .receipt-box{position:absolute;left:50%;top:20px;transform:translateX(-50%);box-shadow:none}
+  .receipt-actions{display:none!important}
+  .receipt-wrapper{overflow:visible;padding:0}
+}
+
+/* ===== ADMIN ===== */
 .admin-overlay{display:none;position:fixed;inset:0;z-index:2000;background:#0A0A0A;overflow-y:auto}
 .admin-sidebar{position:fixed;left:0;top:0;width:230px;height:100vh;background:var(--dark-2);border-right:1px solid var(--glass-border);padding:1.8rem 0;z-index:10}
 .admin-sidebar-logo{padding:0 1.3rem;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:2rem}
@@ -235,9 +275,9 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .admin-header h1{font-size:1.3rem}
 .admin-header-btn{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--white);padding:7px 18px;border-radius:6px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.75rem}
 .admin-header-btn:hover{border-color:var(--red);color:var(--red)}
-.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.admin-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:1.5rem}
 .admin-stat-card{background:var(--dark-2);padding:1.3rem;border-radius:10px;border:1px solid var(--glass-border)}
-.admin-stat-card .label{font-size:.65rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px}
+.admin-stat-card .label{font-size:.62rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px}
 .admin-stat-card .value{font-size:1.6rem;font-weight:700;color:var(--gold);margin-top:.2rem}
 .admin-card{background:var(--dark-2);border-radius:10px;border:1px solid var(--glass-border);padding:1.3rem;margin-bottom:1.3rem}
 .admin-card h3{font-size:.85rem;margin-bottom:1rem;font-family:'Inter',sans-serif;font-weight:600}
@@ -271,6 +311,7 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .status-pending{background:rgba(255,193,7,.1);color:#FFC107;border:1px solid rgba(255,193,7,.2)}
 .status-confirmed{background:rgba(76,175,80,.1);color:var(--green);border:1px solid rgba(76,175,80,.2)}
 .status-done{background:rgba(255,255,255,.05);color:var(--gray);border:1px solid rgba(255,255,255,.1)}
+.status-process{background:rgba(91,155,213,.1);color:var(--blue);border:1px solid rgba(91,155,213,.2)}
 
 .modal-overlay{display:none;position:fixed;inset:0;z-index:3100;background:rgba(0,0,0,.7);align-items:center;justify-content:center}
 .modal-overlay.show{display:flex}
@@ -291,14 +332,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .toast{position:fixed;bottom:6rem;right:2rem;z-index:4000;background:var(--dark-2);border:1px solid var(--gold);border-radius:10px;padding:1rem 1.5rem;color:var(--white);font-size:.8rem;transform:translateY(100px);opacity:0;transition:all .4s;display:flex;align-items:center;gap:.8rem;pointer-events:none}
 .toast.show{transform:translateY(0);opacity:1;pointer-events:auto}
 .toast-icon{font-size:1.2rem}
-
-/* ===== FIX TOMBOL KONFIRMASI ORDER ===== */
-.cart-drawer{overflow:hidden}
-.cart-drawer-header{flex-shrink:0}
-.cart-items{min-height:0;flex:1 1 auto}
-.cart-drawer-footer{flex-shrink:0;position:relative;z-index:10;overflow-y:auto;max-height:60vh}
-.cart-checkout-btn{display:block;width:100%;position:relative;z-index:5;pointer-events:auto}
-.cart-float.hide,.cart-float.hide:hover{opacity:0;pointer-events:none;transform:scale(.5)}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-8px)}60%{transform:translateY(-4px)}}
@@ -336,12 +369,12 @@ h1,h2,h3{font-family:'Playfair Display',serif}
 .admin-form-grid{grid-template-columns:1fr}
 .filter-btn{padding:7px 16px;font-size:.65rem}
 .cart-float{width:50px;height:50px;bottom:1.5rem;right:1.5rem}
+.admin-table th,.admin-table td{padding:8px 6px;font-size:.65rem}
 }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
     <a class="nav-logo" href="#home">KAFE SENJA</a>
     <ul class="nav-links">
@@ -359,7 +392,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
     <div class="hero-content">
         <p class="hero-subtitle">Est. 2024 — Premium Coffee Experience</p>
@@ -373,7 +405,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     <div class="scroll-indicator"><span></span></div>
 </section>
 
-<!-- MENU -->
 <section class="section" id="menu">
     <div class="section-header fade-in">
         <p class="section-tag">Our Signature</p>
@@ -384,7 +415,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     <div class="menu-grid" id="menu-container"></div>
 </section>
 
-<!-- GALERI -->
 <section class="section" id="gallery" style="padding:0;">
     <div class="gallery-section fade-in">
         <div class="section-header">
@@ -402,7 +432,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </section>
 
-<!-- ABOUT -->
 <section class="section" id="about">
     <div class="about-section fade-in">
         <div class="about-img"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80" alt="Interior"></div>
@@ -420,7 +449,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </section>
 
-<!-- TESTIMONI -->
 <section class="testimoni-section" id="testimoni">
     <div class="testimoni-inner">
         <div class="testimoni-header-row fade-in">
@@ -452,7 +480,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </section>
 
-<!-- LOKASI -->
 <section class="section lokasi-section" id="lokasi">
     <div class="section-header fade-in">
         <p class="section-tag">Find Us</p>
@@ -477,7 +504,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </section>
 
-<!-- RESERVASI -->
 <section class="section" id="reservasi">
     <div class="reservasi-wrapper fade-in">
         <div class="reservasi-info">
@@ -507,7 +533,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
     <div class="footer-grid">
         <div class="footer-brand"><h3>KAFE SENJA</h3><p>Tempat di mana kopi terbaik bertemu suasana sempurna. Setiap kunjungan adalah cerita baru.</p></div>
@@ -518,13 +543,11 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     <div class="footer-bottom"><p>&copy; 2026 Kafe Senja. Crafted with ☕ & ❤️</p></div>
 </footer>
 
-<!-- FLOATING CART -->
 <button class="cart-float" id="cart-float-btn" onclick="openCart()" title="Keranjang">
     <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
     <span class="cart-badge" id="cart-badge">0</span>
 </button>
 
-<!-- CART DRAWER -->
 <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
 <div class="cart-drawer" id="cart-drawer">
     <div class="cart-drawer-header">
@@ -551,7 +574,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </div>
 
-<!-- CONFIRM MODAL -->
 <div class="confirm-overlay" id="confirm-modal">
     <div class="confirm-box">
         <h3>📋 Konfirmasi Order</h3>
@@ -569,12 +591,22 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </div>
 
-<!-- ADMIN PANEL -->
+<!-- ===== RECEIPT / STRUK (BARU) ===== -->
+<div class="receipt-overlay" id="receipt-modal">
+    <div class="receipt-wrapper">
+        <div class="receipt-box" id="receipt-box"></div>
+        <div class="receipt-actions">
+            <button class="receipt-btn receipt-btn-print" onclick="printReceipt()">🖨️ Cetak / Simpan</button>
+            <button class="receipt-btn receipt-btn-close" onclick="closeReceipt()">Tutup</button>
+        </div>
+    </div>
+</div>
+
 <div class="admin-overlay" id="admin-overlay">
     <div class="admin-sidebar">
         <div class="admin-sidebar-logo">☕ SENJA CMS</div>
         <ul class="admin-nav">
-            <li>📊 Dashboard</li><li>☕ Menu</li><li>📋 Reservasi</li><li>💬 Testimoni</li><li>⚙️ Pengaturan</li>
+            <li>📊 Dashboard</li><li>☕ Menu</li><li>📋 Reservasi</li><li>💬 Testimoni</li><li>📦 Pesanan</li><li>⚙️ Pengaturan</li>
         </ul>
     </div>
     <div class="admin-main">
@@ -584,6 +616,7 @@ h1,h2,h3{font-family:'Playfair Display',serif}
             <div class="admin-stat-card"><div class="label">Menu Aktif</div><div class="value" id="stat-active">0</div></div>
             <div class="admin-stat-card"><div class="label">Reservasi Pending</div><div class="value" id="stat-res-pending">0</div></div>
             <div class="admin-stat-card"><div class="label">Testimoni Pending</div><div class="value" id="stat-testi-pending">0</div></div>
+            <div class="admin-stat-card"><div class="label">Total Pesanan</div><div class="value" id="stat-orders">0</div></div>
         </div>
         <div class="admin-card">
             <h3>➕ Tambah Menu Baru</h3>
@@ -614,6 +647,14 @@ h1,h2,h3{font-family:'Playfair Display',serif}
             <h3>💬 Testimoni — <span id="testi-count-label" style="color:var(--gold)">0 pending</span></h3>
             <table class="admin-table"><thead><tr><th>Nama</th><th>Rating</th><th>Pesan</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="admin-testi-tbody"></tbody></table>
         </div>
+        <!-- ===== RIWAYAT PESANAN (BARU) ===== -->
+        <div class="admin-card">
+            <h3>📦 Riwayat Pesanan — <span id="order-count-label" style="color:var(--gold)">0 pesanan</span></h3>
+            <table class="admin-table">
+                <thead><tr><th>No. Order</th><th>Pemesan</th><th>Item</th><th>Total</th><th>Meja</th><th>Waktu</th><th>Status</th><th>Aksi</th></tr></thead>
+                <tbody id="admin-orders-tbody"></tbody>
+            </table>
+        </div>
         <div class="admin-card">
             <h3>⚙️ Pengaturan WhatsApp</h3>
             <div class="form-group"><label>Nomor WhatsApp (format: 62812xxxxxxx)</label><input type="text" id="wa-number-input" placeholder="6281234567890"></div>
@@ -623,7 +664,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </div>
 
-<!-- EDIT MODAL -->
 <div class="modal-overlay" id="edit-modal">
     <div class="modal-box">
         <h3>✏️ Edit Menu</h3>
@@ -642,7 +682,6 @@ h1,h2,h3{font-family:'Playfair Display',serif}
     </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"><span class="toast-icon" id="toast-icon">✅</span><span id="toast-msg">Berhasil!</span></div>
 
 <script>
@@ -664,6 +703,7 @@ var defaultTestimonials=[
 
 var editIndex=null,addImgData='',editImgData='',activeCategory='Semua',currentRating=5;
 var cart=[];
+var lastOrder=null;
 var defaultImg='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80';
 
 function getMenus(){try{var d=JSON.parse(localStorage.getItem('kafe_menus'));return d&&d.length?d:defaultMenus;}catch(e){return defaultMenus;}}
@@ -672,6 +712,8 @@ function getReservations(){try{return JSON.parse(localStorage.getItem('kafe_rese
 function setReservations(d){localStorage.setItem('kafe_reservations',JSON.stringify(d));}
 function getTestimonials(){try{var d=JSON.parse(localStorage.getItem('kafe_testimonials'));return d&&d.length?d:defaultTestimonials;}catch(e){return defaultTestimonials;}}
 function setTestimonials(d){localStorage.setItem('kafe_testimonials',JSON.stringify(d));}
+function getOrders(){try{return JSON.parse(localStorage.getItem('kafe_orders'))||[];}catch(e){return [];}}
+function setOrders(d){localStorage.setItem('kafe_orders',JSON.stringify(d));}
 function getWaNumber(){return localStorage.getItem('kafe_wa_number')||'6281234567890';}
 function getWaGreeting(){return localStorage.getItem('kafe_wa_greeting')||'Halo Kafe Senja!';}
 
@@ -682,7 +724,6 @@ function showToast(msg,icon){
     setTimeout(function(){document.getElementById('toast').classList.remove('show');},3000);
 }
 
-// ===== CART =====
 function getCartTotal(){var t=0;for(var i=0;i<cart.length;i++){t+=cart[i].price*cart[i].qty;}return t;}
 function getCartCount(){var c=0;for(var i=0;i<cart.length;i++){c+=cart[i].qty;}return c;}
 
@@ -753,7 +794,6 @@ function closeCart(){
     document.getElementById('cart-float-btn').classList.remove('hide');
 }
 
-// ===== KONFIRMASI ORDER =====
 function showConfirmModal(){
     if(cart.length===0){showToast('Keranjang masih kosong!','⚠️');return;}
     var nameInput=document.getElementById('cart-name-input');
@@ -788,28 +828,134 @@ function closeConfirmModal(){
     document.getElementById('confirm-modal').classList.remove('show');
 }
 
+// ===== GENERATE NOMOR ORDER =====
+function generateOrderNo(){
+    var now=new Date();
+    var y=now.getFullYear();
+    var m=('0'+(now.getMonth()+1)).slice(-2);
+    var d=('0'+now.getDate()).slice(-2);
+    var rand=Math.floor(100+Math.random()*900);
+    return 'KS-'+y+m+d+'-'+rand;
+}
+
+// ===== KIRIM ORDER + SIMPAN RIWAYAT + STRUK =====
 function sendOrderWA(){
     var nama=document.getElementById('cart-name-input').value.trim();
     var meja=document.getElementById('cart-meja-input').value.trim();
+
+    // snapshot item
+    var itemsSnapshot=[];
+    for(var i=0;i<cart.length;i++){
+        itemsSnapshot.push({name:cart[i].name,qty:cart[i].qty,price:cart[i].price});
+    }
+    var total=getCartTotal();
+    var order={
+        id:Date.now(),
+        orderNo:generateOrderNo(),
+        name:nama,
+        items:itemsSnapshot,
+        total:total,
+        meja:meja||'-',
+        date:new Date().toISOString(),
+        status:'Pending'
+    };
+    var orders=getOrders();
+    orders.unshift(order);
+    setOrders(orders);
+    lastOrder=order;
+
+    // pesan WA
     var msg=getWaGreeting()+'\n\n';
-    msg+='👤 *Nama: '+nama+'*\n\n';
+    msg+='👤 *Nama: '+nama+'*\n';
+    msg+='🔖 *No. Order: '+order.orderNo+'*\n\n';
     msg+='📝 *Pesanan:*\n';
     for(var i=0;i<cart.length;i++){
         var item=cart[i];
         msg+=(i+1)+'. '+item.name+' ×'+item.qty+' — Rp '+(item.price*item.qty).toLocaleString()+'\n';
     }
-    msg+='\n💰 *Total: Rp '+getCartTotal().toLocaleString()+'*';
+    msg+='\n💰 *Total: Rp '+total.toLocaleString()+'*';
     if(meja){msg+='\n🪑 Meja: '+meja;}
     msg+='\n\nMohon dikonfirmasi ya. Terima kasih! ☕';
     window.open('https://wa.me/'+getWaNumber()+'?text='+encodeURIComponent(msg),'_blank');
+
     cart=[];
     document.getElementById('cart-name-input').value='';
     document.getElementById('cart-meja-input').value='';
-    updateCartUI();renderPublic();closeConfirmModal();
-    showToast('Order dikirim via WhatsApp! 🎉','✅');
+    updateCartUI();renderPublic();renderOrdersAdmin();
+    closeConfirmModal();
+    showReceipt(order);
+    showToast('Order terkirim & struk dibuat! 🎉','✅');
 }
 
-// ===== MENU =====
+// ===== STRUK / RECEIPT =====
+function showReceipt(order){
+    var html='';
+    html+='<div class="receipt-logo">';
+    html+='<h2>KAFE SENJA</h2>';
+    html+='<p>Premium Coffee & Space</p>';
+    html+='</div>';
+    html+='<div class="receipt-meta">';
+    html+='<div class="receipt-meta-row"><span>No. Order</span><span>'+order.orderNo+'</span></div>';
+    html+='<div class="receipt-meta-row"><span>Tanggal</span><span>'+new Date(order.date).toLocaleString('id-ID')+'</span></div>';
+    html+='<div class="receipt-meta-row"><span>Pemesan</span><span>'+order.name+'</span></div>';
+    html+='<div class="receipt-meta-row"><span>Meja</span><span>'+order.meja+'</span></div>';
+    html+='</div>';
+    html+='<div class="receipt-items">';
+    for(var i=0;i<order.items.length;i++){
+        var it=order.items[i];
+        html+='<div class="receipt-item">';
+        html+='<span class="receipt-item-name">'+it.name+'</span>';
+        html+='<span class="receipt-item-qty">x'+it.qty+'</span>';
+        html+='<span class="receipt-item-price">Rp '+(it.price*it.qty).toLocaleString()+'</span>';
+        html+='</div>';
+    }
+    html+='</div>';
+    html+='<div class="receipt-total-row"><span>TOTAL</span><span>Rp '+order.total.toLocaleString()+'</span></div>';
+    html+='<div class="receipt-stamp">Menunggu Konfirmasi</div>';
+    html+='<div class="receipt-footer">☕ Terima kasih atas pesananmu! ☕<br>Konfirmasi akan dikirim via WhatsApp<br><span class="receipt-ig">@kafesenja</span></div>';
+    document.getElementById('receipt-box').innerHTML=html;
+    document.getElementById('receipt-modal').classList.add('show');
+}
+function closeReceipt(){document.getElementById('receipt-modal').classList.remove('show');}
+function printReceipt(){window.print();}
+
+// ===== RIWAYAT PESANAN ADMIN =====
+function renderOrdersAdmin(){
+    var orders=getOrders();
+    document.getElementById('stat-orders').textContent=orders.length;
+    document.getElementById('order-count-label').textContent=orders.length+' pesanan';
+    var html='';
+    for(var i=0;i<orders.length;i++){
+        var o=orders[i];
+        var itemSummary='';
+        for(var j=0;j<o.items.length;j++){
+            itemSummary+=o.items[j].name+' x'+o.items[j].qty;
+            if(j<o.items.length-1)itemSummary+=', ';
+        }
+        var sb='';
+        if(o.status==='Pending')sb='<span class="status-badge status-pending">Pending</span>';
+        else if(o.status==='Diproses')sb='<span class="status-badge status-process">Diproses</span>';
+        else sb='<span class="status-badge status-confirmed">Selesai</span>';
+        var act='';
+        if(o.status==='Pending')act='<button class="btn-sm btn-sm-gold" onclick="processOrder('+i+')">▶ Proses</button>';
+        else if(o.status==='Diproses')act='<button class="btn-sm btn-sm-success" onclick="completeOrder('+i+')">✔ Selesai</button>';
+        html+='<tr>';
+        html+='<td style="color:var(--gold);font-weight:600">'+o.orderNo+'</td>';
+        html+='<td>'+o.name+'</td>';
+        html+='<td style="max-width:200px">'+itemSummary+'</td>';
+        html+='<td>Rp '+o.total.toLocaleString()+'</td>';
+        html+='<td>'+(o.meja||'-')+'</td>';
+        html+='<td>'+new Date(o.date).toLocaleString('id-ID')+'</td>';
+        html+='<td>'+sb+'</td>';
+        html+='<td><div class="btn-group">'+act+'<button class="btn-sm btn-sm-danger" onclick="deleteOrder('+i+')">🗑</button></div></td>';
+        html+='</tr>';
+    }
+    document.getElementById('admin-orders-tbody').innerHTML=html||'<tr><td colspan="8" style="text-align:center;color:#555;padding:2rem;">Belum ada pesanan masuk</td></tr>';
+}
+function processOrder(i){var o=getOrders();o[i].status='Diproses';setOrders(o);renderOrdersAdmin();showToast('Pesanan sedang diproses','▶');}
+function completeOrder(i){var o=getOrders();o[i].status='Selesai';setOrders(o);renderOrdersAdmin();showToast('Pesanan selesai','✅');}
+function deleteOrder(i){if(confirm('Hapus pesanan ini?')){var o=getOrders();o.splice(i,1);setOrders(o);renderOrdersAdmin();showToast('Pesanan dihapus','🗑');}}
+
 function renderCategoryButtons(){
     var menus=getMenus();
     var cats=['Semua'];
@@ -859,7 +1005,6 @@ function renderPublic(){
     container.innerHTML=html;
 }
 
-// ===== TESTIMONI =====
 function starsHtml(r){var s='';for(var i=1;i<=5;i++){s+='<span class="'+(i<=r?'':'dim')+'">★</span>';}return s;}
 
 function renderTestimonials(){
@@ -884,7 +1029,6 @@ function renderTestimonials(){
 
 function scrollTesti(dir){document.getElementById('testimoni-grid').scrollBy({left:dir*350,behavior:'smooth'});}
 
-// ===== ADMIN =====
 function renderAdmin(){
     var menus=getMenus(),res=getReservations(),testi=getTestimonials();
     var pendingRes=0,pendingTesti=0,activeMenus=0;
@@ -930,6 +1074,8 @@ function renderAdmin(){
         testiHtml+='<tr><td>'+t.name+'</td><td style="color:var(--gold)">'+starStr+'</td><td style="max-width:250px">'+t.msg+'</td><td>'+new Date(t.date).toLocaleDateString('id-ID')+'</td><td>'+sb2+'</td><td><div class="btn-group">'+act2+'<button class="btn-sm btn-sm-danger" onclick="deleteTesti('+i+')">🗑</button></div></td></tr>';
     }
     document.getElementById('admin-testi-tbody').innerHTML=testiHtml||'<tr><td colspan="6" style="text-align:center;color:#555;padding:2rem;">Belum ada testimoni</td></tr>';
+
+    renderOrdersAdmin();
 }
 
 function renderAll(){
@@ -1028,7 +1174,6 @@ function confirmRes(i){var r=getReservations();r[i].status='Dikonfirmasi';setRes
 function doneRes(i){var r=getReservations();r[i].status='Selesai';setReservations(r);renderAll();}
 function deleteRes(i){if(confirm('Hapus reservasi?')){var r=getReservations();r.splice(i,1);setReservations(r);renderAll();}}
 
-// Star rating
 var starInput=document.getElementById('star-input');
 var starSpans=starInput.querySelectorAll('span');
 function paintStars(n){
@@ -1095,7 +1240,6 @@ var observer=new IntersectionObserver(function(entries){
 var fadeEls=document.querySelectorAll('.fade-in');
 for(var i=0;i<fadeEls.length;i++){observer.observe(fadeEls[i]);}
 
-// INIT
 renderAll();
 </script>
 </body>
